@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Justyna Koc — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:       #0D0D0D;
+    --paper:     #FFFFFF;
+    --warm-gray: #E8E6E0;
+    --mid-gray:  #6B6B64;
+    --navy:      #174E99;
+    --border:    #C8C5BD;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #F5F4F0;
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  /* ── PAGE WRAPPER ── */
+  .page-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    border-left: 0.5px solid var(--border);
+    border-right: 0.5px solid var(--border);
+    min-height: 100vh;
+    background: var(--paper);
+  }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    border-bottom: 0.5px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--paper);
+    z-index: 10;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 24px; }
+  .nav-links a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    text-decoration: none;
+  }
+  .nav-links a.active {
+    color: var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 1px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 48px 48px 40px;
+    max-width: 640px;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    margin-bottom: 16px;
+  }
+  .hero-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .hero-h1 em {
+    font-style: italic;
+    font-weight: 300;
+  }
+  .hero-rule {
+    height: 1px;
+    width: 32px;
+    background: var(--navy);
+    margin: 20px 0;
+  }
+  .hero-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--ink);
+    max-width: 480px;
+  }
+
+  /* ── TWO COLUMN ── */
+  .content {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    border-top: 0.5px solid var(--border);
+  }
+  .main {
+    padding: 36px 48px 64px;
+    border-right: 0.5px solid var(--border);
+  }
+  .sidebar {
+    padding: 36px 24px;
+    position: sticky;
+    top: 61px;
+    height: fit-content;
+  }
+
+  /* ── PROJECT ENTRIES ── */
+  .proj-lbl {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    margin-bottom: 8px;
+  }
+  .proj-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .proj-title em { font-style: italic; }
+  .proj-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink);
+    max-width: 440px;
+    margin-bottom: 14px;
+  }
+  .proj-link {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--navy);
+    text-decoration: none;
+    border-bottom: 1px solid var(--navy);
+    padding-bottom: 1px;
+  }
+  .proj-divider {
+    height: 0.5px;
+    background: var(--border);
+    margin: 28px 0;
+  }
+
+  /* ── SIDEBAR ── */
+  .sb-lbl {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    margin-bottom: 4px;
+    margin-top: 20px;
+  }
+  .sb-lbl:first-child { margin-top: 0; }
+  .sb-val {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  .tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 0.5px solid var(--border);
+    border-radius: 2px;
+    color: var(--mid-gray);
+    display: inline-block;
+    margin: 2px 2px 0 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <nav>
+    <a class="nav-logo" href="index.html">Justyna Koc</a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Work</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-eyebrow">Senior UX Designer · Warsaw, Poland</div>
+    <h1 class="hero-h1">Making complex<br><em>simple.</em></h1>
+    <div class="hero-rule"></div>
+    <p class="hero-body">9 years designing enterprise applications and internal tools for expert users — from aeronautical engineers to global banking teams.</p>
+  </div>
+
+  <div class="content">
+    <div class="main">
+
+      <div class="proj-lbl">Case study · 01</div>
+      <div class="proj-title">Reconciliation<br><em>Portal</em></div>
+      <p class="proj-body">A six-month manual process — 20–30 specialists, a shared Excel spreadsheet, millions of dollars in potential discrepancies. Replaced with a real-time portal.</p>
+      <a class="proj-link" href="case_study_reconciliation.html">Read case study →</a>
+
+      <div class="proj-divider"></div>
+
+      <div class="proj-lbl">Case study · 02</div>
+      <div class="proj-title">DAC Correlation<br><em>Portal</em></div>
+      <p class="proj-body">Expert knowledge locked in Excel files only their creators understood. Replaced with a shared, reliable portal — so when one person leaves, the process doesn't leave with them.</p>
+      <a class="proj-link" href="case_study_dac.html">Read case study →</a>
+
+      <div class="proj-divider"></div>
+
+      <div class="proj-lbl">Case study · 03</div>
+      <div class="proj-title">Information Architecture<br><em>and Navigation — Bank Pekao</em></div>
+      <p class="proj-body">Five product owners, all convinced their product deserved top-level visibility. A navigation nobody owned. And a design solution that made the argument stop.</p>
+      <a class="proj-link" href="case_study_pekao.html">Read case study →</a>
+
+    </div>
+
+    <div class="sidebar">
+      <div class="sb-lbl">Experience</div>
+      <div class="sb-val">9 years</div>
+      <div class="sb-lbl">Currently</div>
+      <div class="sb-val">Accenture<br>Global aerospace client</div>
+      <div class="sb-lbl">Domains</div>
+      <div style="margin-top:6px">
+        <span class="tag">Aviation</span>
+        <span class="tag">Fintech</span>
+        <span class="tag">B2B SaaS</span>
+        <span class="tag">Internal tools</span>
+        <span class="tag">E-commerce</span>
+      </div>
+      <div class="sb-lbl">Tools</div>
+      <div class="sb-val">Figma · FigJam · Miro</div>
+      <div class="sb-lbl">LinkedIn</div>
+      <div class="sb-val"><a href="https://www.linkedin.com/in/justyna-koc/" target="_blank" style="color:var(--navy);text-decoration:none;border-bottom:1px solid var(--navy);padding-bottom:1px;">justyna-koc →</a></div>
+    </div>
+  </div>
+
+</div><!-- end page-wrapper -->
+
+</body>
+</html>

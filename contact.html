@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Justyna Koc</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:       #0D0D0D;
+    --paper:     #FFFFFF;
+    --warm-gray: #E8E6E0;
+    --mid-gray:  #6B6B64;
+    --navy:      #174E99;
+    --border:    #C8C5BD;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #F5F4F0;
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  .page-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    border-left: 0.5px solid var(--border);
+    border-right: 0.5px solid var(--border);
+    min-height: 100vh;
+    background: var(--paper);
+  }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    border-bottom: 0.5px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--paper);
+    z-index: 10;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 24px; }
+  .nav-links a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    text-decoration: none;
+  }
+  .nav-links a.active {
+    color: var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 1px;
+  }
+
+  /* ── LAYOUT ── */
+  .content {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+  }
+  .main {
+    padding: 48px 48px 80px;
+    border-right: 0.5px solid var(--border);
+  }
+  .sidebar {
+    padding: 48px 24px;
+    position: sticky;
+    top: 61px;
+    height: fit-content;
+  }
+
+  /* ── HEADER ── */
+  .about-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    margin-bottom: 16px;
+  }
+  .about-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 37px;
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    max-width: 480px;
+    margin-bottom: 20px;
+  }
+  .about-h1 em { font-style: italic; }
+  .about-rule {
+    height: 2px;
+    width: 32px;
+    background: var(--navy);
+    margin-bottom: 40px;
+  }
+
+  /* ── CONTACT ROWS ── */
+  .contact-list {
+    list-style: none;
+    max-width: 520px;
+  }
+  .contact-item {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    padding: 18px 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .contact-item:first-child {
+    border-top: 0.5px solid var(--border);
+  }
+  .contact-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    min-width: 100px;
+  }
+  .contact-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .contact-value a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: border-color 0.15s;
+  }
+  .contact-value a:hover {
+    border-color: var(--navy);
+    color: var(--navy);
+  }
+
+  /* ── AVAILABILITY NOTE ── */
+  .availability {
+    margin-top: 40px;
+    max-width: 400px;
+  }
+  .availability-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    margin-bottom: 8px;
+  }
+  .availability-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--mid-gray);
+  }
+
+  /* ── SIDEBAR ── */
+  .sb-lbl {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    margin-bottom: 4px;
+    margin-top: 20px;
+  }
+  .sb-lbl:first-child { margin-top: 0; }
+  .sb-val {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  /* ── BOTTOM NAV ── */
+  .case-nav {
+    display: flex;
+    justify-content: flex-start;
+    padding: 24px 48px;
+    border-top: 0.5px solid var(--border);
+  }
+  .case-nav a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--navy);
+    text-decoration: none;
+    border-bottom: 1px solid var(--navy);
+    padding-bottom: 1px;
+  }
+
+  /* ── CLOCK ── */
+  #local-time {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--mid-gray);
+    margin-top: 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+<nav>
+  <a class="nav-logo" href="index.html">Justyna Koc</a>
+  <div class="nav-links">
+    <a href="index.html">Work</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="active">Contact</a>
+  </div>
+</nav>
+
+<div class="content">
+  <div class="main">
+
+    <div class="about-eyebrow">Get in touch</div>
+    <h1 class="about-h1">Let's talk about<br><em>your project.</em></h1>
+    <div class="about-rule"></div>
+
+    <ul class="contact-list">
+      <li class="contact-item">
+        <span class="contact-label">Email</span>
+        <span class="contact-value">
+          <a href="mailto:Justyna.koc@gmail.com">Justyna.koc@gmail.com</a>
+        </span>
+      </li>
+      <li class="contact-item">
+        <span class="contact-label">Phone</span>
+        <span class="contact-value">
+          <a href="tel:+48572261166">+48 572 261 166</a>
+        </span>
+      </li>
+      <li class="contact-item">
+        <span class="contact-label">LinkedIn</span>
+        <span class="contact-value">
+          <a href="https://www.linkedin.com/in/justyna-koc/" target="_blank">justyna-koc</a>
+        </span>
+      </li>
+      <li class="contact-item">
+        <span class="contact-label">Location</span>
+        <span class="contact-value">
+          Warsaw, Poland
+          <div id="local-time"></div>
+        </span>
+      </li>
+    </ul>
+
+    <div class="availability">
+      <div class="availability-label">Availability</div>
+      <p class="availability-text">I work fully remote with international clients and operate across the full design cycle — from ambiguous brief to developer handoff.</p>
+    </div>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sb-lbl">Based in</div>
+    <div class="sb-val">Warsaw, Poland<br>CET / CEST</div>
+    <div class="sb-lbl">Languages</div>
+    <div class="sb-val">Polish — native<br>English — C1</div>
+    <div class="sb-lbl">Remote</div>
+    <div class="sb-val">Yes — international clients welcome</div>
+  </div>
+</div>
+
+<div class="case-nav">
+  <a href="index.html">← Back to work</a>
+</div>
+
+</div><!-- end page-wrapper -->
+
+<script>
+  function updateTime() {
+    const now = new Date();
+    const options = {
+      timeZone: 'Europe/Warsaw',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    };
+    const time = now.toLocaleTimeString('en-GB', options);
+    const el = document.getElementById('local-time');
+    if (el) el.textContent = 'Local time: ' + time;
+  }
+  updateTime();
+  setInterval(updateTime, 60000);
+</script>
+
+</body>
+</html>
