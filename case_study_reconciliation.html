@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reconciliation Portal — Justyna Koc</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:    #0D0D0D;
+    --paper:  #FFFFFF;
+    --border: #0D0D0D;
+    --rule:   #C8C5BD;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: #F6F6F6;
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  /* ── PAGE WRAPPER ── */
+  .page-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    border-left: 1px solid var(--ink);
+    border-right: 1px solid var(--ink);
+    min-height: 100vh;
+    background: var(--paper);
+  }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    border-bottom: 1px solid var(--ink);
+    position: sticky;
+    top: 0;
+    background: var(--paper);
+    z-index: 10;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 24px; }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 52px 48px 20px;
+  }
+  .cs-sup {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  /* Big title — same Cormorant, much larger, italic for contrast */
+  .cs-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 0;
+  }
+  .cs-h1 em {
+    font-style: italic;
+    font-weight: 300;
+  }
+  .hero-rule {
+    height: 1px;
+    background: var(--ink);
+    margin: 20px 0 22px;
+  }
+  .cs-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    line-height: 1.5;
+    color: var(--ink);
+    max-width: 560px;
+    font-weight: 300;
+  }
+
+  /* ── TAGS ── */
+  .tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    padding: 16px 48px 56px;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  /* ── NAV LINK HOVER/ACTIVE ── */
+  .nav-links a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.65;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 1px;
+    transition: opacity 0.15s, border-color 0.15s;
+  }
+  .nav-links a.active {
+    opacity: 1;
+    border-bottom: 1px solid var(--ink);
+  }
+  .nav-links a:not(.active):hover {
+    opacity: 1;
+    border-bottom-color: var(--ink);
+  }
+  .nav-links a:active { opacity: 0.6; }
+
+  /* ── CASE-NAV HOVER/ACTIVE ── */
+  .case-nav a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 1px;
+    font-weight: 500;
+    opacity: 0.65;
+    transition: opacity 0.15s, border-color 0.15s;
+  }
+  .case-nav a:hover { opacity: 1; border-bottom-color: var(--ink); }
+  .case-nav a:active { opacity: 0.6; }
+  .tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    display: inline-block;
+  }
+
+  /* ── THREE-COL SUMMARY ── */
+  .three-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 1px solid var(--ink);
+  }
+  .summary-cell {
+    padding: 28px 48px;
+  }
+  .summary-cell:last-child { border-right: none; }
+  .col-lbl {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .col-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+
+  /* ── LAYOUT ── */
+  .content {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+  }
+  .main {
+    padding: 56px 48px 80px;
+    border-right: 1px solid var(--ink);
+  }
+
+  /* ── SECTION HEADER — big, Cormorant, same family ── */
+  .sec-block {
+    margin-top: 64px;
+    margin-bottom: 28px;
+  }
+  .sec-block:first-child { margin-top: 0; }
+
+  .sec-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  /* The large section title — Cormorant, large, italic for visual punch */
+  .sec-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 0;
+  }
+  .sec-rule {
+    height: 1px;
+    background: var(--ink);
+    margin-top: 14px;
+  }
+
+  /* ── BODY TEXT — preserved exactly ── */
+  .body-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--ink);
+    max-width: 560px;
+    margin-bottom: 20px;
+  }
+  .body-text strong {
+    font-weight: 600;
+  }
+
+  /* ── SUB-HEADING ── */
+  .sub-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--ink);
+    margin-top: 40px;
+    margin-bottom: 0;
+    max-width: 560px;
+  }
+  .sub-heading::after {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--ink);
+    margin-top: 8px;
+    margin-bottom: 14px;
+  }
+
+  /* ── STAT PILLS ── */
+  .stats-row {
+    display: flex;
+    gap: 0;
+    margin: 32px 0;
+    border: 1.5px solid var(--ink);
+    max-width: 420px;
+  }
+  .stat-pill {
+    flex: 1;
+    padding: 16px 20px;
+    border-right: 1px solid var(--rule);
+    text-align: center;
+  }
+  .stat-pill:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .stat-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  /* ── DECISION BLOCKS — bordered card like V3 ── */
+  .decision-block {
+    border: 1.5px solid var(--ink);
+    padding: 0;
+    margin: 20px 0;
+    max-width: 560px;
+    display: grid;
+    grid-template-columns: 48px 1fr;
+  }
+  .dec-index {
+    background: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+  .dec-index-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--paper);
+    font-weight: 600;
+  }
+  .dec-content {
+    padding: 18px 20px;
+    border-left: none;
+  }
+  .dec-lbl {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .dec-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+
+  /* ── IMAGES ── */
+  .img-block { margin: 36px 0; }
+  .img-block img {
+    width: 100%;
+    display: block;
+    border: 1px solid var(--ink);
+  }
+  .img-caption {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--ink);
+    margin-top: 10px;
+    max-width: 560px;
+    letter-spacing: 0.01em;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    padding: 40px 28px;
+    position: sticky;
+    top: 61px;
+    height: fit-content;
+  }
+  .sb-group { margin-bottom: 22px; }
+  .sb-lbl {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 4px;
+    font-weight: 400;
+  }
+  .sb-val {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  /* ── BOTTOM NAV ── */
+  .case-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 48px;
+    border-top: 1px solid var(--ink);
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">Justyna Koc</a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Work</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="cs-sup">Case study · 06 · Aviation</div>
+  <h1 class="cs-h1">Reconciliation<br><em>Portal</em></h1>
+  <div class="hero-rule"></div>
+  <p class="cs-intro">A six-month manual process — 20–30 specialists, a shared Excel spreadsheet, millions of dollars in potential discrepancies. Replaced with a real-time portal that tells you where you stand before the damage is done.</p>
+</div>
+
+<!-- TAGS -->
+<div class="tags">
+  <span class="tag">Internal tool</span>
+  <span class="tag">Enterprise</span>
+  <span class="tag">Aviation</span>
+  <span class="tag">Desktop</span>
+  <span class="tag">Finance</span>
+  <span class="tag">Figma</span>
+</div>
+
+<!-- THREE-COL SUMMARY -->
+<div class="three-cols">
+  <div class="summary-cell">
+    <div class="col-lbl">01 · Problem</div>
+    <p class="col-body">Reconciliation took six months per billing cycle. By the time a discrepancy was visible, it was too late to fix it cheaply.</p>
+  </div>
+  <div class="summary-cell">
+    <div class="col-lbl">02 · Process</div>
+    <p class="col-body">Expert interviews · Workflow mapping · Iterative wireframing · Stakeholder feedback · Developer handoff · 1.5 years.</p>
+  </div>
+  <div class="summary-cell">
+    <div class="col-lbl">03 · Outcome</div>
+    <p class="col-body">For 20% of operators, days of manual work now take minutes. Discrepancies visible after one quarter, not six months.</p>
+  </div>
+</div>
+
+<!-- CONTENT + SIDEBAR -->
+<div class="content">
+<div class="main">
+
+  <!-- THE PROBLEM -->
+  <div class="sec-block">
+    <div class="sec-label">01</div>
+    <h2 class="sec-title">The problem</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <p class="body-text">My client leases aircraft engines to airline operators. Operators don't pay a flat fee — they pay based on how the engine is actually used: flight distances, environmental conditions, load cycles. At the end of each billing period, the client's team collected flight data and calculated the final amount owed by each operator.</p>
+
+  <p class="body-text">This process was called reconciliation. It lived entirely in a shared Excel spreadsheet. Completing it for all operators took approximately <strong>six months every billing cycle</strong>.</p>
+
+  <div class="img-block">
+    <img src="1.Old_Excel.png" alt="The original Excel reconciliation tool">
+    <p class="img-caption">Reconciliation for all operators took approximately six months every billing cycle — six sheets, dozens of columns, maintained manually by a team of 20–30 specialists. By the time a problem was visible, it was usually too late to fix it cheaply.</p>
+  </div>
+
+  <p class="body-text">The financial stakes were enormous. If the gap between what an operator had contracted to pay and what they actually owed went undetected until the end of the period, the client could find itself owing operators millions of dollars — or operators could face unexpected debt they couldn't repay. Six months was a long time to find out you had a problem.</p>
+
+  <div class="stats-row">
+    <div class="stat-pill">
+      <div class="stat-num">6</div>
+      <div class="stat-desc">months per cycle</div>
+    </div>
+    <div class="stat-pill">
+      <div class="stat-num">20–30</div>
+      <div class="stat-desc">specialists</div>
+    </div>
+    <div class="stat-pill">
+      <div class="stat-num">$M</div>
+      <div class="stat-desc">at risk</div>
+    </div>
+  </div>
+
+  <!-- MY ROLE -->
+  <div class="sec-block">
+    <div class="sec-label">02</div>
+    <h2 class="sec-title">My role</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <p class="body-text">I was the UX Designer on the project, working alongside a UI Design Lead, business stakeholders, domain experts, and front-end and back-end development teams. I owned requirements gathering, wireframing, feedback cycles with business and experts, collaboration with the UI lead on design system consistency, developer handoff, and continued support through implementation and edge cases.</p>
+
+  <p class="body-text">The project ran for approximately <strong>1.5 years</strong>. I was there through deployment.</p>
+
+  <!-- PROCESS -->
+  <div class="sec-block">
+    <div class="sec-label">03</div>
+    <h2 class="sec-title">Process</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <div class="sub-heading">Discovery</div>
+  <p class="body-text">I started with in-depth interviews with the reconciliation experts — the specialists who had built and maintained the Excel-based process for years.</p>
+
+  <p class="body-text">My goal wasn't to understand the financial calculations themselves. There were dozens of complex formulas involved, and that's deep domain expertise. My focus was on how specialists worked: which data could be pulled automatically versus entered manually, what constituted an invalid input, what error states were likely, and what information was most critical at each stage.</p>
+
+  <div class="img-block">
+    <img src="Notes_about_excel.png" alt="Discovery notes from expert interviews">
+    <p class="img-caption">Discovery interviews focused on how specialists worked, not on the calculations themselves. I needed to know which data could be pulled automatically, what counted as an invalid input, and what experts needed at each stage. The maths wasn't my job. The workflow was.</p>
+  </div>
+
+  <p class="body-text">This distinction matters in complex domain projects. A designer who tries to become a domain expert risks losing sight of the user. My job was to translate expert workflow into a reliable, usable interface.</p>
+
+  <div class="sub-heading">The pivot that reshaped the project</div>
+  <p class="body-text">The initial assumption — shared by the business — was that digitising the Excel tool would be sufficient. Once we delivered the first version, it became clear that assumption was wrong.</p>
+
+  <p class="body-text">Each operator contract is highly customised. Specialists needed extensive ability to override, adjust, and annotate calculated values. The application couldn't just display data — it had to support a complex expert-driven editing workflow while keeping a full audit trail of every change.</p>
+
+  <p class="body-text">This pivot extended the project significantly. It also led to the most important design decisions I made.</p>
+
+  <div class="sub-heading">Key design decisions</div>
+
+  <div class="decision-block">
+    <div class="dec-index"><span class="dec-index-text">Decision 01</span></div>
+    <div class="dec-content">
+      <div class="dec-lbl">Architecture</div>
+      <p class="dec-text">Step-by-step architecture over a single scrollable view. The original Excel tool was one long continuous sheet. I restructured the application into discrete sequential steps — each representing one calculation phase whose output feeds into the next. In a context where errors carry million-dollar consequences, this wasn't a UX preference — it was risk management.</p>
+    </div>
+  </div>
+
+  <div class="decision-block">
+    <div class="dec-index"><span class="dec-index-text">Decision 02</span></div>
+    <div class="dec-content">
+      <div class="dec-lbl">Edit mode</div>
+      <p class="dec-text">Read-only mode with explicit edit activation. I introduced a read-only default state for all editable fields. Specialists had to consciously enter edit mode before making changes. The added friction was intentional — accidental edits to data that directly affects payment calculations wasn't a scenario I was willing to design around.</p>
+    </div>
+  </div>
+
+  <div class="decision-block">
+    <div class="dec-index"><span class="dec-index-text">Decision 03</span></div>
+    <div class="dec-content">
+      <div class="dec-lbl">Affordance</div>
+      <p class="dec-text">Visual differentiation of editable fields. Even in read-only mode, editable inputs are displayed as input fields rather than plain text. This tells specialists at a glance which values they can override and which are system-calculated. The trade-off was slightly reduced scannability — a trade-off I accepted given the importance of that affordance.</p>
+    </div>
+  </div>
+
+  <div class="img-block">
+    <img src="read_only.png" alt="Application in read-only and edit mode">
+    <p class="img-caption">Ten sequential steps, visible in the left-hand navigation. Everything defaults to read-only — specialists activate edit mode explicitly before touching anything. Editable fields look like inputs even when locked, so it's always clear what can be changed and what can't.</p>
+  </div>
+
+  <!-- THE SOLUTION -->
+  <div class="sec-block">
+    <div class="sec-label">04</div>
+    <h2 class="sec-title">The solution</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <p class="body-text">The delivered portal consisted of two parts: a summary dashboard giving specialists an immediate overview of which operators have overpayments or underpayments, and a detailed ten-tab application showing the full calculation breakdown for each operator — with controlled editing, change tracking, and audit trail.</p>
+
+  <div class="img-block">
+    <img src="5.Summary_dashboard.png" alt="Reconciliation summary dashboard">
+    <p class="img-caption">The summary dashboard gives specialists an immediate overview of which operators have overpayments or underpayments. A process that previously took six months to complete now updates continuously — giving the business time to renegotiate contracts before discrepancies become a crisis.</p>
+  </div>
+
+  <div class="img-block">
+    <img src="Recon_MVP.png" alt="Full scope of the Reconciliation portal in Figma">
+    <p class="img-caption">Eleven tabs, each covering a separate calculation phase — from contract summary to final reconciliation amount. Some tabs contain dozens of screens accounting for edge cases, custom contract variations, and error states. This is what it takes to replace a six-month manual process with something reliable.</p>
+  </div>
+
+  <!-- OUTCOME -->
+  <div class="sec-block">
+    <div class="sec-label">05</div>
+    <h2 class="sec-title">Outcome</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <p class="body-text">For the roughly 20% of operators with standard contracts, reconciliation data that previously required days of manual work per operator is now generated automatically and updated monthly with <strong>no manual data entry</strong>.</p>
+
+  <p class="body-text">For the remaining operators with complex customised contracts, the application dramatically reduces manual effort — specialists no longer navigate between multiple systems copying data into Excel. The calculation logic is now reliable, shared, and auditable across the entire team.</p>
+
+  <p class="body-text">Most importantly, the business now has real-time visibility into operator payment status throughout the billing period. <strong>Discrepancies that previously went undetected for up to six months can now be identified after a single quarter</strong> — giving the client time to renegotiate contracts before they result in multi-million dollar liabilities.</p>
+
+  <!-- WHAT I LEARNED -->
+  <div class="sec-block">
+    <div class="sec-label">06</div>
+    <h2 class="sec-title">What I learned</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <p class="body-text">High financial stakes change how you design. Features that would be reasonable in a lower-stakes context — like editable fields that behave like plain text — become risks when a misclick can affect a million-dollar calculation. <strong>Designing for consequence means sometimes adding friction deliberately.</strong></p>
+
+  <p class="body-text">I also learned that a 1.5-year project will always be a different project at the end than it was at the start. The ability to stay useful as scope evolves — without losing sight of the original user need — is something I hadn't fully appreciated before this project.</p>
+
+</div>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="sb-group">
+    <div class="sb-lbl">Role</div>
+    <div class="sb-val">UX Designer</div>
+  </div>
+  <div class="sb-group">
+    <div class="sb-lbl">Client</div>
+    <div class="sb-val">Aviation industry<br>(via Accenture)</div>
+  </div>
+  <div class="sb-group">
+    <div class="sb-lbl">Duration</div>
+    <div class="sb-val">1.5 years<br>through deployment</div>
+  </div>
+  <div class="sb-group">
+    <div class="sb-lbl">Platform</div>
+    <div class="sb-val">Desktop</div>
+  </div>
+  <div class="sb-group">
+    <div class="sb-lbl">Tools</div>
+    <div class="sb-val">Figma · FigJam<br>Miro · Jira</div>
+  </div>
+  <div class="sb-group">
+    <div class="sb-lbl">Methods</div>
+    <div class="sb-val">Expert interviews · Workflow mapping · Iterative wireframing · Stakeholder feedback · Handoff</div>
+  </div>
+</div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="case-nav">
+  <a href="index.html">← Back to work</a>
+  <a href="case_study_dac.html">Next case study →</a>
+</div>
+
+</div><!-- end page-wrapper -->
+
+<!-- LIGHTBOX -->
+<div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(13,13,13,0.92);z-index:1000;cursor:zoom-out;align-items:center;justify-content:center;">
+  <button id="lightbox-close" style="position:fixed;top:24px;right:32px;background:none;border:none;color:#fff;font-family:'DM Sans',sans-serif;font-size:28px;font-weight:300;cursor:pointer;line-height:1;padding:8px;z-index:1001;opacity:0.8;" aria-label="Close">&#x2715;</button>
+  <img id="lightbox-img" src="" alt="" style="max-width:92vw;max-height:92vh;object-fit:contain;display:block;cursor:default;">
+</div>
+<script>
+  const lightbox=document.getElementById('lightbox');
+  const lightboxImg=document.getElementById('lightbox-img');
+  document.querySelectorAll('.img-block img').forEach(img=>{
+    img.style.cursor='zoom-in';
+    img.addEventListener('click',()=>{lightboxImg.src=img.src;lightboxImg.alt=img.alt;lightbox.style.display='flex';document.body.style.overflow='hidden';});
+  });
+  function closeLightbox(){lightbox.style.display='none';document.body.style.overflow='';}
+  document.getElementById('lightbox-close').addEventListener('click',closeLightbox);
+  lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+</script>
+</body>
+</html>
