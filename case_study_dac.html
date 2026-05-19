@@ -6,42 +6,39 @@
 <title>DAC Correlation Portal — Justyna Koc</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink:       #0D0D0D;
-    --paper:     #FFFFFF;
-    --warm-gray: #E8E6E0;
-    --mid-gray:  #6B6B64;
-    --navy:      #174E99;
-    --border:    #C8C5BD;
+    --ink:    #0D0D0D;
+    --paper:  #FFFFFF;
+    --border: #0D0D0D;
+    --rule:   #C8C5BD;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
 
   body {
-    background: #F5F4F0;
+    background: #F6F6F6;
     color: var(--ink);
     font-family: 'Cormorant Garamond', Georgia, serif;
   }
 
-  /* ── PAGE WRAPPER ── */
   .page-wrapper {
     max-width: 1000px;
     margin: 0 auto;
-    border-left: 0.5px solid var(--border);
-    border-right: 0.5px solid var(--border);
+    border-left: 1px solid var(--ink);
+    border-right: 1px solid var(--ink);
     min-height: 100vh;
     background: var(--paper);
   }
 
-  /* ── NAV ── */
   nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 48px;
-    border-bottom: 0.5px solid var(--border);
+    border-bottom: 1px solid var(--ink);
     position: sticky;
     top: 0;
     background: var(--paper);
@@ -55,131 +52,125 @@
     color: var(--ink);
     text-decoration: none;
   }
-  .nav-links {
-    display: flex;
-    gap: 24px;
-  }
+  .nav-links { display: flex; gap: 24px; }
   .nav-links a {
     font-family: 'DM Sans', sans-serif;
     font-size: 12px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--mid-gray);
-    text-decoration: none;
-  }
-  .nav-links a.active {
     color: var(--ink);
-    border-bottom: 1px solid var(--ink);
+    text-decoration: none;
+    opacity: 0.65;
+    border-bottom: 1px solid transparent;
     padding-bottom: 1px;
+    transition: opacity 0.15s, border-color 0.15s;
   }
+  .nav-links a.active { opacity: 1; border-bottom: 1px solid var(--ink); }
+  .nav-links a:not(.active):hover { opacity: 1; border-bottom-color: var(--ink); }
+  .nav-links a:active { opacity: 0.6; }
 
-  /* ── LAYOUT ── */
-  .content {
-    display: grid;
-    grid-template-columns: 1fr 240px;
-  }
-  .main {
-    padding: 40px 48px 80px;
-    border-right: 0.5px solid var(--border);
-  }
-  .sidebar {
-    padding: 40px 24px;
-    position: sticky;
-    top: 61px;
-    height: fit-content;
-  }
-
-  /* ── CASE STUDY HEADER ── */
+  .hero { padding: 52px 48px 20px; }
   .cs-sup {
     font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.14em;
+    font-size: 11px;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--mid-gray);
-    margin-bottom: 10px;
-  }
-  .cs-h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 37px;
-    font-weight: 300;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
     color: var(--ink);
     margin-bottom: 14px;
   }
-  .cs-h1 em { font-style: italic; }
-  .cs-rule {
-    height: 2px;
+  .cs-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 0;
+  }
+  .cs-h1 em { font-style: italic; font-weight: 300; }
+  .hero-rule {
+    height: 1px;
     background: var(--ink);
-    margin-bottom: 16px;
+    margin: 20px 0 22px;
   }
   .cs-intro {
     font-family: 'Cormorant Garamond', serif;
     font-size: 24px;
     line-height: 1.5;
     color: var(--ink);
-    max-width: 520px;
-    margin-bottom: 28px;
+    max-width: 560px;
     font-weight: 300;
   }
 
-  /* ── TAGS ── */
-  .tags { margin-bottom: 36px; }
+  .tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    padding: 16px 48px 56px;
+    border-bottom: 1px solid var(--ink);
+  }
   .tag {
     font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    padding: 4px 10px;
-    border: 0.5px solid var(--border);
-    border-radius: 2px;
-    color: var(--mid-gray);
+    padding: 3px 10px;
+    border: 1px solid var(--ink);
+    color: var(--ink);
     display: inline-block;
-    margin: 2px 3px 0 0;
   }
 
-  /* ── THREE COLS SUMMARY ── */
   .three-cols {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 24px;
-    margin-bottom: 40px;
-    padding-bottom: 32px;
-    border-bottom: 0.5px solid var(--border);
+    border-bottom: 1px solid var(--ink);
   }
+  .summary-cell { padding: 28px 48px; }
   .col-lbl {
     font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.12em;
+    font-size: 11px;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--mid-gray);
+    color: var(--ink);
     margin-bottom: 8px;
+    font-weight: 600;
   }
   .col-body {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 15px;
-    line-height: 1.6;
+    font-size: 19px;
+    line-height: 1.65;
     color: var(--ink);
   }
 
-  /* ── SECTION LABEL ── */
-  .sec-lbl {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--mid-gray);
-    margin-bottom: 8px;
-    margin-top: 40px;
-  }
-  .sec-lbl:first-of-type { margin-top: 0; }
-  .sec-divider {
-    height: 0.5px;
-    background: var(--border);
-    margin-bottom: 18px;
+  .content { display: grid; grid-template-columns: 1fr 220px; }
+  .main {
+    padding: 56px 48px 80px;
+    border-right: 1px solid var(--ink);
   }
 
-  /* ── BODY TEXT ── */
+  .sec-block { margin-top: 64px; margin-bottom: 28px; }
+  .sec-block:first-child { margin-top: 0; }
+  .sec-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .sec-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 0;
+  }
+  .sec-rule { height: 1px; background: var(--ink); margin-top: 14px; }
+
   .body-text {
     font-family: 'Cormorant Garamond', serif;
     font-size: 19px;
@@ -188,112 +179,81 @@
     max-width: 560px;
     margin-bottom: 20px;
   }
+  .body-text strong { font-weight: 600; }
 
-  /* ── SUBSECTION HEADING ── */
   .sub-heading {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 15px;
+    font-size: 22px;
+    font-weight: 500;
     font-style: italic;
-    font-weight: 400;
-    color: var(--mid-gray);
-    letter-spacing: 0.02em;
-    margin-bottom: 10px;
-    margin-top: 24px;
-  }
-
-  /* ── DECISION BLOCK ── */
-  .decision-block {
-    border-left: 2px solid var(--ink);
-    padding: 12px 20px;
-    margin: 20px 0 24px;
+    color: var(--ink);
+    margin-top: 40px;
+    margin-bottom: 0;
     max-width: 560px;
   }
-  .decision-label {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--mid-gray);
-    margin-bottom: 6px;
-  }
-  .decision-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 19px;
-    line-height: 1.6;
-    color: var(--ink);
+  .sub-heading::after {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--ink);
+    margin-top: 8px;
+    margin-bottom: 14px;
   }
 
-  /* ── IMAGES ── */
-  .img-block {
-    margin: 28px 0;
-  }
-  .img-block img {
-    width: 100%;
-    display: block;
-    border: 0.5px solid var(--border);
-    cursor: zoom-in;
-  }
+  .img-block { margin: 36px 0; }
+  .img-block img { width: 100%; display: block; border: 1px solid var(--ink); cursor: zoom-in; }
+  .img-two-up { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 36px 0; }
+  .img-two-up img { width: 100%; display: block; border: 1px solid var(--ink); cursor: zoom-in; }
+  .img-two-up .img-caption { grid-column: 1 / -1; }
   .img-caption {
     font-family: 'DM Sans', sans-serif;
     font-size: 12px;
     line-height: 1.6;
-    color: var(--mid-gray);
+    color: var(--ink);
     margin-top: 10px;
     max-width: 560px;
     letter-spacing: 0.01em;
   }
 
-  /* ── TWO UP IMAGES ── */
-  .img-two-up {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin: 28px 0;
-  }
-  .img-two-up img {
-    width: 100%;
-    display: block;
-    border: 0.5px solid var(--border);
-    cursor: zoom-in;
-  }
-  .img-two-up .img-caption {
-    grid-column: 1 / -1;
-  }
-
-  /* ── SIDEBAR ── */
+  .sidebar { padding: 40px 28px; position: sticky; top: 61px; height: fit-content; }
+  .sb-group { margin-bottom: 22px; }
   .sb-lbl {
     font-family: 'DM Sans', sans-serif;
     font-size: 12px;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--mid-gray);
-    margin-bottom: 3px;
-    margin-top: 18px;
+    color: var(--ink);
+    margin-bottom: 4px;
+    font-weight: 400;
   }
-  .sb-lbl:first-child { margin-top: 0; }
   .sb-val {
     font-family: 'DM Sans', sans-serif;
     font-size: 13px;
     color: var(--ink);
-    line-height: 1.6;
+    line-height: 1.7;
   }
 
-  /* ── BOTTOM NAV ── */
   .case-nav {
     display: flex;
     justify-content: space-between;
     padding: 24px 48px;
-    border-top: 0.5px solid var(--border);
+    border-top: 1px solid var(--ink);
   }
   .case-nav a {
     font-family: 'DM Sans', sans-serif;
     font-size: 12px;
     letter-spacing: 0.08em;
-    color: var(--navy);
+    color: var(--ink);
     text-decoration: none;
-    border-bottom: 1px solid var(--navy);
+    border-bottom: 1px solid transparent;
     padding-bottom: 1px;
+    font-weight: 500;
+    opacity: 0.65;
+    transition: opacity 0.15s, border-color 0.15s;
   }
+  .case-nav a:hover { opacity: 1; border-bottom-color: var(--ink); }
+  .case-nav a:active { opacity: 0.6; }
 </style>
 </head>
 <body>
@@ -309,166 +269,174 @@
   </div>
 </nav>
 
+<div class="hero">
+  <div class="cs-sup">Case study · 02 · Aviation</div>
+  <h1 class="cs-h1">DAC Correlation<br><em>Portal</em></h1>
+  <div class="hero-rule"></div>
+  <p class="cs-intro">Expert knowledge locked in Excel files only their creators understood. Replaced with a shared, reliable portal — so when one person leaves, the process doesn't leave with them.</p>
+</div>
+
+<div class="tags">
+  <span class="tag">Internal tool</span>
+  <span class="tag">Enterprise</span>
+  <span class="tag">Aviation</span>
+  <span class="tag">Desktop</span>
+  <span class="tag">Research</span>
+  <span class="tag">Figma</span>
+</div>
+
+<div class="three-cols">
+  <div class="summary-cell">
+    <div class="col-lbl">01 · Problem</div>
+    <p class="col-body">Expert knowledge locked in individual Excel files and Notepad workflows. One engineer owned a process nobody else could run.</p>
+  </div>
+  <div class="summary-cell">
+    <div class="col-lbl">02 · Process</div>
+    <p class="col-body">Expert interviews · Workflow mapping · Rapid wireframing · Usability testing · Incremental handoff.</p>
+  </div>
+  <div class="summary-cell">
+    <div class="col-lbl">03 · Outcome</div>
+    <p class="col-body">Tech clearance scored 83.1 SUS (Excellent). Knowledge now lives in a shared, reliable system. The bus factor went from one to many.</p>
+  </div>
+</div>
+
 <div class="content">
-  <div class="main">
+<div class="main">
 
-    <!-- HEADER -->
-    <div class="cs-sup">Case study · 05 · Aviation</div>
-    <h1 class="cs-h1">DAC Correlation<br><em>Portal</em></h1>
-    <div class="cs-rule"></div>
-    <p class="cs-intro">Expert knowledge locked in Excel files only their creators understood. Replaced with a shared, reliable portal — so when one person leaves, the process doesn't leave with them.</p>
-
-    <div class="tags">
-      <span class="tag">Internal tool</span>
-      <span class="tag">Enterprise</span>
-      <span class="tag">Aviation</span>
-      <span class="tag">Desktop</span>
-      <span class="tag">Figma</span>
-    </div>
-
-    <!-- SUMMARY THREE COLS -->
-    <div class="three-cols">
-      <div>
-        <div class="col-lbl">01 · Problem</div>
-        <p class="col-body">Every engineer had built their own workaround. None of those workarounds were visible to anyone else. The whole system depended on people remembering things — and people leave.</p>
-      </div>
-      <div>
-        <div class="col-lbl">02 · Process</div>
-        <p class="col-body">Expert interviews · Workflow mapping · Rapid wireframing · Iterative feedback cycles · Usability testing · Developer handoff · Released tab by tab.</p>
-      </div>
-      <div>
-        <div class="col-lbl">03 · Outcome</div>
-        <p class="col-body">The bus factor went from one to many. Knowledge that lived in individual spreadsheets now lives in a shared, reliable system.</p>
-      </div>
-    </div>
-
-    <!-- THE PROBLEM -->
-    <div class="sec-lbl">The problem</div>
-    <div class="sec-divider"></div>
-
-    <p class="body-text">The DAC method calculates engine wear based on real flight data — distances, conditions, load cycles. It's more accurate than simpler methods, but significantly more complex.</p>
-
-    <p class="body-text">Before this project, that complexity lived entirely inside individual engineers' heads and their Excel files.</p>
-
-    <p class="body-text">One engineer had built his own process for creating tech clearance reports — documents that prove the DAC method is safe to use. He was the only person who could run it. He was the only person who understood his own spreadsheet. If he'd been hit by a bus, that knowledge would have disappeared with him.</p>
-
-    <p class="body-text">Another engineer needed to download roughly a third of his hard drive's worth of raw data onto his local machine every time he ran a calculation. His computer slowed to a crawl. Then he'd do the calculations and delete the files until next time.</p>
-
-    <p class="body-text">These weren't edge cases. This was the standard way of working.</p>
-
-    <!-- MY ROLE -->
-    <div class="sec-lbl">My role</div>
-    <div class="sec-divider"></div>
-
-    <p class="body-text">I was the sole UX Designer and Researcher on the project. I owned requirements gathering, user interviews, wireframing, mockups, feedback cycles with users and business stakeholders, usability testing, and developer handoff. I collaborated with a Product Owner and front-end and back-end development teams.</p>
-
-    <p class="body-text">The portal was developed and released tab by tab during my time at the company.</p>
-
-    <!-- PROCESS -->
-    <div class="sec-lbl">Process</div>
-    <div class="sec-divider"></div>
-
-    <div class="sub-heading">Discovery</div>
-    <p class="body-text">I started with in-depth interviews with the engineers who owned each part of the workflow. My goal wasn't to understand the aeronautical calculations — that's deep domain expertise that takes years to build. My goal was to understand how engineers worked: what data they needed at each step, what they were doing manually that could be automated, and where things went wrong.</p>
-
-    <p class="body-text">The interviews surfaced the hard drive problem, the single-point-of-failure problem, and a broader pattern: every engineer had built their own workaround, none of those workarounds were visible to anyone else, and the whole system depended on institutional memory that could disappear at any time.</p>
-
-    <div class="img-block">
-      <img src="user_journey1.png" alt="User journey mapping for the tech clearance process">
-      <p class="img-caption">User journey for the tech clearance process — mapping the existing workflow step by step, capturing what users needed at each stage and what information had to be present in the interface. This became the foundation for the application's structure.</p>
-    </div>
-
-    <div class="sub-heading">What didn't make it in — and why</div>
-    <p class="body-text">Some early ideas didn't survive contact with users — including some of mine.</p>
-
-    <div class="img-two-up">
-      <img src="old_version1.png" alt="Early version of the DAC portal interface">
-      <img src="old_version2.png" alt="Second iteration of the DAC portal interface">
-      <p class="img-caption">Early interface versions. One engineer wanted to replicate his existing Notepad-to-Python workflow exactly — familiar, but inaccessible to anyone else. I wanted to add charts to make the data more visual; users pushed back. Too much data, too many variables — charts would have been noise, not insight. These versions didn't make it in. That's the research doing its job.</p>
-    </div>
-
-    <!-- THE SOLUTION -->
-    <div class="sec-lbl">The solution</div>
-    <div class="sec-divider"></div>
-
-    <p class="body-text">The portal shipped as four dashboards, released incrementally. Each tab was designed, handed off, and tested with end users before the next one began.</p>
-
-    <div class="sub-heading">Monitoring</div>
-    <div class="img-block">
-      <img src="monitoring_darfilescoverage_operator1.png" alt="Monitoring dashboard — DAR files coverage">
-      <p class="img-caption">The Monitoring dashboard tracks incoming raw data files from operators and gives engineers visibility into the processing pipeline — whether files are arriving as expected and whether anything is being lost along the way. Replacing a process where problems only became visible after calculations had already gone wrong.</p>
-    </div>
-
-    <div class="sub-heading">Flight Tapes</div>
-    <div class="img-block">
-      <img src="Flight_tapes.png" alt="Flight Tapes dashboard">
-      <p class="img-caption">Flight Tapes replaced the process of downloading roughly a third of a hard drive's worth of raw data onto a local machine for every calculation. Engineers now filter by date and operator and download only what they need.</p>
-    </div>
-
-    <div class="sub-heading">SA66</div>
-    <p class="body-text">Engineers use SA66 to work on the engine control file used to process raw DAR files. They test the file against Flight Tapes and when satisfied, the file becomes the new active version used in processing.</p>
-    <div class="img-two-up">
-      <img src="SA66Home.png" alt="SA66 — create task form">
-      <img src="SA66Details.png" alt="SA66 — task details and results">
-      <p class="img-caption">Left: creating a new SA66 task — selecting flight tapes, uploading the engine control file, and choosing result types. Right: the task details view showing calculation results, succeeded and failed flight tapes, and downloadable result files.</p>
-    </div>
-
-    <div class="sub-heading">Tech Clearance</div>
-    <div class="img-block">
-      <img src="Tech_clearance_report.png" alt="Tech Clearance — operators summary dashboard">
-      <p class="img-caption">Tech clearance reports now generate automatically on a schedule, based on all available data. The dashboard shows which operators passed or failed their tech clearance and why — including reasons like insufficient data coverage. A process that only one person understood is now accessible to the whole team.</p>
-    </div>
-
-    <!-- USABILITY TESTING -->
-    <div class="sec-lbl">Usability testing</div>
-    <div class="sec-divider"></div>
-
-    <p class="body-text">Each tab was tested with end users after release — at minimum 5 participants per round, none of whom had been involved in the design process. The Tech Clearance tab scored 83.1 on the System Usability Scale, placing it firmly in the "Excellent" range.</p>
-
-    <p class="body-text">Testing surfaced a consistent issue across several tabs: some interface labels weren't understood by users — even though all participants were aeronautical engineers and I had assumed the terminology would be familiar. It wasn't. The fix was straightforward: adding (i) tooltips with plain-language explanations next to the labels that caused confusion.</p>
-
-    <div class="img-block">
-      <img src="Improv.png" alt="Usability improvement recommendation — adding tooltips to unclear labels">
-      <p class="img-caption">One of several post-testing recommendations documented in Figma. Labels like "Delay run by", "Flight limit", and "Flight usage limit (SDC)" were misunderstood by users. The recommendation: add (i) icons with clear descriptions explaining what each parameter means and how it affects the results.</p>
-    </div>
-
-    <!-- OUTCOME -->
-    <div class="sec-lbl">Outcome</div>
-    <div class="sec-divider"></div>
-
-    <p class="body-text">The engineer who used to download a third of his hard drive every time he ran a calculation no longer does that.</p>
-
-    <p class="body-text">The tech clearance process that only one person understood is now documented, automated, and accessible to the whole team.</p>
-
-    <p class="body-text">Knowledge that lived in individual spreadsheets and Notepad files now lives in a shared, reliable system. The bus factor went from one to many.</p>
-
-    <!-- WHAT I LEARNED -->
-    <div class="sec-lbl">What I learned</div>
-    <div class="sec-divider"></div>
-
-    <p class="body-text">In highly specialised domains, the designer's job is to understand the workflow, not the subject matter. Knowing when to stop learning the domain and start designing the interface is a skill in itself.</p>
-
-    <p class="body-text">I also learned that features which sound useful in theory — charts, alerts, flexible inputs — can become noise if the domain isn't ready for them. Users who couldn't define their own thresholds were telling me something important: the feature wasn't ready, and neither were they.</p>
-
-    <p class="body-text">And: never assume that shared domain expertise means shared vocabulary. Even among engineers who work with the same systems every day, the words designers choose matter.</p>
-
+  <div class="sec-block">
+    <div class="sec-label">01</div>
+    <h2 class="sec-title">The problem</h2>
+    <div class="sec-rule"></div>
   </div>
 
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-    <div class="sb-lbl">Role</div>
-    <div class="sb-val">Sole UX Designer<br>& Researcher</div>
-    <div class="sb-lbl">Client</div>
-    <div class="sb-val">Aviation industry<br>(via Accenture)</div>
-    <div class="sb-lbl">Platform</div>
-    <div class="sb-val">Desktop</div>
-    <div class="sb-lbl">SUS score</div>
-    <div class="sb-val">83.1 — Excellent<br><span style="font-size:11px;color:var(--mid-gray);">Tech Clearance tab</span></div>
-    <div class="sb-lbl">Tools</div>
-    <div class="sb-val">Figma · FigJam<br>Miro · Jira</div>
-    <div class="sb-lbl">Methods</div>
-    <div class="sb-val">Expert interviews · Workflow mapping · Rapid wireframing · Usability testing · Handoff</div>
+  <p class="body-text">My client's engineering team used a method called DAC Correlation to validate aircraft engine behaviour. The method itself was sound. The process around it wasn't.</p>
+
+  <p class="body-text">Before this project, that complexity lived entirely inside individual engineers' heads and their Excel files.</p>
+
+  <p class="body-text">One engineer had built his own process for creating tech clearance reports — documents that prove the DAC method is safe to use. He was the only person who could run it. He was the only person who understood his own spreadsheet. If he'd been hit by a bus, that knowledge would have disappeared with him.</p>
+
+  <p class="body-text">Another engineer needed to download roughly a third of his hard drive's worth of raw data onto his local machine every time he ran a calculation. His computer slowed to a crawl. Then he'd do the calculations and delete the files until next time.</p>
+
+  <p class="body-text">These weren't edge cases. This was the standard way of working.</p>
+
+  <div class="sec-block">
+    <div class="sec-label">02</div>
+    <h2 class="sec-title">My role</h2>
+    <div class="sec-rule"></div>
   </div>
+
+  <p class="body-text">I was the sole UX Designer and Researcher on the project. I owned requirements gathering, user interviews, wireframing, mockups, feedback cycles with users and business stakeholders, usability testing, and developer handoff. I collaborated with a Product Owner and front-end and back-end development teams.</p>
+
+  <p class="body-text">The portal was developed and released tab by tab during my time at the company.</p>
+
+  <div class="sec-block">
+    <div class="sec-label">03</div>
+    <h2 class="sec-title">Process</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <div class="sub-heading">Discovery</div>
+  <p class="body-text">I started with in-depth interviews with the engineers who owned each part of the workflow. My goal wasn't to understand the aeronautical calculations — that's deep domain expertise that takes years to build. My goal was to understand how engineers worked: what data they needed at each step, what they were doing manually that could be automated, and where things went wrong.</p>
+
+  <p class="body-text">The interviews surfaced the hard drive problem, the single-point-of-failure problem, and a broader pattern: every engineer had built their own workaround, none of those workarounds were visible to anyone else, and the whole system depended on institutional memory that could disappear at any time.</p>
+
+  <div class="img-block">
+    <img src="user_journey1.png" alt="User journey mapping for the tech clearance process">
+    <p class="img-caption">User journey for the tech clearance process — mapping the existing workflow step by step, capturing what users needed at each stage and what information had to be present in the interface. This became the foundation for the application's structure.</p>
+  </div>
+
+  <div class="sub-heading">What didn't make it in — and why</div>
+  <p class="body-text">Some early ideas didn't survive contact with users — including some of mine.</p>
+
+  <div class="img-two-up">
+    <img src="old_version1.png" alt="Early version of the DAC portal interface">
+    <img src="old_version2.png" alt="Second iteration of the DAC portal interface">
+    <p class="img-caption">Early interface versions. One engineer wanted to replicate his existing Notepad-to-Python workflow exactly — familiar, but inaccessible to anyone else. I wanted to add charts to make the data more visual; users pushed back. Too much data, too many variables — charts would have been noise, not insight. These versions didn't make it in. That's the research doing its job.</p>
+  </div>
+
+  <div class="sec-block">
+    <div class="sec-label">04</div>
+    <h2 class="sec-title">The solution</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <p class="body-text">The portal shipped as four dashboards, released incrementally. Each tab was designed, handed off, and tested with end users before the next one began.</p>
+
+  <div class="sub-heading">Monitoring</div>
+  <div class="img-block">
+    <img src="monitoring_darfilescoverage_operator1.png" alt="Monitoring dashboard — DAR files coverage">
+    <p class="img-caption">The Monitoring dashboard tracks incoming raw data files from operators and gives engineers visibility into the processing pipeline — whether files are arriving as expected and whether anything is being lost along the way. Replacing a process where problems only became visible after calculations had already gone wrong.</p>
+  </div>
+
+  <div class="sub-heading">Flight Tapes</div>
+  <div class="img-block">
+    <img src="Flight_tapes.png" alt="Flight Tapes dashboard">
+    <p class="img-caption">Flight Tapes replaced the process of downloading roughly a third of a hard drive's worth of raw data onto a local machine for every calculation. Engineers now filter by date and operator and download only what they need.</p>
+  </div>
+
+  <div class="sub-heading">SA66</div>
+  <p class="body-text">Engineers use SA66 to work on the engine control file used to process raw DAR files. They test the file against Flight Tapes and when satisfied, the file becomes the new active version used in processing.</p>
+  <div class="img-two-up">
+    <img src="SA66Home.png" alt="SA66 — create task form">
+    <img src="SA66Details.png" alt="SA66 — task details and results">
+    <p class="img-caption">Left: creating a new SA66 task — selecting flight tapes, uploading the engine control file, and choosing result types. Right: the task details view showing calculation results, succeeded and failed flight tapes, and downloadable result files.</p>
+  </div>
+
+  <div class="sub-heading">Tech Clearance</div>
+  <div class="img-block">
+    <img src="Tech_clearance_report.png" alt="Tech Clearance — operators summary dashboard">
+    <p class="img-caption">Tech clearance reports now generate automatically on a schedule, based on all available data. The dashboard shows which operators passed or failed their tech clearance and why — including reasons like insufficient data coverage. A process that only one person understood is now accessible to the whole team.</p>
+  </div>
+
+  <div class="sec-block">
+    <div class="sec-label">05</div>
+    <h2 class="sec-title">Usability testing</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <p class="body-text">Each tab was tested with end users after release — at minimum 5 participants per round, none of whom had been involved in the design process. The Tech Clearance tab scored <strong>83.1 on the System Usability Scale</strong>, placing it firmly in the "Excellent" range.</p>
+
+  <p class="body-text">Testing surfaced a consistent issue across several tabs: some interface labels weren't understood by users — even though all participants were aeronautical engineers and I had assumed the terminology would be familiar. It wasn't. The fix was straightforward: adding (i) tooltips with plain-language explanations next to the labels that caused confusion.</p>
+
+  <div class="img-block">
+    <img src="Improv.png" alt="Usability improvement recommendation — adding tooltips to unclear labels">
+    <p class="img-caption">One of several post-testing recommendations documented in Figma. Labels like "Delay run by", "Flight limit", and "Flight usage limit (SDC)" were misunderstood by users. The recommendation: add (i) icons with clear descriptions explaining what each parameter means and how it affects the results.</p>
+  </div>
+
+  <div class="sec-block">
+    <div class="sec-label">06</div>
+    <h2 class="sec-title">Outcome</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <p class="body-text">The engineer who used to download a third of his hard drive every time he ran a calculation no longer does that.</p>
+
+  <p class="body-text">The tech clearance process that only one person understood is now documented, automated, and accessible to the whole team.</p>
+
+  <p class="body-text">Knowledge that lived in individual spreadsheets and Notepad files now lives in a shared, reliable system. <strong>The bus factor went from one to many.</strong></p>
+
+  <div class="sec-block">
+    <div class="sec-label">07</div>
+    <h2 class="sec-title">What I learned</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <p class="body-text">In highly specialised domains, the designer's job is to understand the workflow, not the subject matter. Knowing when to stop learning the domain and start designing the interface is a skill in itself.</p>
+
+  <p class="body-text">I also learned that features which sound useful in theory — charts, alerts, flexible inputs — can become noise if the domain isn't ready for them. Users who couldn't define their own thresholds were telling me something important: the feature wasn't ready, and neither were they.</p>
+
+  <p class="body-text">And: never assume that shared domain expertise means shared vocabulary. Even among engineers who work with the same systems every day, the words designers choose matter.</p>
+
+</div>
+
+<div class="sidebar">
+  <div class="sb-group"><div class="sb-lbl">Role</div><div class="sb-val">Sole UX Designer<br>& Researcher</div></div>
+  <div class="sb-group"><div class="sb-lbl">Client</div><div class="sb-val">Aviation industry<br>(via Accenture)</div></div>
+  <div class="sb-group"><div class="sb-lbl">Platform</div><div class="sb-val">Desktop</div></div>
+  <div class="sb-group"><div class="sb-lbl">SUS score</div><div class="sb-val">83.1 — Excellent<br><span style="font-size:12px;">Tech Clearance tab</span></div></div>
+  <div class="sb-group"><div class="sb-lbl">Tools</div><div class="sb-val">Figma · FigJam<br>Miro · Jira</div></div>
+  <div class="sb-group"><div class="sb-lbl">Methods</div><div class="sb-val">Expert interviews · Workflow mapping · Rapid wireframing · Usability testing · Handoff</div></div>
+</div>
 </div>
 
 <div class="case-nav">
@@ -476,73 +444,22 @@
   <a href="case_study_pekao.html">Next case study →</a>
 </div>
 
-</div><!-- end page-wrapper -->
-
-<!-- LIGHTBOX OVERLAY -->
-<div id="lightbox" style="
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(13,13,13,0.92);
-  z-index: 1000;
-  cursor: zoom-out;
-  align-items: center;
-  justify-content: center;
-">
-  <button id="lightbox-close" style="
-    position: fixed;
-    top: 24px;
-    right: 32px;
-    background: none;
-    border: none;
-    color: #ffffff;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 28px;
-    font-weight: 300;
-    cursor: pointer;
-    line-height: 1;
-    padding: 8px;
-    z-index: 1001;
-    opacity: 0.8;
-  " aria-label="Close">&#x2715;</button>
-  <img id="lightbox-img" src="" alt="" style="
-    max-width: 92vw;
-    max-height: 92vh;
-    object-fit: contain;
-    display: block;
-    cursor: default;
-  ">
 </div>
 
+<div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(13,13,13,0.92);z-index:1000;cursor:zoom-out;align-items:center;justify-content:center;">
+  <button id="lightbox-close" style="position:fixed;top:24px;right:32px;background:none;border:none;color:#fff;font-family:'DM Sans',sans-serif;font-size:28px;font-weight:300;cursor:pointer;line-height:1;padding:8px;z-index:1001;opacity:0.8;" aria-label="Close">&#x2715;</button>
+  <img id="lightbox-img" src="" alt="" style="max-width:92vw;max-height:92vh;object-fit:contain;display:block;cursor:default;">
+</div>
 <script>
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const closeBtn = document.getElementById('lightbox-close');
-
-  document.querySelectorAll('.img-block img, .img-two-up img').forEach(function(img) {
-    img.addEventListener('click', function() {
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt;
-      lightbox.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    });
+  const lightbox=document.getElementById('lightbox');
+  const lightboxImg=document.getElementById('lightbox-img');
+  document.querySelectorAll('.img-block img,.img-two-up img').forEach(img=>{
+    img.addEventListener('click',()=>{lightboxImg.src=img.src;lightboxImg.alt=img.alt;lightbox.style.display='flex';document.body.style.overflow='hidden';});
   });
-
-  function closeLightbox() {
-    lightbox.style.display = 'none';
-    document.body.style.overflow = '';
-  }
-
-  closeBtn.addEventListener('click', closeLightbox);
-
-  lightbox.addEventListener('click', function(e) {
-    if (e.target === lightbox) closeLightbox();
-  });
-
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeLightbox();
-  });
+  function closeLightbox(){lightbox.style.display='none';document.body.style.overflow='';}
+  document.getElementById('lightbox-close').addEventListener('click',closeLightbox);
+  lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
 </script>
-
 </body>
 </html>

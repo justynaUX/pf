@@ -6,21 +6,20 @@
 <title>Contact — Justyna Koc</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink:       #0D0D0D;
-    --paper:     #FFFFFF;
-    --warm-gray: #E8E6E0;
-    --mid-gray:  #6B6B64;
-    --navy:      #174E99;
-    --border:    #C8C5BD;
+    --ink:    #0D0D0D;
+    --paper:  #FFFFFF;
+    --border: #0D0D0D;
+    --rule:   #C8C5BD;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
 
   body {
-    background: #F5F4F0;
+    background: #F6F6F6;
     color: var(--ink);
     font-family: 'Cormorant Garamond', Georgia, serif;
   }
@@ -28,19 +27,18 @@
   .page-wrapper {
     max-width: 1000px;
     margin: 0 auto;
-    border-left: 0.5px solid var(--border);
-    border-right: 0.5px solid var(--border);
+    border-left: 1px solid var(--ink);
+    border-right: 1px solid var(--ink);
     min-height: 100vh;
     background: var(--paper);
   }
 
-  /* ── NAV ── */
   nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 48px;
-    border-bottom: 0.5px solid var(--border);
+    border-bottom: 1px solid var(--ink);
     position: sticky;
     top: 0;
     background: var(--paper);
@@ -60,80 +58,60 @@
     font-size: 12px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--mid-gray);
-    text-decoration: none;
-  }
-  .nav-links a.active {
     color: var(--ink);
-    border-bottom: 1px solid var(--ink);
+    text-decoration: none;
+    opacity: 0.65;
+    border-bottom: 1px solid transparent;
     padding-bottom: 1px;
+    transition: opacity 0.15s, border-color 0.15s;
   }
+  .nav-links a.active { opacity: 1; border-bottom: 1px solid var(--ink); }
+  .nav-links a:not(.active):hover { opacity: 1; border-bottom-color: var(--ink); }
+  .nav-links a:active { opacity: 0.6; }
 
-  /* ── LAYOUT ── */
-  .content {
-    display: grid;
-    grid-template-columns: 1fr 240px;
-  }
-  .main {
-    padding: 48px 48px 80px;
-    border-right: 0.5px solid var(--border);
-  }
-  .sidebar {
-    padding: 48px 24px;
-    position: sticky;
-    top: 61px;
-    height: fit-content;
-  }
+  .content { display: grid; grid-template-columns: 1fr 220px; }
+  .main { padding: 56px 48px 80px; border-right: 1px solid var(--ink); }
+  .sidebar { padding: 40px 28px; position: sticky; top: 61px; height: fit-content; }
 
-  /* ── HEADER ── */
   .about-eyebrow {
     font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.14em;
+    font-size: 11px;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--mid-gray);
-    margin-bottom: 16px;
+    color: var(--ink);
+    margin-bottom: 14px;
   }
   .about-h1 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 37px;
+    font-size: 72px;
     font-weight: 300;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
     color: var(--ink);
-    max-width: 480px;
-    margin-bottom: 20px;
   }
-  .about-h1 em { font-style: italic; }
-  .about-rule {
-    height: 2px;
-    width: 32px;
-    background: var(--navy);
-    margin-bottom: 40px;
-  }
+  .about-h1 em { font-style: italic; font-weight: 300; }
+  .about-rule { height: 1px; background: var(--ink); margin: 20px 0 40px; }
 
-  /* ── CONTACT ROWS ── */
-  .contact-list {
-    list-style: none;
-    max-width: 520px;
-  }
+  /* CONTACT LIST */
+  .contact-list { list-style: none; max-width: 560px; }
   .contact-item {
     display: flex;
     align-items: baseline;
-    gap: 24px;
-    padding: 18px 0;
-    border-bottom: 0.5px solid var(--border);
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--rule);
   }
-  .contact-item:first-child {
-    border-top: 0.5px solid var(--border);
-  }
+  .contact-item:first-child { border-top: none; }
+  .contact-item:last-child { border-bottom: none; }
   .contact-label {
     font-family: 'DM Sans', sans-serif;
     font-size: 12px;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--mid-gray);
+    color: var(--ink);
+    opacity: 0.65;
     min-width: 100px;
+    flex-shrink: 0;
   }
   .contact-value {
     font-family: 'Cormorant Garamond', serif;
@@ -145,77 +123,71 @@
   .contact-value a {
     color: var(--ink);
     text-decoration: none;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid transparent;
     padding-bottom: 2px;
     transition: border-color 0.15s;
   }
-  .contact-value a:hover {
-    border-color: var(--navy);
-    color: var(--navy);
-  }
+  .contact-value a:hover { border-bottom-color: var(--ink); }
 
-  /* ── AVAILABILITY NOTE ── */
-  .availability {
-    margin-top: 40px;
-    max-width: 400px;
-  }
+  /* AVAILABILITY */
+  .availability { margin-top: 48px; max-width: 480px; }
   .availability-label {
     font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.12em;
+    font-size: 11px;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--mid-gray);
-    margin-bottom: 8px;
+    color: var(--ink);
+    margin-bottom: 10px;
+    font-weight: 400;
   }
   .availability-text {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 17px;
-    line-height: 1.6;
-    color: var(--mid-gray);
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--ink);
   }
 
-  /* ── SIDEBAR ── */
+  /* SIDEBAR */
+  .sb-group { margin-bottom: 22px; }
   .sb-lbl {
     font-family: 'DM Sans', sans-serif;
     font-size: 12px;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--mid-gray);
+    color: var(--ink);
     margin-bottom: 4px;
-    margin-top: 20px;
+    font-weight: 400;
   }
-  .sb-lbl:first-child { margin-top: 0; }
-  .sb-val {
+  .sb-val { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--ink); line-height: 1.7; }
+
+  #local-time {
     font-family: 'DM Sans', sans-serif;
     font-size: 13px;
     color: var(--ink);
-    line-height: 1.6;
+    opacity: 0.65;
+    margin-top: 4px;
   }
 
-  /* ── BOTTOM NAV ── */
   .case-nav {
     display: flex;
     justify-content: flex-start;
     padding: 24px 48px;
-    border-top: 0.5px solid var(--border);
+    border-top: 1px solid var(--ink);
   }
   .case-nav a {
     font-family: 'DM Sans', sans-serif;
     font-size: 12px;
     letter-spacing: 0.08em;
-    color: var(--navy);
+    color: var(--ink);
     text-decoration: none;
-    border-bottom: 1px solid var(--navy);
+    border-bottom: 1px solid transparent;
     padding-bottom: 1px;
+    font-weight: 500;
+    opacity: 0.65;
+    transition: opacity 0.15s, border-color 0.15s;
   }
-
-  /* ── CLOCK ── */
-  #local-time {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 15px;
-    color: var(--mid-gray);
-    margin-top: 4px;
-  }
+  .case-nav a:hover { opacity: 1; border-bottom-color: var(--ink); }
+  .case-nav a:active { opacity: 0.6; }
 </style>
 </head>
 <body>
@@ -232,80 +204,63 @@
 </nav>
 
 <div class="content">
-  <div class="main">
+<div class="main">
 
-    <div class="about-eyebrow">Get in touch</div>
-    <h1 class="about-h1">Let's talk about<br><em>your project.</em></h1>
-    <div class="about-rule"></div>
+  <div class="about-eyebrow">Get in touch</div>
+  <h1 class="about-h1">Let's talk about<br><em>your project.</em></h1>
+  <div class="about-rule"></div>
 
-    <ul class="contact-list">
-      <li class="contact-item">
-        <span class="contact-label">Email</span>
-        <span class="contact-value">
-          <a href="mailto:Justyna.koc@gmail.com">Justyna.koc@gmail.com</a>
-        </span>
-      </li>
-      <li class="contact-item">
-        <span class="contact-label">Phone</span>
-        <span class="contact-value">
-          <a href="tel:+48572261166">+48 572 261 166</a>
-        </span>
-      </li>
-      <li class="contact-item">
-        <span class="contact-label">LinkedIn</span>
-        <span class="contact-value">
-          <a href="https://www.linkedin.com/in/justyna-koc/" target="_blank">justyna-koc</a>
-        </span>
-      </li>
-      <li class="contact-item">
-        <span class="contact-label">Location</span>
-        <span class="contact-value">
-          Warsaw, Poland
-          <div id="local-time"></div>
-        </span>
-      </li>
-    </ul>
+  <ul class="contact-list">
+    <li class="contact-item">
+      <span class="contact-label">Email</span>
+      <span class="contact-value"><a href="mailto:Justyna.koc@gmail.com">Justyna.koc@gmail.com</a></span>
+    </li>
+    <li class="contact-item">
+      <span class="contact-label">Phone</span>
+      <span class="contact-value"><a href="tel:+48572261166">+48 572 261 166</a></span>
+    </li>
+    <li class="contact-item">
+      <span class="contact-label">LinkedIn</span>
+      <span class="contact-value"><a href="https://www.linkedin.com/in/justyna-koc/" target="_blank">justyna-koc</a></span>
+    </li>
+    <li class="contact-item">
+      <span class="contact-label">Location</span>
+      <span class="contact-value">
+        Warsaw, Poland
+        <div id="local-time"></div>
+      </span>
+    </li>
+  </ul>
 
-    <div class="availability">
-      <div class="availability-label">Availability</div>
-      <p class="availability-text">I work fully remote with international clients and operate across the full design cycle — from ambiguous brief to developer handoff.</p>
-    </div>
-
+  <div class="availability">
+    <div class="availability-label">Availability</div>
+    <p class="availability-text">I work fully remote with international clients and operate across the full design cycle — from ambiguous brief to developer handoff.</p>
   </div>
 
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-    <div class="sb-lbl">Based in</div>
-    <div class="sb-val">Warsaw, Poland<br>CET / CEST</div>
-    <div class="sb-lbl">Languages</div>
-    <div class="sb-val">Polish — native<br>English — C1</div>
-    <div class="sb-lbl">Remote</div>
-    <div class="sb-val">Yes — international clients welcome</div>
-  </div>
+</div>
+
+<div class="sidebar">
+  <div class="sb-group"><div class="sb-lbl">Based in</div><div class="sb-val">Warsaw, Poland<br>CET / CEST</div></div>
+  <div class="sb-group"><div class="sb-lbl">Languages</div><div class="sb-val">Polish — native<br>English — C1</div></div>
+  <div class="sb-group"><div class="sb-lbl">Remote</div><div class="sb-val">Yes — international clients welcome</div></div>
+</div>
 </div>
 
 <div class="case-nav">
   <a href="index.html">← Back to work</a>
 </div>
 
-</div><!-- end page-wrapper -->
+</div>
 
 <script>
   function updateTime() {
     const now = new Date();
-    const options = {
-      timeZone: 'Europe/Warsaw',
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false
-    };
-    const time = now.toLocaleTimeString('en-GB', options);
+    const time = now.toLocaleTimeString('en-GB', { timeZone: 'Europe/Warsaw', hour: '2-digit', minute: '2-digit', hour12: false });
     const el = document.getElementById('local-time');
     if (el) el.textContent = 'Local time: ' + time;
   }
   updateTime();
   setInterval(updateTime, 60000);
 </script>
-
 </body>
 </html>
