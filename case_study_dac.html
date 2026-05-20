@@ -194,14 +194,15 @@
     margin-bottom: 14px;
   }
 
-  .img-block { margin: 36px 0; }
+  .img-block { margin: 36px 0; max-width: 560px; }
   .img-block img {
     width: 100%;
+    max-width: 100%;
     display: block;
     border: 1px solid var(--ink);
     cursor: zoom-in;
   }
-  .img-two-up { margin: 36px 0; display: flex; gap: 12px; flex-wrap: wrap; }
+  .img-two-up { margin: 36px 0; display: flex; gap: 12px; flex-wrap: wrap; max-width: 560px; }
   .img-two-up img {
     flex: 1 1 calc(50% - 6px);
     min-width: 200px;
