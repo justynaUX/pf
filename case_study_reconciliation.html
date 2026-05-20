@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Designing without a brief — Justyna Koc</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:    #0D0D0D;
+    --paper:  #FFFFFF;
+    --border: #0D0D0D;
+    --rule:   #C8C5BD;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: #F6F6F6;
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  .page-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    border-left: 1px solid var(--ink);
+    border-right: 1px solid var(--ink);
+    min-height: 100vh;
+    background: var(--paper);
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    border-bottom: 1px solid var(--ink);
+    position: sticky;
+    top: 0;
+    background: var(--paper);
+    z-index: 10;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 24px; }
+  .nav-links a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.65;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 1px;
+    transition: opacity 0.15s, border-color 0.15s;
+  }
+  .nav-links a.active { opacity: 1; border-bottom: 1px solid var(--ink); }
+  .nav-links a:not(.active):hover { opacity: 1; border-bottom-color: var(--ink); }
+  .nav-links a:active { opacity: 0.6; }
+
+  .hero { padding: 52px 48px 20px; }
+  .cs-sup {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .cs-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 0;
+  }
+  .cs-h1 em { font-style: italic; font-weight: 300; }
+  .hero-rule { height: 1px; background: var(--ink); margin: 20px 0 22px; }
+  .cs-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    line-height: 1.5;
+    color: var(--ink);
+    max-width: 560px;
+    font-weight: 300;
+  }
+
+  .tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    padding: 16px 48px 56px;
+    border-bottom: 1px solid var(--ink);
+  }
+  .tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    display: inline-block;
+  }
+
+  .three-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 1px solid var(--ink);
+  }
+  .summary-cell { padding: 28px 48px; }
+  .col-lbl {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .col-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+
+  .content { display: grid; grid-template-columns: 1fr 220px; }
+  .main { padding: 56px 48px 80px; border-right: 1px solid var(--ink); }
+
+  .sec-block { margin-top: 64px; margin-bottom: 28px; }
+  .sec-block:first-child { margin-top: 0; }
+  .sec-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .sec-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 0;
+  }
+  .sec-rule { height: 1px; background: var(--ink); margin-top: 14px; }
+
+  .body-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--ink);
+    max-width: 560px;
+    margin-bottom: 20px;
+  }
+  .body-text strong { font-weight: 600; }
+
+  .sub-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--ink);
+    margin-top: 40px;
+    margin-bottom: 0;
+    max-width: 560px;
+  }
+  .sub-heading::after {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--ink);
+    margin-top: 8px;
+    margin-bottom: 14px;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 0;
+    margin: 32px 0;
+    border: 1.5px solid var(--ink);
+    max-width: 420px;
+  }
+  .stat-pill {
+    flex: 1;
+    padding: 16px 20px;
+    border-right: 1px solid var(--rule);
+    text-align: center;
+  }
+  .stat-pill:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .stat-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .decision-block {
+    border: 1.5px solid var(--ink);
+    padding: 0;
+    margin: 20px 0;
+    max-width: 560px;
+    display: grid;
+    grid-template-columns: 48px 1fr;
+  }
+  .dec-index {
+    background: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+  .dec-index-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--paper);
+    font-weight: 600;
+  }
+  .dec-content { padding: 18px 20px; }
+  .dec-lbl {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .dec-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+
+  .img-block { margin: 36px 0; }
+  .img-block img {
+    width: 100%;
+    display: block;
+    border: 1px solid var(--ink);
+    cursor: zoom-in;
+  }
+  .img-caption {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--ink);
+    margin-top: 10px;
+    max-width: 560px;
+    letter-spacing: 0.01em;
+  }
+
+  .sidebar { padding: 40px 28px; position: sticky; top: 61px; height: fit-content; }
+  .sb-group { margin-bottom: 22px; }
+  .sb-lbl {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 4px;
+    font-weight: 400;
+  }
+  .sb-val { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--ink); line-height: 1.7; }
+
+  .case-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 48px;
+    border-top: 1px solid var(--ink);
+  }
+  .case-nav a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 1px;
+    font-weight: 500;
+    opacity: 0.65;
+    transition: opacity 0.15s, border-color 0.15s;
+  }
+  .case-nav a:hover { opacity: 1; border-bottom-color: var(--ink); }
+  .case-nav a:active { opacity: 0.6; }
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+<nav>
+  <a class="nav-logo" href="index.html">Justyna Koc</a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Work</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="cs-sup">Case study · 01 · Aviation</div>
+  <h1 class="cs-h1">Designing without<br><em>a brief</em></h1>
+  <div class="hero-rule"></div>
+  <p class="cs-intro">The business brief was simple: redraw the Excel spreadsheet as a UI. No discovery, no research phase — just digitise what already existed. That assumption turned out to be wrong. What followed was eighteen months of weekly user feedback, a pivot nobody planned for, and a product that replaced a six-month manual process for the first wave of operators — with more to follow.</p>
+</div>
+
+<div class="tags">
+  <span class="tag">Aviation</span>
+  <span class="tag">Internal tool</span>
+  <span class="tag">Desktop</span>
+  <span class="tag">UX Designer</span>
+  <span class="tag">1.5 years</span>
+  <span class="tag">Through deployment</span>
+</div>
+
+<div class="three-cols">
+  <div class="summary-cell">
+    <div class="col-lbl">01 · Challenge</div>
+    <p class="col-body">Turn a "just digitise the Excel" brief into a product that actually worked — without a formal discovery phase, in a domain where every contract was different and errors had million-dollar consequences.</p>
+  </div>
+  <div class="summary-cell" style="border-left: 1px solid var(--ink); border-right: 1px solid var(--ink);">
+    <div class="col-lbl">02 · Process</div>
+    <p class="col-body">Weekly user sessions · Domain-expert PO as first feedback layer · Iterative wireframing · Stakeholder alignment · 1.5 years through deployment</p>
+  </div>
+  <div class="summary-cell">
+    <div class="col-lbl">03 · Outcome</div>
+    <p class="col-body">For 20% of operators, days of manual work per operator now take minutes. Discrepancies visible after one quarter, not six months.</p>
+  </div>
+</div>
+
+<div class="content">
+<div class="main">
+
+  <div class="sec-block">
+    <div class="sec-label">01</div>
+    <h2 class="sec-title">The situation</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <p class="body-text">My client leases aircraft engines to airline operators. Operators don't pay a flat fee — they pay based on how the engine is actually used: flight distances, environmental conditions, load cycles. At the end of each billing period, the client's team collected flight data and calculated the final amount owed by each operator.</p>
+
+  <p class="body-text">This process was called reconciliation. It lived entirely in a shared Excel spreadsheet. Completing it for all operators took approximately <strong>six months every billing cycle</strong>.</p>
+
+  <div class="img-block">
+    <img src="1.Old_Excel.png" alt="The original Excel-based reconciliation process">
+    <p class="img-caption">Reconciliation for all operators took approximately six months every billing cycle — six sheets, dozens of columns, maintained manually by a team of 20–30 specialists. By the time a problem was visible, it was usually too late to fix it cheaply.</p>
+  </div>
+
+  <p class="body-text">The financial stakes were significant. If the gap between what an operator had contracted to pay and what they actually owed went undetected until the end of the period, the client could find itself owing operators millions of dollars — or operators could face unexpected debt they couldn't repay.</p>
+
+  <div class="stats-row">
+    <div class="stat-pill"><div class="stat-num">6</div><div class="stat-desc">months per cycle</div></div>
+    <div class="stat-pill"><div class="stat-num">20–30</div><div class="stat-desc">specialists</div></div>
+    <div class="stat-pill"><div class="stat-num">$M</div><div class="stat-desc">at risk</div></div>
+  </div>
+
+  <div class="sec-block">
+    <div class="sec-label">02</div>
+    <h2 class="sec-title">My role</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <p class="body-text">I was the UX Designer on the project, working alongside a Product Owner with an aeronautical engineering background, business stakeholders, domain experts, and front-end and back-end development teams. I owned requirements gathering, wireframing, weekly feedback cycles with users and the PO, collaboration on design system consistency, developer handoff, and continued support through implementation and edge cases.</p>
+
+  <p class="body-text">The project ran for approximately <strong>1.5 years</strong>. I was there through deployment.</p>
+
+  <div class="sec-block">
+    <div class="sec-label">03</div>
+    <h2 class="sec-title">Process</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <div class="sub-heading">Starting without discovery</div>
+
+  <p class="body-text">The business decision was clear: no formal discovery phase. The brief was to digitise the existing Excel tool — take what was already there and give it a proper interface. I started there.</p>
+
+  <p class="body-text">What made this project workable despite that constraint was the Product Owner. He had an aeronautical engineering background, which meant he understood the domain as well as the users did. Every new mockup went to him first. He was my first feedback layer — catching domain errors before they reached users, and helping me understand which contract variations mattered and which were edge cases. Weekly sessions with one or two reconciliation specialists followed. That rhythm — PO first, then users — replaced the discovery phase I didn't have.</p>
+
+  <div class="img-block">
+    <img src="Notes_about_excel.png" alt="Discovery notes from expert interviews">
+    <p class="img-caption">Early sessions focused on how specialists worked with the existing Excel tool — which data could be pulled automatically, what counted as an invalid input, what they needed at each stage. The PO's domain knowledge meant I could move faster and ask better questions than I could have alone.</p>
+  </div>
+
+  <div class="sub-heading">The assumption that didn't survive contact with users</div>
+
+  <p class="body-text">The initial assumption — shared by the business and, at the start, by me — was that a clean digital version of the spreadsheet would be sufficient. It became clear through feedback that this was wrong.</p>
+
+  <p class="body-text">Each operator contract is highly customised. Specialists needed extensive ability to override, adjust, and annotate calculated values. The application couldn't just display data — it had to support a complex expert-driven editing workflow while keeping a full record of every change made, by whom, and why. Digitising the spreadsheet would have given specialists a faster way to do the same fragile manual process. That wasn't good enough.</p>
+
+  <p class="body-text">This realisation extended the project significantly. It also led to the most consequential design decisions I made.</p>
+
+  <div class="sub-heading">The decision that required defending</div>
+
+  <p class="body-text">The original Excel tool was one long continuous sheet. Everyone — the PO, the users, the business — expected the digital version to follow the same structure. I proposed something different: a step-by-step architecture, where each screen represented one calculation phase whose output fed into the next.</p>
+
+  <p class="body-text">This wasn't a UX preference. Reconciliation calculations are sequential — each step depends on the one before it. In a continuous scrollable view, a specialist could modify a value three steps back without understanding what it would break downstream. In a step-by-step structure, the dependencies are visible. Errors stay local. The consequence of each input is clear before the next step begins.</p>
+
+  <p class="body-text">The PO pushed back. Users were sceptical — it was unfamiliar. I held the position, explained the reasoning, and showed them how the structure worked in practice through the wireframes. Once they could see it rather than just hear about it, the resistance faded.</p>
+
+  <div class="img-block">
+    <img src="read_only.png" alt="Step-by-step architecture in read-only mode">
+    <p class="img-caption">Ten sequential steps, visible in the left-hand navigation. The architecture makes calculation dependencies explicit — specialists can see where they are in the process and what each step's output feeds into. This is what it looks like to design for consequence rather than familiarity.</p>
+  </div>
+
+  <div class="sub-heading">The other decisions</div>
+
+  <p class="body-text">Two further decisions came directly from the high-stakes context — neither required the same fight, but both mattered.</p>
+
+  <div class="decision-block">
+    <div class="dec-index"><span class="dec-index-text">Decision 01</span></div>
+    <div class="dec-content">
+      <div class="dec-lbl">Edit mode</div>
+      <p class="dec-text">Read-only by default with explicit edit activation. Every editable field starts locked. Specialists have to consciously enter edit mode before changing anything. The added friction is intentional — accidental edits to data that directly affects payment calculations wasn't a scenario I was willing to design around.</p>
+    </div>
+  </div>
+
+  <div class="decision-block">
+    <div class="dec-index"><span class="dec-index-text">Decision 02</span></div>
+    <div class="dec-content">
+      <div class="dec-lbl">Affordance</div>
+      <p class="dec-text">Visual differentiation of editable fields. Even in read-only mode, editable inputs look like input fields rather than plain text. Specialists can always see at a glance what they can change and what is system-calculated. A small reduction in scannability — a trade-off I accepted given the importance of that signal.</p>
+    </div>
+  </div>
+
+  <p class="body-text">Both decisions came from the same place: when errors cost millions, friction is a feature, not a failure.</p>
+
+  <div class="sec-block">
+    <div class="sec-label">04</div>
+    <h2 class="sec-title">The solution</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <p class="body-text">The delivered portal consisted of two parts: a summary dashboard giving specialists an immediate overview of which operators have overpayments or underpayments, and a detailed ten-tab application showing the full calculation breakdown for each operator — with controlled editing, change tracking, and audit trail.</p>
+
+  <div class="img-block">
+    <img src="5.Summary_dashboard.png" alt="Reconciliation summary dashboard">
+    <p class="img-caption">The summary dashboard gives specialists an immediate overview of which operators have overpayments or underpayments. A process that previously took six months to complete now updates continuously — giving the business time to renegotiate contracts before discrepancies become a crisis.</p>
+  </div>
+
+  <div class="img-block">
+    <img src="Recon_MVP.png" alt="Full scope of the Reconciliation portal">
+    <p class="img-caption">Eleven tabs, each covering a separate calculation phase — from contract summary to final reconciliation amount. Some tabs contain dozens of screens accounting for edge cases, custom contract variations, and error states. This is what it takes to replace a six-month manual process with something that specialists trust.</p>
+  </div>
+
+  <div class="sec-block">
+    <div class="sec-label">05</div>
+    <h2 class="sec-title">Outcome</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <p class="body-text">For the roughly 20% of operators with standard contracts, reconciliation data that previously required days of manual work per operator is now generated automatically and updated monthly with <strong>no manual data entry</strong>.</p>
+
+  <p class="body-text">For the remaining operators with complex customised contracts, the application significantly reduces manual effort — specialists no longer navigate between multiple systems copying data into Excel. The calculation logic is now reliable, shared, and auditable across the entire team.</p>
+
+  <p class="body-text">Most importantly, the business now has real-time visibility into operator payment status throughout the billing period. <strong>Discrepancies that previously went undetected for up to six months can now be identified after a single quarter</strong> — giving the client time to renegotiate contracts before they result in multi-million dollar liabilities.</p>
+
+  <p class="body-text">"Digitise what exists" is almost never the right brief in high-stakes domains. What exists is a coping mechanism. The real brief is always underneath it.</p>
+
+</div>
+
+<div class="sidebar">
+  <div class="sb-group"><div class="sb-lbl">Role</div><div class="sb-val">UX Designer</div></div>
+  <div class="sb-group"><div class="sb-lbl">Client</div><div class="sb-val">Aviation industry<br>(via Accenture)</div></div>
+  <div class="sb-group"><div class="sb-lbl">Duration</div><div class="sb-val">1.5 years<br>through deployment</div></div>
+  <div class="sb-group"><div class="sb-lbl">Platform</div><div class="sb-val">Desktop</div></div>
+  <div class="sb-group"><div class="sb-lbl">Tools</div><div class="sb-val">Figma · FigJam<br>Miro · Jira</div></div>
+  <div class="sb-group"><div class="sb-lbl">Methods</div><div class="sb-val">Expert interviews · Workflow mapping · Iterative wireframing · Stakeholder feedback · Handoff</div></div>
+</div>
+</div>
+
+<div class="case-nav">
+  <a href="index.html">← Back to work</a>
+  <a href="case_study_dac.html">Next case study →</a>
+</div>
+
+</div>
+
+<div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(13,13,13,0.92);z-index:1000;cursor:zoom-out;align-items:center;justify-content:center;">
+  <button id="lightbox-close" style="position:fixed;top:24px;right:32px;background:none;border:none;color:#fff;font-family:'DM Sans',sans-serif;font-size:28px;font-weight:300;cursor:pointer;line-height:1;padding:8px;z-index:1001;opacity:0.8;" aria-label="Close">&#x2715;</button>
+  <img id="lightbox-img" src="" alt="" style="max-width:92vw;max-height:92vh;object-fit:contain;display:block;cursor:default;">
+</div>
+<script>
+  const lightbox=document.getElementById('lightbox');
+  const lightboxImg=document.getElementById('lightbox-img');
+  document.querySelectorAll('.img-block img').forEach(img=>{
+    img.style.cursor='zoom-in';
+    img.addEventListener('click',()=>{lightboxImg.src=img.src;lightboxImg.alt=img.alt;lightbox.style.display='flex';document.body.style.overflow='hidden';});
+  });
+  function closeLightbox(){lightbox.style.display='none';document.body.style.overflow='';}
+  document.getElementById('lightbox-close').addEventListener('click',closeLightbox);
+  lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+</script>
+</body>
+</html>
