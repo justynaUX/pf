@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="description" content="Reconciliation Portal — UX case study by Justyna Koc. Replacing a six-month manual Excel process with a real-time aviation finance portal. 1.5 years, Accenture.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Designing without a brief — Justyna Koc</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -81,13 +82,13 @@
   .cs-h1 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 72px;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 0.95;
     letter-spacing: -0.02em;
     color: var(--ink);
     margin-bottom: 0;
   }
-  .cs-h1 em { font-style: italic; font-weight: 300; }
+  .cs-h1 em { font-style: italic; font-weight: 400; }
   .hero-rule { height: 1px; background: var(--ink); margin: 20px 0 22px; }
   .cs-intro {
     font-family: 'Cormorant Garamond', serif;
@@ -95,7 +96,7 @@
     line-height: 1.5;
     color: var(--ink);
     max-width: 560px;
-    font-weight: 300;
+    font-weight: 400;
   }
 
   .tags {
@@ -155,7 +156,7 @@
   .sec-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: 44px;
-    font-weight: 300;
+    font-weight: 400;
     font-style: italic;
     line-height: 1.0;
     letter-spacing: -0.01em;
@@ -211,7 +212,7 @@
   .stat-num {
     font-family: 'Cormorant Garamond', serif;
     font-size: 36px;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1;
     color: var(--ink);
     margin-bottom: 4px;
@@ -269,9 +270,12 @@
   .img-block img {
     width: 100%;
     display: block;
-    border: 1px solid var(--ink);
+    border: 1px solid #E0E0E0;
     cursor: zoom-in;
   }
+  .img-two-up { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 36px 0; }
+  .img-two-up img { width: 100%; display: block; border: 1px solid #E0E0E0; cursor: zoom-in; }
+  .img-two-up .img-caption { grid-column: 1 / -1; }
   .img-caption {
     font-family: 'DM Sans', sans-serif;
     font-size: 12px;
@@ -470,6 +474,12 @@
     <p class="img-caption">The summary dashboard gives specialists an immediate overview of which operators have overpayments or underpayments. A process that previously took six months to complete now updates continuously — giving the business time to renegotiate contracts before discrepancies become a crisis.</p>
   </div>
 
+  <div class="img-two-up">
+    <img src="10_Recon.png" alt="Reconciliation portal step 10 — final reconciliation amount tab showing fleet totals, TotalCare rate breakdown, and reconciliation summary">
+    <img src="5_Recon.png" alt="Reconciliation portal step 5 — fleet wide operation tab with aircraft operational data and editable days in service fields">
+    <p class="img-caption">Step 5 (Fleet wide operation) and step 10 (Reconciliation amount) — two of the ten sequential tabs. Each covers a distinct calculation phase; the output of each feeds into the next. Editable fields look like inputs even in read-only mode, so specialists always know what they can change.</p>
+  </div>
+
   <div class="img-block">
     <img src="Recon_MVP.png" alt="Full scope of the Reconciliation portal">
     <p class="img-caption">Eleven tabs, each covering a separate calculation phase — from contract summary to final reconciliation amount. Some tabs contain dozens of screens accounting for edge cases, custom contract variations, and error states. This is what it takes to replace a six-month manual process with something that specialists trust.</p>
@@ -515,7 +525,7 @@
 <script>
   const lightbox=document.getElementById('lightbox');
   const lightboxImg=document.getElementById('lightbox-img');
-  document.querySelectorAll('.img-block img').forEach(img=>{
+  document.querySelectorAll('.img-block img,.img-two-up img').forEach(img=>{
     img.style.cursor='zoom-in';
     img.addEventListener('click',()=>{lightboxImg.src=img.src;lightboxImg.alt=img.alt;lightbox.style.display='flex';document.body.style.overflow='hidden';});
   });
