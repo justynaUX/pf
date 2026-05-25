@@ -194,6 +194,65 @@
   }
   .case-nav a:hover { opacity: 1; border-bottom-color: var(--ink); }
   .case-nav a:active { opacity: 0.6; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 700px) {
+    .page-wrapper { border-left: none; border-right: none; }
+
+    nav { padding: 16px 20px; }
+    .nav-logo { font-size: 16px; }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .main {
+      padding: 36px 20px 0;
+      border-right: none;
+      order: 1;
+    }
+
+    /* Sidebar appears right after first section of main content */
+    .sidebar {
+      position: static;
+      padding: 28px 20px;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--ink);
+      order: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 24px;
+    }
+    .sb-group { margin-bottom: 16px; }
+
+    /* Push remaining main content below sidebar using a wrapper trick:
+       We use padding-bottom on main and let sidebar sit between */
+    .main-bottom {
+      order: 3;
+      padding: 0 20px 48px;
+    }
+
+    .hero { padding: 36px 20px 20px; }
+    .about-h1 { font-size: 44px; line-height: 1.05; }
+    .hero-h1 { font-size: 44px; line-height: 1.0; margin-bottom: 18px; }
+    .hero-body { max-width: 100%; }
+
+    .about-rule { margin: 16px 0 22px; }
+    .body-text { max-width: 100%; }
+    .expertise-list { max-width: 100%; }
+    .proj-title { font-size: 32px; }
+    .proj-body { max-width: 100%; }
+
+    .contact-list { max-width: 100%; }
+    .contact-item { flex-direction: column; gap: 4px; }
+    .contact-label { min-width: unset; }
+    .availability { max-width: 100%; }
+
+    .case-nav { padding: 20px; }
+
+    img { max-width: 100%; height: auto; }
+  }
 </style>
 </head>
 <body>
@@ -224,13 +283,11 @@
 
   <p class="body-text">I typically work through a problem by producing multiple options and mapping the trade-offs — then putting the decision in front of the people who know the context best. My job is to make the choices visible, not to be right.</p>
 
-  <p class="body-text">Currently available for senior UX roles — remote B2B contract — in products where the domain is complex, the users are specialists, and the interface decisions actually matter. Fintech, healthtech, dev tools, compliance, engineering — or anywhere the problem is hard enough to be interesting.</p>
-
 </div>
 
 <div class="sidebar">
   <div class="sb-group"><div class="sb-lbl">Based in</div><div class="sb-val">Warsaw, Poland</div></div>
-  <div class="sb-group"><div class="sb-lbl">Experience</div><div class="sb-val">9 years</div></div>
+  <div class="sb-group"><div class="sb-lbl">Experience</div><div class="sb-val">9.5 years</div></div>
   <div class="sb-group"><div class="sb-lbl">Currently</div><div class="sb-val">Accenture<br>Global aerospace client</div></div>
   <div class="sb-group"><div class="sb-lbl">Domains</div><div class="sb-val">Aviation · Fintech<br>B2B SaaS · Internal tools<br>E-commerce</div></div>
   <div class="sb-group"><div class="sb-lbl">Methods</div><div class="sb-val">User interviews · Shadowing · UX audit · Card sorting · Usability testing · Prototyping · Design systems</div></div>

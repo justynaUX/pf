@@ -105,7 +105,7 @@
   .sidebar { padding: 40px 28px; position: sticky; top: 61px; height: fit-content; }
 
   .proj-entry { padding-bottom: 48px; margin-bottom: 48px; border-bottom: 1px solid var(--ink); }
-  .proj-entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .proj-entry:last-child { border-bottom: none; margin-bottom: 48px; padding-bottom: 0; }
 
   .proj-lbl {
     font-family: 'DM Sans', sans-serif;
@@ -181,6 +181,65 @@
     display: inline-block;
     margin: 2px 2px 0 0;
   }
+
+  /* ── MOBILE ── */
+  @media (max-width: 700px) {
+    .page-wrapper { border-left: none; border-right: none; }
+
+    nav { padding: 16px 20px; }
+    .nav-logo { font-size: 16px; }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .main {
+      padding: 36px 20px 0;
+      border-right: none;
+      order: 1;
+    }
+
+    /* Sidebar appears right after first section of main content */
+    .sidebar {
+      position: static;
+      padding: 28px 20px;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--ink);
+      order: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 24px;
+    }
+    .sb-group { margin-bottom: 16px; }
+
+    /* Push remaining main content below sidebar using a wrapper trick:
+       We use padding-bottom on main and let sidebar sit between */
+    .main-bottom {
+      order: 3;
+      padding: 0 20px 48px;
+    }
+
+    .hero { padding: 36px 20px 20px; }
+    .about-h1 { font-size: 44px; line-height: 1.05; }
+    .hero-h1 { font-size: 44px; line-height: 1.0; margin-bottom: 18px; }
+    .hero-body { max-width: 100%; }
+
+    .about-rule { margin: 16px 0 22px; }
+    .body-text { max-width: 100%; }
+    .expertise-list { max-width: 100%; }
+    .proj-title { font-size: 32px; }
+    .proj-body { max-width: 100%; }
+
+    .contact-list { max-width: 100%; }
+    .contact-item { flex-direction: column; gap: 4px; }
+    .contact-label { min-width: unset; }
+    .availability { max-width: 100%; }
+
+    .case-nav { padding: 20px; }
+
+    img { max-width: 100%; height: auto; }
+  }
 </style>
 </head>
 <body>
@@ -199,7 +258,7 @@
 <div class="hero">
   <div class="hero-eyebrow">Senior UX Designer · Warsaw, Poland</div>
   <h1 class="hero-h1">Interfaces for experts<br>who can't afford<br><em>to guess.</em></h1>
-  <p class="hero-body">9.5 years designing data-intensive tools for technical and specialist users — reconciliation platforms, compliance workflows, engineering portals — where errors carry financial or operational consequences.</p>
+  <p class="hero-body">9.5 years designing for people who make high-stakes decisions with imperfect information.</p>
 </div>
 
 <div class="content">
@@ -241,8 +300,9 @@
       <span class="tag">E-commerce</span>
     </div>
   </div>
-  <div class="sb-group"><div class="sb-lbl">Tools</div><div class="sb-val">Figma · FigJam · Miro</div></div>
+  <div class="sb-group"><div class="sb-lbl">Tools</div><div class="sb-val">Figma · Figma Make · FigJam · Miro · Claude</div></div>
   <div class="sb-group"><div class="sb-lbl">LinkedIn</div><div class="sb-val"><a href="https://www.linkedin.com/in/justyna-koc/" target="_blank">justyna-koc →</a></div></div>
+  <div class="sb-group"><div class="sb-lbl">CV</div><div class="sb-val"><a href="justyna_koc_cv.html" target="_blank">Download CV →</a></div></div>
 </div>
 </div>
 

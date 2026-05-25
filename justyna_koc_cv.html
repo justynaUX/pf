@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Justyna Koc — CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  :root { --ink: #0D0D0D; --paper: #FFFFFF; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #F6F6F6; color: var(--ink); font-family: 'Cormorant Garamond', Georgia, serif; }
+
+  /* Each .page is exactly A4 on screen and print */
+  .page {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 auto 16px;
+    background: var(--paper);
+    border-left: 1px solid var(--ink);
+    border-right: 1px solid var(--ink);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* HERO — page 1 top */
+  .hero {
+    padding: 36px 48px 28px;
+    border-bottom: 1px solid var(--ink);
+    flex-shrink: 0;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .hero-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .hero-rule { height: 1px; background: var(--ink); margin-bottom: 14px; }
+  .hero-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink);
+    font-weight: 400;
+    max-width: 380px;
+  }
+
+  /* TWO-COLUMN — fills remaining height */
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+  .col-main {
+    padding: 32px 44px 32px;
+    border-right: 1px solid var(--ink);
+    overflow: hidden;
+  }
+  .col-side {
+    padding: 32px 22px 32px;
+    overflow: hidden;
+  }
+
+  /* SECTION LABEL */
+  .sec-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 16px;
+    font-weight: 400;
+  }
+
+  /* JOB */
+  .job { margin-bottom: 28px; }
+  .job:last-child { margin-bottom: 0; }
+  .job-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .job-rule { height: 1px; background: var(--ink); width: 28px; margin: 7px 0 9px; }
+  .job-meta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .job-bullets { list-style: none; padding: 0; }
+  .job-bullets li {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink);
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 3px;
+  }
+  .job-bullets li::before {
+    content: '·';
+    position: absolute;
+    left: 2px;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* SIDEBAR */
+  .sb-group { margin-bottom: 16px; }
+  .sb-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 3px;
+    font-weight: 400;
+  }
+  .sb-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .sb-val a { color: var(--ink); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+  .sb-val a:hover { border-bottom-color: var(--ink); }
+
+  .skills-divider { height: 1px; background: var(--ink); margin: 20px 0; }
+  .skill-group { margin-bottom: 14px; }
+
+  /* PAGE 2 — no hero, just cols filling full height */
+  .page-2 .cols { flex: 1; height: 100%; }
+
+  /* PRINT */
+  @media print {
+    @page { size: A4; margin: 0; }
+    body { background: white; }
+    .page {
+      margin: 0;
+      border-left: none;
+      border-right: none;
+      page-break-after: always;
+    }
+    .page:last-child { page-break-after: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ PAGE 1 ═══════════════ -->
+<div class="page">
+
+  <div class="hero">
+    <div class="hero-eyebrow">Curriculum Vitae</div>
+    <h1 class="hero-h1">Justyna Koc</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-body">9.5 years translating complex expert workflows into interfaces that need no manual — from aeronautical engineers to global banking teams.</p>
+  </div>
+
+  <div class="cols">
+    <div class="col-main">
+
+      <div class="sec-label">Experience</div>
+
+      <div class="job">
+        <div class="job-title">Senior Product Designer, Accenture</div>
+        <div class="job-rule"></div>
+        <div class="job-meta">Dec 2022 – present · England, Remote</div>
+        <ul class="job-bullets">
+          <li>Led end-to-end design of critical internal tools for aeronautical engineers, translating domain-expert knowledge into intuitive desktop interfaces.</li>
+          <li>Redesigned core application by migrating to new corporate Design System, measurably improving UX consistency.</li>
+          <li>Designed Prediction Monitoring Tool and Financial Calculation Interface.</li>
+          <li>Conducted in-depth SME interviews; created user journeys, wireframes, high-fidelity prototypes, and developer handoffs in Figma.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-title">Product Designer, Egnyte</div>
+        <div class="job-rule"></div>
+        <div class="job-meta">May – Dec 2022 · USA, Remote</div>
+        <ul class="job-bullets">
+          <li>Owned full design cycle for core platform features across desktop, iOS/Android, and mobile web.</li>
+          <li>Led discovery research: 7 in-depth user interviews, directly shaping the product roadmap.</li>
+          <li>Designed MVP mobile web experience to enable Microsoft integration.</li>
+          <li>Designed enterprise user onboarding; conducted heuristic evaluations.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-title">Product Designer, Allegro</div>
+        <div class="job-rule"></div>
+        <div class="job-meta">Aug 2021 – Apr 2022 · Poland, Remote</div>
+        <ul class="job-bullets">
+          <li>Designed and optimised a mission-critical internal administrative tool.</li>
+          <li>Simplified complex workflows to reduce task completion time and minimise operator error at scale.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="col-side">
+      <div class="sb-group">
+        <div class="sb-label">Contact</div>
+        <div class="sb-val">
+          justyna.koc@gmail.com<br>
+          <a href="https://justynaux.github.io/pf/">justynaux.github.io/pf</a><br>
+          <a href="https://www.linkedin.com/in/justyna-koc-62014511b/">linkedin.com/in/justyna-koc</a>
+        </div>
+      </div>
+      <div class="sb-group">
+        <div class="sb-label">Role</div>
+        <div class="sb-val">Product Designer</div>
+      </div>
+      <div class="sb-group">
+        <div class="sb-label">Experience</div>
+        <div class="sb-val">9.5 years</div>
+      </div>
+      <div class="sb-group">
+        <div class="sb-label">Location</div>
+        <div class="sb-val">Warsaw, Poland</div>
+      </div>
+      <div class="sb-group">
+        <div class="sb-label">Domains</div>
+        <div class="sb-val">Aviation · Fintech · B2B SaaS · Internal tools · E-commerce · Digital workplace</div>
+      </div>
+      <div class="sb-group">
+        <div class="sb-label">Education</div>
+        <div class="sb-val">MFA, Graphic Design<br>Academy of Fine Arts, Warsaw · 2010–2016</div>
+      </div>
+      <div class="sb-group">
+        <div class="sb-label">Languages</div>
+        <div class="sb-val">Polish: native<br>English: C1 (advanced proficiency)</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════ PAGE 2 ═══════════════ -->
+<div class="page page-2">
+  <div class="cols" style="height:100%">
+    <div class="col-main">
+
+      <div class="job">
+        <div class="job-title">Product Designer, Bank Pekao S.A.</div>
+        <div class="job-rule"></div>
+        <div class="job-meta">Apr 2020 – Aug 2021 · Poland, Remote</div>
+        <ul class="job-bullets">
+          <li>Designed digital banking experiences within a large enterprise environment.</li>
+          <li>Applied user research, journey mapping, and iterative prototyping to improve key customer-facing flows.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-title">Product Designer, Bank Millennium</div>
+        <div class="job-rule"></div>
+        <div class="job-meta">Mar 2019 – Apr 2020 · Poland, On-site</div>
+        <ul class="job-bullets">
+          <li>Designed and validated digital banking interfaces; contributed to user research, wireframing, and usability testing within an Agile team.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-title">Junior Product Designer → Product Designer, WP Pilot</div>
+        <div class="job-rule"></div>
+        <div class="job-meta">Apr 2017 – Feb 2019 · Poland, On-site</div>
+        <ul class="job-bullets">
+          <li>Designed cross-platform TV streaming experience across Android, iOS, desktop, and mobile web.</li>
+          <li>Created wireframes, mockups, and clickable prototypes in Axure and Sketch.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="col-side">
+      <div class="skill-group">
+        <div class="sb-label">Skills</div>
+        <div class="sb-val">IA · Wireframing · Prototyping · Usability Testing · Design Systems · Developer Handoff</div>
+      </div>
+      <div class="skill-group">
+        <div class="sb-label">Research</div>
+        <div class="sb-val">SME Interviews · Discovery · Desk Research · Journey Mapping · Stakeholder Workshops · Agile / Scrum</div>
+      </div>
+      <div class="skill-group">
+        <div class="sb-label">Tools</div>
+        <div class="sb-val">Figma · Figma Make · FigJam · Miro · Claude · Jira · Confluence</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
