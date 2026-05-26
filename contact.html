@@ -7,7 +7,7 @@
 <title>Contact — Justyna Koc</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500;1,8..60,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <style>
   :root {
     --ink:    #0D0D0D;
@@ -22,7 +22,7 @@
   body {
     background: #F6F6F6;
     color: var(--ink);
-    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-family: 'Source Serif 4', Georgia, serif;
   }
 
   .page-wrapper {
@@ -46,7 +46,7 @@
     z-index: 10;
   }
   .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Source Serif 4', Georgia, serif;
     font-size: 18px;
     font-style: italic;
     font-weight: 400;
@@ -65,6 +65,7 @@
     border-bottom: 1px solid transparent;
     padding-bottom: 1px;
     transition: opacity 0.15s, border-color 0.15s;
+    font-weight: 700;
   }
   .nav-links a.active { opacity: 1; border-bottom: 1px solid var(--ink); }
   .nav-links a:not(.active):hover { opacity: 1; border-bottom-color: var(--ink); }
@@ -81,17 +82,19 @@
     text-transform: uppercase;
     color: var(--ink);
     margin-bottom: 14px;
+    font-weight: 700;
   }
   .about-h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 72px;
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 82px;
     font-weight: 400;
     line-height: 0.95;
     letter-spacing: -0.02em;
     color: var(--ink);
+    margin-bottom: 40px;
   }
   .about-h1 em { font-style: italic; font-weight: 400; }
-  .about-rule { height: 1px; background: var(--ink); margin: 20px 0 40px; }
+  .about-rule { display: none; }
 
   /* CONTACT LIST */
   .contact-list { list-style: none; max-width: 560px; }
@@ -100,7 +103,7 @@
     align-items: baseline;
     gap: 16px;
     padding: 20px 0;
-    border-bottom: 1px solid var(--rule);
+    border-bottom: 1px solid var(--ink);
   }
   .contact-item:first-child { border-top: none; }
   .contact-item:last-child { border-bottom: none; }
@@ -110,13 +113,13 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--ink);
-    opacity: 0.65;
     min-width: 100px;
     flex-shrink: 0;
+    font-weight: 700;
   }
   .contact-value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 24px;
     font-weight: 400;
     color: var(--ink);
     line-height: 1.3;
@@ -139,11 +142,11 @@
     text-transform: uppercase;
     color: var(--ink);
     margin-bottom: 10px;
-    font-weight: 400;
+    font-weight: 700;
   }
   .availability-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 19px;
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 21px;
     line-height: 1.65;
     color: var(--ink);
   }
@@ -157,16 +160,16 @@
     text-transform: uppercase;
     color: var(--ink);
     margin-bottom: 4px;
-    font-weight: 400;
+    font-weight: 700;
   }
-  .sb-val { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--ink); line-height: 1.7; }
+  .sb-val { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--ink); line-height: 1.7;; font-weight: 500; }
 
   #local-time {
     font-family: 'DM Sans', sans-serif;
     font-size: 13px;
     color: var(--ink);
-    opacity: 0.65;
     margin-top: 4px;
+    font-weight: 500;
   }
 
   .case-nav {
@@ -183,7 +186,7 @@
     text-decoration: none;
     border-bottom: 1px solid transparent;
     padding-bottom: 1px;
-    font-weight: 500;
+    font-weight: 700;
     opacity: 0.65;
     transition: opacity 0.15s, border-color 0.15s;
   }
@@ -241,7 +244,9 @@
 
     .contact-list { max-width: 100%; }
     .contact-item { flex-direction: column; gap: 4px; }
-    .contact-label { min-width: unset; }
+    .contact-label { min-width: unset;
+    font-weight: 700;
+  }
     .availability { max-width: 100%; }
 
     .case-nav { padding: 20px; }
