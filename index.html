@@ -106,8 +106,17 @@
   .main { padding: 56px 48px 80px; border-right: 1px solid var(--ink); }
   .sidebar { padding: 40px 28px; position: sticky; top: 61px; height: fit-content; }
 
-  .proj-entry { padding-bottom: 48px; margin-bottom: 48px; border-bottom: 1px solid var(--ink); }
+  .proj-entry {
+    padding-bottom: 48px;
+    margin-bottom: 48px;
+    border-bottom: 1px solid var(--ink);
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
   .proj-entry:last-child { border-bottom: none; margin-bottom: 48px; padding-bottom: 0; }
+  .proj-entry:hover .proj-link { border-bottom-color: #174E99; }
 
   .proj-lbl {
     font-family: 'DM Sans', sans-serif;
@@ -269,26 +278,33 @@
 <div class="content">
 <div class="main">
 
-  <div class="proj-entry">
+  <a class="proj-entry" href="case_study_reconciliation.html">
     <div class="proj-lbl">Case study · 01</div>
-    <div class="proj-title">Designing without<br><em>a brief</em></div>
-    <p class="proj-body">The business said: redraw the Excel as a UI. No discovery, no research phase. What followed was eighteen months of weekly user sessions, a pivot nobody planned for, and a product that replaced a six-month manual process — built in a domain where every contract was different and an accidental edit could affect a million-dollar calculation.</p>
-    <a class="proj-link" href="case_study_reconciliation.html">Read case study →</a>
-  </div>
+    <div class="proj-title">Six months of manual work.<br><em>Now it runs itself.</em></div>
+    <p class="proj-body">Twenty to thirty specialists, a shared Excel spreadsheet, millions in potential billing discrepancies — and a six-month cycle before anyone knew if the numbers were right. Eighteen months of weekly user sessions, a pivot nobody planned for, and a product that made the wait disappear.</p>
+    <span class="proj-link">Read case study →</span>
+  </a>
 
-  <div class="proj-entry">
+  <a class="proj-entry" href="case_study_dac.html">
     <div class="proj-lbl">Case study · 02</div>
     <div class="proj-title">When the process only<br><em>one person understands</em></div>
     <p class="proj-body">Expert knowledge locked in personal Excel files and Notepad workflows — in a domain too specialised for the designer to ever fully grasp. The challenge wasn't to digitalise what engineers were doing. It was to extract what they actually needed, separate from the workarounds they'd built over years. SUS 83.1.</p>
-    <a class="proj-link" href="case_study_dac.html">Read case study →</a>
-  </div>
+    <span class="proj-link">Read case study →</span>
+  </a>
 
-  <div class="proj-entry">
+  <a class="proj-entry" href="case_study_weibull.html">
     <div class="proj-lbl">Case study · 03</div>
     <div class="proj-title">What you find when<br><em>you watch instead of ask</em></div>
     <p class="proj-body">No brief, no PO, no discovery plan — just a name and a project title. Through a series of informal calls with one very talkative engineer, and one moment of watching his screen, the entire solution took shape around something he'd never thought to mention. SUS 72.5.</p>
-    <a class="proj-link" href="case_study_weibull.html">Read case study →</a>
-  </div>
+    <span class="proj-link">Read case study →</span>
+  </a>
+
+  <a class="proj-entry" href="case_study_pekao.html">
+    <div class="proj-lbl">Case study · 04</div>
+    <div class="proj-title">Five stakeholders,<br><em>one navigation</em></div>
+    <p class="proj-body">Five product owners, all convinced their product deserved top-level visibility. A navigation nobody owned. And a design solution that made the argument stop — by making the argument irrelevant.</p>
+    <span class="proj-link">Read case study →</span>
+  </a>
 
 </div>
 
