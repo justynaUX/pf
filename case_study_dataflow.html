@@ -456,52 +456,67 @@
 
   
 
-  <!-- ── 03 UI DECISIONS ── -->
+  <!-- ── 03 WHAT I REJECTED, AND WHY ── -->
   <div class="sec-block">
     <div class="sec-label">03</div>
-    <h2 class="sec-title">UI decisions</h2>
+    <h2 class="sec-title">What I rejected,<br>and why</h2>
     <div class="sec-rule"></div>
   </div>
 
-  <p class="body-text">No design system to inherit meant every decision had to be made from first principles. Three decisions shaped the whole system.</p>
+  <p class="body-text">Every significant decision came from looking at what AI generated and knowing it was wrong — and being able to say exactly why. Four iterations shaped the final design.</p>
 
-  <div class="sub-heading">Removing colour as an AI signal</div>
+  <div class="sub-heading">Colour as an AI signal — rejected</div>
 
   <p class="body-text">The first version came from AI: violet for everything AI-related — navigation labels, icons, insight pills, text labels. When I saw it prototyped, three problems were immediately visible.</p>
 
   <p class="body-text">The "AI Briefing" nav item was violet — it drew more attention than the actually selected item, creating visual competition where there should be clear hierarchy. Purple is typically reserved for CTAs, but the primary CTA here was black — so the AI accent was pulling more visual weight than the action it was meant to support. And the AI Insights sections on the dashboard looked pasted on, not native — the colour made them feel like an add-on rather than a feature that belonged to the product.</p>
 
-  <p class="body-text">The decision: remove colour as an AI signal entirely. AI-generated content is identified through the sparkle icon and an explicit text label — "AI Insights", "AI flagged" — the same visual language as the rest of the interface. The AI features stopped competing and started belonging.</p>
+  <p class="body-text">The decision: remove colour as an AI signal entirely. The replacement wasn't another colour — it was a muted background that uses the same surface language as the rest of the interface. AI Insights look like they belong to the card, not like they've been added on top of it. AI-generated content is identified through the sparkle icon and an explicit text label only.</p>
 
   <div class="img-two-up">
     <img src="violet_AI.png" alt="Early version with violet applied across all AI elements">
     <img src="Dashboard.png" alt="Final version — no AI colour, sparkle icon and text label only">
-    <p class="img-caption">Left: "AI Briefing" in the nav is violet — it draws more attention than the actually selected item, creating visual competition where there should be clear hierarchy. The "AI Interpretation" pill on the chart pulls focus away from the data it's meant to support. Right: the same screen without AI colour. The sparkle icon and "AI Insights" label do the identification work; nothing competes.</p>
+    <p class="img-caption">Left: violet applied to every AI-related element. The "AI Briefing" nav item draws more attention than the selected item; the AI Insights pill competes with the data it's meant to support. Right: colour removed entirely. The sparkle icon and "AI Insights" label do the identification work; the AI layer belongs to the product rather than sitting on top of it.</p>
   </div>
 
-  <div class="sub-heading">Confidence score always with data basis</div>
+  <div class="sub-heading">Persistent sidebar and card grid — both rejected, same reason</div>
 
-  <p class="body-text">Every confidence score exposes its reasoning on hover — a tooltip showing exactly which data signals produced the number: call frequency, deal age, historical close rates. The pattern is identical across both screens. Learn it once, apply it everywhere. One interaction, one mental model.</p>
+  <p class="body-text">Two separate iterations, one underlying problem. First: AI tasks and assistant in a persistent right sidebar, always visible. The sidebar competed with every screen — always present, never in focus, adding visual weight to an interface that was already information-dense.</p>
 
-  <p class="body-text">This matters for trust. A score without a basis is an assertion. A score with a basis is evidence the user can verify or challenge.</p>
+  <p class="body-text">Second: AI suggested placing the alert cards in a grid, because the Dashboard was already grid-based. The logic was locally coherent — but a grid communicates equivalence. Three things of equal importance. That's the wrong mental model for triage; the whole point is that one deal is more critical than the others. A grid throws away the only thing that matters: which problem needs attention first.</p>
 
-  <div class="img-block">
-    <img src="confidence_score.png" alt="Confidence score tooltip showing data basis">
-    <p class="img-caption">The tooltip reveals which data signals produced the confidence score — not just the number, but the reasoning behind it. The user can agree with the AI's evidence or decide it doesn't apply to their context.</p>
-  </div>
-
-  <div class="sub-heading">AI flagged badge — never alarming</div>
-
-  <p class="body-text">The "AI flagged" badge uses neutral styling: white fill, grey border, grey text. Not a warning colour — a quiet label that says "the system noticed this" without implying danger. Red is reserved for numeric values only: a deal at 12% close probability, a region down 22%. The badge is not a value; it doesn't get red.</p>
-
-  <div class="sub-heading">Push layout, never overlay</div>
-
-  <p class="body-text">The chat panel opens as a push layout — main content shifts left, the panel appears on the right. Content is never covered. The user opens chat to ask questions about data they're looking at; covering that data would break the exact use case the feature exists to serve.</p>
+  <p class="body-text">Both iterations led to the same conclusion: the AI layer needed its own dedicated screen. Not a panel bolted to the side, not cards embedded in the dashboard — a surface the user opens intentionally, where the whole screen exists for one job.</p>
 
   <div class="img-two-up">
-    <img src="chat_over_data.png" alt="Earlier overlay approach — chat panel covers the data">
+    <img src="AIinsights_as_sidepannel.png" alt="Persistent sidebar — always visible, competing with main content">
+    <img src="AIBrefing.png" alt="AI Briefing as a dedicated focused screen">
+    <p class="img-caption">Left: the persistent sidebar — always there, always competing. Right: AI Briefing as a dedicated screen. Nothing competes. The grid iteration (three equal cards) had the same problem as the sidebar: it hid the hierarchy the triage flow depended on.</p>
+  </div>
+
+  <div class="sub-heading">AI chat — two wrong positions before the right pattern</div>
+
+  <div class="iteration-block">
+    <div class="iteration-label">Rejected — version 1</div>
+    <div class="iteration-verdict">Chat button in the top navigation bar.</div>
+    <div class="iteration-body">The conventional starting point. The problem was prominence: a top-nav position implies a primary, constant action. Chat is contextual — it should be available when needed, not competing with navigation at all times.</div>
+  </div>
+
+  <div class="iteration-block">
+    <div class="iteration-label">Rejected — version 2</div>
+    <div class="iteration-verdict">Floating bottom-right button, overlay panel on click.</div>
+    <div class="iteration-body">The standard chat pattern. It looked right until I saw it prototyped: opening the panel covered the data the user was trying to ask questions about. The entire value of AI chat is asking questions about what's on screen — an overlay that hides that screen breaks the feature at its core.</div>
+  </div>
+
+  <div class="iteration-block">
+    <div class="iteration-label">Kept</div>
+    <div class="iteration-verdict">Push layout — content shifts left, panel appears on the right.</div>
+    <div class="iteration-body">The right solution wasn't finding a better position for a conventional pattern. It was recognising that the conventional pattern was wrong for this use case. Push layout keeps the data visible while the conversation happens alongside it.</div>
+  </div>
+
+  <div class="img-two-up">
+    <img src="chat_over_data.png" alt="Overlay chat covering the dashboard data">
     <img src="Chatbox_open.png" alt="Push layout — content shifts left, data stays visible">
-    <p class="img-caption">Left: the overlay approach. The chat panel covers the dashboard data — the user can't see what they're asking about. Right: push layout. The data stays visible while the conversation happens alongside it.</p>
+    <p class="img-caption">Left: the overlay version — the chat panel covers the data the user opened it to ask about. Right: push layout. The data stays visible; the conversation happens alongside it.</p>
   </div>
 
   <!-- ── 03b DESIGN SYSTEM ── -->
@@ -693,65 +708,20 @@
 
   <p class="body-text">Every component decision had to pass one test: does this require the user to learn something new, or does it extend something they already know? The accordion uses the same chevron pattern as every other disclosure widget. The confidence pill uses the same border-radius as badges elsewhere. The push layout uses the same card surface as the dashboard widgets. Consistency was the constraint; the token system was how that constraint was enforced.</p>
 
-  <!-- ── 04 THE ITERATIONS ── -->
-  <div class="sec-block">
-    <div class="sec-label">04</div>
-    <h2 class="sec-title">What I rejected, and why</h2>
-    <div class="sec-rule"></div>
-  </div>
+  <div class="sub-heading">Confidence score — always with data basis</div>
 
-  <div class="sub-heading">The persistent sidebar</div>
-
-  <div class="iteration-block">
-    <div class="iteration-label">Rejected after prototyping</div>
-    <div class="iteration-verdict">AI tasks and assistant visible in a persistent right sidebar at all times.</div>
-    <div class="iteration-body">The sidebar competed with every screen in the product. It was always present but never in focus — adding visual weight to an interface that was already information-dense. Seeing it prototyped made the problem immediate: the goal was for the user to know what to do next in under 90 seconds, and the sidebar made that harder, not easier.</div>
-  </div>
-
-  <div class="img-two-up">
-    <img src="AIinsights_as_sidepannel.png" alt="Persistent sidebar — always visible, competing with main content">
-    <img src="AIBrefing.png" alt="AI Briefing as a dedicated screen">
-    <p class="img-caption">Left: the sidebar is always there, which means it's always competing. The alert list and AI panel fight for attention with the pipeline data behind them. Right: AI Briefing as a screen the user opens intentionally — the whole surface exists for one job, nothing competes.</p>
-  </div>
-
-  <div class="sub-heading">The card grid</div>
-
-  <div class="iteration-block">
-    <div class="iteration-label">Rejected after prototyping</div>
-    <div class="iteration-verdict">Three alert cards arranged in a grid — AI's suggestion, because the Dashboard was already grid-based.</div>
-    <div class="iteration-body">The logic was locally coherent: the Dashboard uses a grid, so placing the briefing cards in a grid felt consistent. But a grid communicates equivalence — three things of equal importance. That's the wrong mental model for triage. The whole point is that one deal is more critical than the others. A grid throws away the only thing that matters: which problem needs attention first. Vertically stacked cards, ranked top to bottom, use position to communicate urgency. A grid cannot do that.</div>
-  </div>
-
-  <div class="img-two-up">
-    <img src="AIBrefing_grid.png" alt="Card grid layout — three cards at equal visual weight">
-    <img src="AIBrefing.png" alt="Vertically stacked ranked cards">
-    <p class="img-caption">Left: grid layout — visually consistent with the dashboard, informationally flat. All three alerts look equally important. Right: vertically stacked cards. Critical Risk is at the top because it's the most urgent. The layout now carries information the grid was hiding.</p>
-  </div>
-
-  <div class="sub-heading">The AI chat — two wrong positions before the right pattern</div>
-
-  <div class="iteration-block">
-    <div class="iteration-label">Rejected — version 1</div>
-    <div class="iteration-verdict">Chat button in the top navigation bar.</div>
-    <div class="iteration-body">The conventional starting point — place the chat where navigation lives. The problem was prominence: a top-nav position implies a primary, constant action. Chat is contextual. It should be available when needed, not competing with navigation at all times.</div>
-  </div>
-
-  <div class="iteration-block">
-    <div class="iteration-label">Rejected — version 2</div>
-    <div class="iteration-verdict">Floating bottom-right button, overlay panel on click.</div>
-    <div class="iteration-body">The standard chat pattern. It looked right until I saw it prototyped: opening the panel covered the data the user was trying to ask questions about. The entire value of the AI chat is asking questions about what's on screen — an overlay that hides that screen breaks the feature at its core.</div>
-  </div>
-
-  <div class="iteration-block">
-    <div class="iteration-label">Kept</div>
-    <div class="iteration-verdict">Push layout — content shifts left, panel appears on the right.</div>
-    <div class="iteration-body">The right solution wasn't finding a better position for a conventional pattern. It was recognising that the conventional pattern was wrong for this use case. Push layout keeps the data visible while the conversation happens alongside it.</div>
-  </div>
+  <p class="body-text">Every confidence score exposes its reasoning on hover — a tooltip showing exactly which data signals produced the number: call frequency, deal age, historical close rates. The pattern is identical across both screens. Learn it once, apply it everywhere. A score without a basis is an assertion; a score with a basis is evidence the user can verify or challenge.</p>
 
   <div class="img-block">
-    <img src="chat_over_data.png" alt="Overlay chat covering the dashboard data">
-    <p class="img-caption">The overlay version — the chat panel covers the data the user opened it to ask about. This is the screenshot that made the problem undeniable: you can't ask a question about something you can't see.</p>
+    <img src="confidence_score.png" alt="Confidence score tooltip showing data basis">
+    <p class="img-caption">Hovering a confidence score reveals the data signals behind it — not just the number, but the reasoning. The user can agree with the AI's evidence or decide it doesn't apply to their context.</p>
   </div>
+
+  <div class="sub-heading">AI flagged badge — never alarming</div>
+
+  <p class="body-text">The "AI flagged" badge uses neutral styling: white fill, grey border, grey text. Not a warning colour — a quiet label that says "the system noticed this" without implying danger. Red is reserved for numeric values only: a deal at 12% close probability, a region down 22%. The badge is not a value; it doesn't get red.</p>
+
+
 
   <!-- ── 05 THE DESIGN ── -->
   <div class="sec-block">
