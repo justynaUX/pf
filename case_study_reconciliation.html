@@ -270,6 +270,39 @@
     color: var(--ink);
   }
 
+  /* Iteration block — a visual device for before/after stories */
+  .iteration-block {
+    margin: 40px 0;
+    max-width: 560px;
+    border-left: 2px solid var(--ink);
+    padding-left: 24px;
+  }
+  .iteration-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--ink);
+    opacity: 0.45;
+    margin-bottom: 6px;
+  }
+  .iteration-verdict {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .iteration-body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--ink);
+    opacity: 0.75;
+  }
+
   .img-block { margin: 36px 0; }
   .img-block img {
     width: 100%;
@@ -517,25 +550,27 @@
 
   <div class="sub-heading">The other decisions</div>
 
-  <p class="body-text">Two further decisions came directly from the high-stakes context — neither required the same fight, but both mattered.</p>
+  <p class="body-text">Three further decisions came directly from the high-stakes context — none required the same fight, but all mattered.</p>
 
-  <div class="decision-block">
-    <div class="dec-index"><span class="dec-index-text">Decision 01</span></div>
-    <div class="dec-content">
-      <div class="dec-lbl">Edit mode</div>
-      <p class="dec-text">Read-only by default with explicit edit activation. Every editable field starts locked. Specialists have to consciously enter edit mode before changing anything. The added friction is intentional — accidental edits to data that directly affects payment calculations wasn't a scenario I was willing to design around.</p>
-    </div>
+  <div class="iteration-block">
+    <div class="iteration-label">Edit mode</div>
+    <div class="iteration-verdict">Read-only by default with explicit edit activation.</div>
+    <div class="iteration-body">Every editable field starts locked. Specialists have to consciously enter edit mode before changing anything. The added friction is intentional — accidental edits to data that directly affects payment calculations wasn't a scenario I was willing to design around.</div>
   </div>
 
-  <div class="decision-block">
-    <div class="dec-index"><span class="dec-index-text">Decision 02</span></div>
-    <div class="dec-content">
-      <div class="dec-lbl">Affordance</div>
-      <p class="dec-text">Visual differentiation of editable fields. Even in read-only mode, editable inputs look like input fields rather than plain text. Specialists can always see at a glance what they can change and what is system-calculated. A small reduction in scannability — a trade-off I accepted given the importance of that signal.</p>
-    </div>
+  <div class="iteration-block">
+    <div class="iteration-label">Affordance</div>
+    <div class="iteration-verdict">Visual differentiation of editable fields.</div>
+    <div class="iteration-body">Even in read-only mode, editable inputs look like input fields rather than plain text. Specialists can always see at a glance what they can change and what is system-calculated. A small reduction in scannability — a trade-off I accepted given the importance of that signal.</div>
   </div>
 
-  <p class="body-text">Both decisions came from the same place: when errors cost millions, friction is a feature, not a failure.</p>
+  <div class="iteration-block">
+    <div class="iteration-label">Edit history</div>
+    <div class="iteration-verdict">Changes and deletions visible in a separate modal, not inline.</div>
+    <div class="iteration-body">Showing edited and deleted values alongside current data on the same screen created too much visual noise — the comparison overwhelmed the primary task. A dedicated modal gives the user a focused space to review what changed and what the original values were, without competing with the data they're actively working with.</div>
+  </div>
+
+  <p class="body-text">All three decisions came from the same place: when errors cost millions, friction is a feature, not a failure.</p>
 
   <div class="sec-block">
     <div class="sec-label">04</div>
