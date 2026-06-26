@@ -97,7 +97,6 @@
     font-size: 26px;
     line-height: 1.5;
     color: var(--ink);
-    max-width: 560px;
     font-weight: 400;
   }
 
@@ -198,7 +197,7 @@
     margin-bottom: 14px;
   }
 
-  .img-block { margin: 36px 0; max-width: 560px; }
+  .img-block { margin: 36px 0; }
   .img-block img {
     width: 100%;
     max-width: 100%;
@@ -208,10 +207,12 @@
     max-width: 100%;
     height: auto;
   }
-  .img-two-up { margin: 36px 0; display: flex; gap: 12px; flex-wrap: wrap; max-width: 560px; }
+  .img-two-up { margin: 36px 0; display: flex; gap: 12px; flex-wrap: wrap; }
   .img-two-up img {
     flex: 1 1 calc(50% - 6px);
     min-width: 200px;
+    width: 100%;
+    max-width: 100%;
     display: block;
     border: 1px solid #E0E0E0;
     cursor: zoom-in;
