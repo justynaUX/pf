@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="description" content="DAC Correlation Portal — UX case study by Justyna Koc. Digitalising expert engineering knowledge in aviation. SUS 83.1. Accenture.">
+<meta name="description" content="Weibull Monitoring — UX case study by Justyna Koc. Replacing manual Excel model monitoring with a continuous engineering insight tool. SUS 72.5. Accenture.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Expert knowledge locked in private tools. No one else could run the process. — Justyna Koc</title>
+<title>The key feature came from watching, not asking. — Justyna Koc</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500;1,8..60,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
@@ -216,7 +216,6 @@
     display: block;
     border: 1px solid #E0E0E0;
     cursor: zoom-in;
-    align-self: start;
     height: auto;
   }
   .img-two-up .img-caption { flex: 0 0 100%;
@@ -340,19 +339,19 @@
 <div class="page-wrapper">
 
 <nav>
-  <a class="nav-logo" href="index.html">Justyna Koc</a>
+  <a class="nav-logo" href="../index.html">Justyna Koc</a>
   <div class="nav-links">
-    <a href="index.html" class="active">Work</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="../index.html" class="active">Work</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
   </div>
 </nav>
 
 <div class="hero">
-  <div class="cs-sup">Case study · 02 · Aviation</div>
-  <h1 class="cs-h1">Expert knowledge locked<br>in private tools.<br><em>No one else could run the process.</em></h1>
+  <div class="cs-sup">Case study · 04 · Aviation</div>
+  <h1 class="cs-h1">The key feature came<br><em>from watching, not asking.</em></h1>
   <div class="hero-rule"></div>
-  <p class="cs-intro">The hardest part wasn't the domain — I'm not an aircraft engineer and never will be. The hardest part was figuring out what engineers actually needed, as distinct from the workarounds they'd built because no proper tool existed. That distinction is everything. Design the workaround and you've digitalised a coping mechanism. Design the need and you've built something that survives when the person who invented the workaround leaves.</p>
+  <p class="cs-intro">The brief was thin: there's a project, here's a name, call him. No PO, no discovery plan, no formal scope. What followed was a series of informal calls with one very talkative engineer — and one moment of watching his screen that shaped the entire solution.</p>
 </div>
 
 <div class="tags">
@@ -360,22 +359,22 @@
   <span class="tag">Internal tool</span>
   <span class="tag">Desktop</span>
   <span class="tag">Sole Product Designer</span>
-  <span class="tag">Discovery</span>
-  <span class="tag">Usability testing</span>
+  <span class="tag">MVP</span>
+  <span class="tag">SUS 72.5</span>
 </div>
 
 <div class="three-cols">
   <div class="summary-cell">
     <div class="col-lbl">01 · Challenge</div>
-    <p class="col-body">Separate genuine user needs from years of accumulated workarounds — in a domain too specialised to understand from the outside.</p>
+    <p class="col-body">Build a discovery process from scratch — no brief, no PO, no structure — in a domain too specialised to understand without getting close to the people inside it.</p>
   </div>
   <div class="summary-cell" style="border-left: 1px solid var(--ink); border-right: 1px solid var(--ink);">
     <div class="col-lbl">02 · Process</div>
-    <p class="col-body">Expert interviews · Workflow mapping · Wireframes as research instrument · Iterative feedback cycles · Incremental handoff · Usability testing</p>
+    <p class="col-body">Self-directed expert interviews · Remote screen observation · Iterative wireframing · Usability testing · MVP handoff</p>
   </div>
   <div class="summary-cell">
     <div class="col-lbl">03 · Outcome</div>
-    <p class="col-body">SUS 83.1 — Excellent. Knowledge that lived in one person's head now lives in a shared, reliable system. The bus factor went from one to many.</p>
+    <p class="col-body">SUS 72.5 — Good. The application's primary assessment mechanism came directly from watching one engineer work — not from asking him what he needed.</p>
   </div>
 </div>
 
@@ -384,17 +383,15 @@
 
   <div class="sec-block">
     <div class="sec-label">01</div>
-    <h2 class="sec-title">The design challenge</h2>
+    <h2 class="sec-title">The situation</h2>
     <div class="sec-rule"></div>
   </div>
 
-  <p class="body-text">My client's engineering team used a method called DAC Correlation to validate aircraft engine behaviour. The method was sound. The process around it wasn't — but that's the business problem, not the design problem.</p>
+  <p class="body-text">Aircraft engines are taken out of service based on predictive mathematical models. If a model flags a problem too early — the engine lands in the hangar before it needs to. An expensive mistake.</p>
 
-  <p class="body-text">The design problem was this: every engineer had built their own way of working. One had a Notepad-to-Python workflow only he understood. Another downloaded roughly a third of his hard drive's worth of raw data for every calculation, then deleted it when he was done. A third owned the entire tech clearance process — the documents that prove the DAC method is safe to use — and was the only person who could run it.</p>
+  <p class="body-text">The engineers responsible for monitoring these models did it manually, in Excel, roughly twice a year. Between those reviews: silence. No continuous visibility, no alerts, complete dependency on a handful of people who knew how the process worked.</p>
 
-  <p class="body-text">When I looked at those workflows, I was looking at two completely different things tangled together: what engineers actually needed to do, and the workarounds they'd built because no tool existed to help them do it. Half of those workarounds were going to be automated by the development team. The other half were the real interface.</p>
-
-  <p class="body-text">My job was to figure out which was which.</p>
+  <p class="body-text">The goal was to replace that process with an application giving engineers automated, continuous insight into model health.</p>
 
   <div class="sec-block">
     <div class="sec-label">02</div>
@@ -402,9 +399,9 @@
     <div class="sec-rule"></div>
   </div>
 
-  <p class="body-text">I was the sole Product Designer and Researcher on the project. I owned requirements gathering, user interviews, wireframing, feedback cycles with users and business stakeholders, usability testing, and developer handoff. I collaborated with a Product Owner and front-end and back-end development teams.</p>
+  <p class="body-text">I was the sole Product Designer on the project. I ran the full process — discovery, wireframes, high-fidelity mockups, usability testing, and developer handoff. I worked alongside a Design System Specialist and front-end and back-end development teams.</p>
 
-  <p class="body-text">The portal was designed and released tab by tab. Each tab went through the full process before the next one began.</p>
+  <p class="body-text">There was no Product Owner actively involved in this project. The brief was a name and a project title. Everything else I built myself.</p>
 
   <div class="sec-block">
     <div class="sec-label">03</div>
@@ -412,34 +409,43 @@
     <div class="sec-rule"></div>
   </div>
 
-  <div class="sub-heading">Mapping the workflow to find the need behind it</div>
+  <div class="sub-heading">Starting with almost nothing</div>
 
-  <p class="body-text">I started with in-depth interviews with the engineers who owned each part of the process. My goal wasn't to understand the aeronautical calculations — that's years of domain expertise I was never going to acquire. My goal was narrower and more specific: for every step an engineer took, I needed to understand why they took it.</p>
+  <p class="body-text">The way this project started was simple: someone gave me a name and said call him. So I did.</p>
 
-  <p class="body-text">The reason that question is hard in specialist domains is that experts often can't answer it directly. They know what they do. They don't always know what would still be true if they had a proper tool. So I mapped the entire current workflow first — step by step, capturing what data was needed, what was being done manually, what was going wrong — and then I worked backwards from each step to ask: is this the task, or is this the workaround?</p>
+  <p class="body-text">The engineer I was connected with was open, generous with his time, and deeply knowledgeable. He was also the kind of person who could talk for ninety minutes when you'd scheduled thirty. Every call surfaced something useful — and something tangential. My job, across every session, was to keep the conversation moving toward what I actually needed to understand: how he worked, what he needed at each step, and what would still matter once the manual Excel process was gone.</p>
+
+  <p class="body-text">I called him as many times as it took. When I had wireframes, I showed him those too — not as presentations but as the same kind of research instrument I use in every complex domain project. Show something concrete, get a reaction you couldn't get from a question alone.</p>
 
   <div class="img-block">
-    <img src="user_journey1.png" alt="User journey mapping for the tech clearance process">
-    <p class="img-caption">User journey for the tech clearance process — mapping the intended workflow before any screen was designed. Each stage defined what the user needed to accomplish and what information the interface had to surface. The journey came first; the design questions came from it.</p>
+    <img src="User_journey_as_is.png" alt="User journey — as is process">
+    <p class="img-caption">Mapping the existing workflow step by step — what the engineer needed to do, what data he consulted at each stage, and what he was doing manually because no tool existed. The mapping came first. The design questions came from the mapping.</p>
   </div>
 
-  <p class="body-text">The interviews surfaced the hard drive problem, the single-point-of-failure problem, and a consistent pattern underneath both: every engineer had solved the same problem differently, none of those solutions were visible to anyone else, and the whole system depended on institutional memory that could leave with any one of them.</p>
+  <div class="img-block">
+    <img src="User_journey_to_be.png" alt="User journey — to be process">
+    <p class="img-caption">The target workflow — built around what engineers actually needed, not the manual workarounds they'd been using. Each phase was defined before a single screen was designed.</p>
+  </div>
 
-  <div class="sub-heading">Wireframes as a research instrument</div>
+  <div class="sub-heading">The moment that changed the design</div>
 
-  <p class="body-text">Engineers don't have enough imagination to tell me "I need a dropdown here." But if I show them one, they'll tell me immediately whether it will work for them or not. That's not a limitation — it's how I use wireframes in domains like this. They're not presentations of decisions already made. They're the instrument I use to get reactions I couldn't get through questions alone.</p>
+  <p class="body-text">During one of those calls, I asked him to show me how he actually worked. He shared his screen and walked me through his Excel file.</p>
 
-  <p class="body-text">This is also where I learned what not to build.</p>
+  <p class="body-text">That's when I saw the chart.</p>
 
-  <p class="body-text">I proposed adding charts to make the data more visual. Users pushed back. The data had too many variables, too many interdependencies — a chart would have been noise, not insight. I removed them.</p>
+  <p class="body-text">He'd built a chart based on Weibull distribution himself — a way to visually assess whether a model was behaving correctly. He used it intuitively, as a sanity check, before making any decisions about a model. He hadn't mentioned it in any of our previous conversations. It only surfaced because I was watching him work, not just listening to him talk.</p>
 
-  <p class="body-text">One engineer wanted the new interface to replicate his existing Notepad-to-Python workflow exactly. That workflow was a coping mechanism, not a need. Replicating it would have locked one person's workaround into a system everyone had to use. I didn't replicate it.</p>
+  <p class="body-text">That observation changed the entire solution. The chart went into the application as the primary mechanism for model assessment — not as a visual embellishment, but as the core tool engineers would use to evaluate model health. They got something built around a mental model they already had, instead of having to learn something new from scratch.</p>
 
   <div class="img-two-up">
-    <img src="old_version1.png" alt="Early version of the DAC portal interface">
-    <img src="old_version2.png" alt="Second iteration of the DAC portal interface">
-    <p class="img-caption">Early interface versions that didn't make the cut. The chart idea came from me — the pushback came from research. The Notepad-workflow replication came from one engineer — the decision not to build it came from understanding whose need it actually served. Both decisions came from the same process: show something, learn something real.</p>
+    <img src="Main_chart_excel.png" alt="The engineer's original Excel chart — Weibull distribution, hand-built">
+    <img src="chart.png" alt="Second Weibull chart from the engineer's Excel file">
+    <p class="img-caption">The charts the engineer had built himself — Weibull distributions used to visually assess whether models were behaving correctly. He never mentioned them in conversation. They only appeared because I was watching him work. These charts became the foundation of the application's assessment view.</p>
   </div>
+
+  <div class="sub-heading">What the wireframes taught me</div>
+
+  <p class="body-text">Each round of wireframes went back to the same engineer. His reactions — what he understood immediately, what confused him, what he said "yes, but..." to — told me things no interview question would have surfaced. That back-and-forth continued until the design felt like something he already knew how to use, not something he'd have to learn.</p>
 
   <div class="sec-block">
     <div class="sec-label">04</div>
@@ -447,32 +453,16 @@
     <div class="sec-rule"></div>
   </div>
 
-  <p class="body-text">The portal shipped as four dashboards, released incrementally. Each one was designed around the need we'd extracted from the workflow — not the workflow itself.</p>
+  <p class="body-text">The application shipped as two connected views. The main page gives engineers an overview of all Weibull models — their status, accuracy, and recommended action. The detail view shows the full picture for a single model: the Weibull accuracy chart, event history, and root causes.</p>
 
-  <div class="sub-heading">Monitoring</div>
   <div class="img-block">
-    <img src="monitoring_darfilescoverage_operator1.png" alt="Monitoring dashboard">
-    <p class="img-caption">The Monitoring dashboard gives engineers visibility into the data pipeline — whether files are arriving as expected and whether anything is being lost. Before this existed, problems only became visible after calculations had already gone wrong.</p>
+    <img src="Weilbulls_maine_page.png" alt="Weibull monitoring — main page">
+    <p class="img-caption">The main view — all Weibull models for a given engine type, with status (over-predicted, under-predicted, on target), recommended action (reject, review, accept), and the accuracy tracking chart showing each model's position relative to predicted and actual events. A process that previously happened twice a year in Excel now updates continuously.</p>
   </div>
 
-  <div class="sub-heading">Flight Tapes</div>
   <div class="img-block">
-    <img src="Flight_tapes.png" alt="Flight Tapes dashboard">
-    <p class="img-caption">Flight Tapes replaced the hard-drive download process entirely. Engineers filter by date and operator and download only what they need. The workaround disappears; the need — access to the right data at the right time — is met directly.</p>
-  </div>
-
-  <div class="sub-heading">SA66</div>
-  <p class="body-text">Engineers use SA66 to work on the engine control file used to process raw data. They test the file against Flight Tapes and, when satisfied, the file becomes the new active version.</p>
-  <div class="img-two-up">
-    <img src="SA66Home.png" alt="SA66 — create task form">
-    <img src="SA66Details.png" alt="SA66 — task details and results">
-    <p class="img-caption">Left: creating a new SA66 task — selecting flight tapes, uploading the engine control file, choosing result types. Right: task details showing calculation results, succeeded and failed flight tapes, and downloadable result files.</p>
-  </div>
-
-  <div class="sub-heading">Tech Clearance</div>
-  <div class="img-block">
-    <img src="Tech_clearance_report.png" alt="Tech Clearance dashboard">
-    <p class="img-caption">Tech clearance reports now generate automatically on a schedule. The dashboard shows which operators passed or failed and why. A process that only one person understood is now accessible to the whole team — and will still be accessible after that person leaves.</p>
+    <img src="Weilbulls_details.png" alt="Weibull monitoring — detail view">
+    <p class="img-caption">The detail view for a single Weibull model — showing the accuracy chart built around the engineer's own Excel chart, the full event history with root causes, and export options for further analysis. The chart the engineer had built for himself became the primary mechanism for assessment across the whole team.</p>
   </div>
 
   <div class="sec-block">
@@ -481,15 +471,25 @@
     <div class="sec-rule"></div>
   </div>
 
-  <p class="body-text">Each tab was tested with end users after release — a minimum of five participants per round, none of whom had been involved in the design process. The Tech Clearance tab scored <strong>83.1 on the System Usability Scale</strong>, placing it firmly in the "Excellent" range.</p>
+  <p class="body-text">I tested with five participants who hadn't been involved in the earlier sessions. The application scored <strong>72.5 on the System Usability Scale</strong> — landing in the "Good" range. The foundation was solid. Testing also surfaced two specific problems worth describing.</p>
 
-  <p class="body-text">Testing surfaced a consistent issue across several tabs: interface labels weren't understood by users — even though all participants were aeronautical engineers and I had assumed shared vocabulary. The fix was straightforward: (i) tooltips with plain-language explanations next to the labels that caused confusion.</p>
+  <div class="sub-heading">The accordion problem</div>
 
-  <p class="body-text">It was also a reminder: shared expertise doesn't mean shared terminology. The words designers choose matter even when everyone in the room is an expert.</p>
+  <p class="body-text">The model name — a clickable link to the detail view — sat directly next to the accordion arrow. Both were blue. Users assumed they did the same thing — expanding the row — and couldn't find their way into the detail view at all. The fix: remove the accordion, replace it with an (i) icon at the end of the row. Model name leads to details. Icon leads to summary. Two distinct actions, two visually distinct elements.</p>
 
   <div class="img-block">
-    <img src="Improv.png" alt="Post-testing improvement recommendations">
-    <p class="img-caption">One of several post-testing recommendations documented in Figma. Labels like "Delay run by", "Flight limit", and "Flight usage limit (SDC)" were misunderstood. Recommendation: (i) icons with clear descriptions explaining what each parameter means and how it affects results.</p>
+    <img src="i_icon_improvement.png" alt="Before and after — accordion replaced with (i) icon">
+    <p class="img-caption">Before: model name and accordion arrow sitting side by side, both blue, both looking like they did the same thing. After: accordion removed, summary information moved behind an (i) icon. Two actions, two elements — unambiguous.</p>
+  </div>
+
+  <div class="sub-heading">The trend line problem</div>
+
+  <p class="body-text">The model trend was displayed as a line described in a legend. Users didn't understand what it meant in practice — the legend wasn't enough context. I prepared two alternative approaches and documented them as recommendations for the next development phase.</p>
+
+  <div class="img-two-up">
+    <img src="trend_v1.png" alt="Trend line — version 1">
+    <img src="trend_v2.png" alt="Trend line — version 2">
+    <p class="img-caption">Two alternative approaches to showing model trend — prepared as post-testing recommendations. Version 1 uses connected data points with visible previous positions. Version 2 uses dashed outlines to show where each model was three months prior. Both make the trend legible without requiring the user to decode a legend.</p>
   </div>
 
   <div class="sec-block">
@@ -498,30 +498,27 @@
     <div class="sec-rule"></div>
   </div>
 
-  <p class="body-text">The engineer who used to download a third of his hard drive for every calculation no longer does that.</p>
+  <p class="body-text">The project delivered as an MVP — a working application with a SUS of 72.5 and a documented set of recommendations for the next phase. The foundation was solid. Further development didn't move forward during my time at the company, but the recommendations were left in a state the next team could pick up directly.</p>
 
-  <p class="body-text">The tech clearance process that only one person understood is now documented, automated, and accessible to the whole team.</p>
+  <p class="body-text">What stayed with me from this project was something simpler than any deliverable: the engineer had everything I needed to know. He just didn't know what was relevant to me. No amount of careful questioning would have surfaced the Weibull chart — it was too embedded in how he worked to describe. The only way to find it was to be in the room, watching.</p>
 
-  <p class="body-text">Knowledge that lived in individual spreadsheets and Notepad files now lives in a shared, reliable system. <strong>The bus factor went from one to many.</strong></p>
-
-  <p class="body-text">But the outcome that matters most to me isn't the product — it's that the process of building it didn't require me to understand aircraft engines. It required me to understand how to separate what engineers needed from what they'd learned to live with. That distinction transfers. The domain doesn't have to.</p>
+  <p class="body-text">In domains like this, observation isn't a research method among others. It's the one that finds what everything else misses.</p>
 
 </div>
 
 <div class="sidebar">
-  <div class="sb-group"><div class="sb-lbl">Role</div><div class="sb-val">Sole Product Designer
-& Researcher</div></div>
+  <div class="sb-group"><div class="sb-lbl">Role</div><div class="sb-val">Sole Product Designer</div></div>
   <div class="sb-group"><div class="sb-lbl">Client</div><div class="sb-val">Aviation industry<br>(via Accenture)</div></div>
   <div class="sb-group"><div class="sb-lbl">Platform</div><div class="sb-val">Desktop</div></div>
-  <div class="sb-group"><div class="sb-lbl">SUS score</div><div class="sb-val">83.1 — Excellent<br><span style="font-size:12px;">Tech Clearance tab</span></div></div>
+  <div class="sb-group"><div class="sb-lbl">SUS score</div><div class="sb-val">72.5 — Good</div></div>
   <div class="sb-group"><div class="sb-lbl">Tools</div><div class="sb-val">Figma · FigJam<br>Miro · Jira</div></div>
-  <div class="sb-group"><div class="sb-lbl">Methods</div><div class="sb-val">Expert interviews · Workflow mapping · Rapid wireframing · Usability testing · Handoff</div></div>
+  <div class="sb-group"><div class="sb-lbl">Methods</div><div class="sb-val">Self-directed expert interviews · Remote observation · Workflow mapping · Wireframing · Usability testing · Handoff</div></div>
 </div>
 </div>
 
 <div class="case-nav">
-  <a href="index.html">← Back to work</a>
-  <a href="case_study_dataflow.html">Next case study →</a>
+  <a href="../index.html">← Back to work</a>
+  <a href="../reconciliation/">Next case study →</a>
 </div>
 
 </div>
