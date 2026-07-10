@@ -66,7 +66,7 @@
   <main id="cs-main" style="min-width: 0;">
 
     <!-- Hero image -->
-    <div id="recon-hero" style="background: #ECEBE8; height: 420px; overflow: hidden;">
+    <div id="recon-hero" style="background: #ECEBE8; height: 420px; overflow: hidden; border-bottom: 1px solid #E3E1DC;">
       <img src="images/intro_recon.png" alt="Reconciliation portal &#8212; composite of dashboard and configuration screens" style="width: 100%; height: 100%; object-fit: cover; display: block;">
     </div>
 
@@ -111,7 +111,7 @@
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">This process was called reconciliation. It lived entirely in a shared Excel spreadsheet. Completing it for all operators took approximately six months every billing cycle.</p>
       </div>
       <div style="grid-column: 2; max-width: 640px;">
-        <div style="background: #ECEBE8; overflow: hidden;">
+        <div style="background: #ECEBE8; overflow: hidden; border: 1px solid #E3E1DC;">
           <img src="images/1.Old_Excel.png" alt="The original Excel reconciliation spreadsheet" style="width: 100%; display: block; height: auto;">
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0;">Reconciliation for all operators took approximately six months every billing cycle &#8212; six sheets, dozens of columns, maintained manually by a team of 20&#8211;30 specialists. By the time a problem was visible, it was usually too late to fix it cheaply.</p>
@@ -157,7 +157,7 @@
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">What made this project workable despite that constraint was the Product Owner. He had an aeronautical engineering background, which meant he understood the domain as well as the users did. Every new mockup went to him first. He was my first feedback layer &#8212; catching domain errors before they reached users, and helping me understand which contract variations mattered and which were edge cases. Weekly sessions with one or two reconciliation specialists followed. That rhythm &#8212; PO first, then users &#8212; replaced the discovery phase I didn&#8217;t have.</p>
       </div>
       <div style="grid-column: 2; max-width: 640px;">
-        <div style="background: #ECEBE8; overflow: hidden;">
+        <div style="background: #ECEBE8; overflow: hidden; border: 1px solid #E3E1DC;">
           <img src="images/Notes_about_excel.png" alt="Notes from early sessions with reconciliation specialists" style="width: 100%; display: block; height: auto;">
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0;">Early sessions focused on how specialists worked with the existing Excel tool &#8212; which data could be pulled automatically, what counted as an invalid input, what they needed at each stage. The PO&#8217;s domain knowledge meant I could move faster and ask better questions than I could have alone.</p>
@@ -174,7 +174,7 @@
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">The PO pushed back. Users were sceptical &#8212; it was unfamiliar. I held the position, explained the reasoning, and showed them how the structure worked in practice through the wireframes. Once they could see it rather than just hear about it, the resistance faded.</p>
       </div>
       <div style="grid-column: 1 / -1;">
-        <div style="background: #ECEBE8; overflow: hidden;">
+        <div style="background: #ECEBE8; overflow: hidden; border: 1px solid #E3E1DC;">
           <img src="images/read_only.png" alt="Read-only state of the reconciliation portal showing the ten-step navigation" style="width: 100%; display: block; height: auto;">
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">Ten sequential steps, visible in the left-hand navigation. The architecture makes calculation dependencies explicit &#8212; specialists can see where they are in the process and what each step&#8217;s output feeds into. This is what it looks like to design for consequence rather than familiarity.</p>
@@ -211,20 +211,20 @@
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">The delivered portal consisted of two parts: a summary dashboard giving specialists an immediate overview of which operators have overpayments or underpayments, and a detailed ten-tab application showing the full calculation breakdown for each operator &#8212; with controlled editing, change tracking, and audit trail.</p>
       </div>
       <div style="grid-column: 1 / -1;">
-        <div style="background: #ECEBE8; overflow: hidden;">
+        <div style="background: #ECEBE8; overflow: hidden; border: 1px solid #E3E1DC;">
           <img src="images/5.Summary_dashboard.png" alt="Summary dashboard showing operator payment status overview" style="width: 100%; display: block; height: auto;">
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 48px; max-width: 640px;">The summary dashboard gives specialists an immediate overview of which operators have overpayments or underpayments. A process that previously took six months to complete now updates continuously &#8212; giving the business time to renegotiate contracts before discrepancies become a crisis.</p>
         <div id="cs-imgpair" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-          <div style="background: #ECEBE8; overflow: hidden;">
+          <div style="background: #ECEBE8; overflow: hidden; border: 1px solid #E3E1DC;">
             <img src="images/10.Recon.png" alt="Step 10: Reconciliation amount tab" style="width: 100%; display: block; height: auto;">
           </div>
-          <div style="background: #ECEBE8; overflow: hidden;">
+          <div style="background: #ECEBE8; overflow: hidden; border: 1px solid #E3E1DC;">
             <img src="images/5.Recon.png" alt="Step 5: Fleet wide operation tab" style="width: 100%; display: block; height: auto;">
           </div>
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 48px; max-width: 640px;">Step 5 (Fleet wide operation) and step 10 (Reconciliation amount) &#8212; two of the ten sequential tabs. Each covers a distinct calculation phase; the output of each feeds into the next. Editable fields look like inputs even in read-only mode, so specialists always know what they can change.</p>
-        <div style="background: #ECEBE8; overflow: hidden;">
+        <div style="background: #ECEBE8; overflow: hidden; border: 1px solid #E3E1DC;">
           <img src="images/Recon_MVP.png" alt="Full eleven-tab reconciliation portal overview" style="width: 100%; display: block; height: auto;">
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">Eleven tabs, each covering a separate calculation phase &#8212; from contract summary to final reconciliation amount. Some tabs contain dozens of screens accounting for edge cases, custom contract variations, and error states. This is what it takes to replace a six-month manual process with something that specialists trust.</p>
