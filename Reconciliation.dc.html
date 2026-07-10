@@ -156,11 +156,11 @@
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 24px;">The business decision was clear: no formal discovery phase. The brief was to digitise the existing Excel tool &#8212; take what was already there and give it a proper interface. I started there.</p>
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">What made this project workable despite that constraint was the Product Owner. He had an aeronautical engineering background, which meant he understood the domain as well as the users did. Every new mockup went to him first. He was my first feedback layer &#8212; catching domain errors before they reached users, and helping me understand which contract variations mattered and which were edge cases. Weekly sessions with one or two reconciliation specialists followed. That rhythm &#8212; PO first, then users &#8212; replaced the discovery phase I didn&#8217;t have.</p>
       </div>
-      <div style="grid-column: 1 / -1;">
+      <div style="grid-column: 2; max-width: 640px;">
         <div style="background: #ECEBE8; overflow: hidden;">
           <img src="images/Notes_about_excel.png" alt="Notes from early sessions with reconciliation specialists" style="width: 100%; display: block; height: auto;">
         </div>
-        <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">Early sessions focused on how specialists worked with the existing Excel tool &#8212; which data could be pulled automatically, what counted as an invalid input, what they needed at each stage. The PO&#8217;s domain knowledge meant I could move faster and ask better questions than I could have alone.</p>
+        <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0;">Early sessions focused on how specialists worked with the existing Excel tool &#8212; which data could be pulled automatically, what counted as an invalid input, what they needed at each stage. The PO&#8217;s domain knowledge meant I could move faster and ask better questions than I could have alone.</p>
       </div>
       <div style="grid-column: 2; max-width: 640px;">
         <h3 style="font-family: 'EB Garamond', serif; font-weight: 500; font-size: 30px; line-height: 1.2; color: #111111; margin: 0 0 18px;">The assumption that didn&#8217;t survive contact with users</h3>
@@ -173,11 +173,11 @@
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 24px;">This wasn&#8217;t a UX preference. Reconciliation calculations are sequential &#8212; each step depends on the one before it. In a continuous scrollable view, a specialist could modify a value three steps back without understanding what it would break downstream. In a step-by-step structure, the dependencies are visible. Errors stay local. The consequence of each input is clear before the next step begins.</p>
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">The PO pushed back. Users were sceptical &#8212; it was unfamiliar. I held the position, explained the reasoning, and showed them how the structure worked in practice through the wireframes. Once they could see it rather than just hear about it, the resistance faded.</p>
       </div>
-      <div style="grid-column: 1 / -1;">
+      <div style="grid-column: 2; max-width: 640px;">
         <div style="background: #ECEBE8; overflow: hidden;">
           <img src="images/read_only.png" alt="Read-only state of the reconciliation portal showing the ten-step navigation" style="width: 100%; display: block; height: auto;">
         </div>
-        <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">Ten sequential steps, visible in the left-hand navigation. The architecture makes calculation dependencies explicit &#8212; specialists can see where they are in the process and what each step&#8217;s output feeds into. This is what it looks like to design for consequence rather than familiarity.</p>
+        <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0;">Ten sequential steps, visible in the left-hand navigation. The architecture makes calculation dependencies explicit &#8212; specialists can see where they are in the process and what each step&#8217;s output feeds into. This is what it looks like to design for consequence rather than familiarity.</p>
       </div>
       <div style="grid-column: 2; max-width: 640px;">
         <h3 style="font-family: 'EB Garamond', serif; font-weight: 500; font-size: 30px; line-height: 1.2; color: #111111; margin: 0 0 18px;">The other decisions</h3>
