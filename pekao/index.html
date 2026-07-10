@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<script src="../support.js"></script>
 </head>
 <body>
 <x-dc>
@@ -65,7 +65,7 @@
 
     <!-- Hero image -->
     <div id="pekao-hero" style="background: #ECEBE8; height: 420px; overflow: hidden;">
-      <img src="images/navigation.png" alt="Bank Pekao information architecture — mind map of the redesigned navigation structure" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+      <img src="navigation.png" alt="Bank Pekao information architecture — mind map of the redesigned navigation structure" style="width: 100%; height: 100%; object-fit: cover; display: block;">
     </div>
 
     <!-- Intro -->
@@ -132,8 +132,8 @@
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">I ran a UX audit while that tension was simmering. Eleven issues. The most structurally damaging: three levels of tabs that left users unable to tell where they were, no search, and an offer page so long the only way to explore it was to scroll through everything.</p>
       </div>
       <div style="grid-column: 1 / -1;">
-        <div style="background: #ECEBE8; height: 560px; display: flex; align-items: center; justify-content: center;">
-          <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — UX_Audit.png</span>
+        <div style="background: #ECEBE8; overflow: hidden; border: 1px solid #E3E1DC;">
+          <img src="UX_Audit.png" alt="UX audit findings — 11 issues identified in the existing navigation" style="width: 100%; display: block; height: auto;">
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">The UX audit identified 11 issues — from visual clutter and misleading tab names to missing search and icons without labels. The old navigation had three rows of tabs, making it structurally impossible for users to orient themselves.</p>
       </div>
@@ -142,8 +142,8 @@
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0;">To answer where the new products should live, I proposed card sorting and tree testing. No budget for external participants meant running sessions with internal employees who didn't use the bank in their daily work — not ideal, but better than guessing. I ran three groups of 10 participants each, 30 in total. The researcher helped select participants; I observed and drew conclusions.</p>
       </div>
       <div style="grid-column: 1 / -1;">
-        <div style="background: #ECEBE8; height: 560px; display: flex; align-items: center; justify-content: center;">
-          <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — Card_sorting.png</span>
+        <div style="background: #ECEBE8; overflow: hidden; border: 1px solid #E3E1DC;">
+          <img src="Card_sorting.png" alt="Card sorting results showing product placement preferences" style="width: 100%; display: block; height: auto;">
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">Card sorting results — blue cards represent the existing architecture, yellow cards are the new products users had to place. The exercise answered the placement question and surfaced something unexpected: users wanted a dedicated category for products they currently hold, which didn't exist anywhere in the current navigation.</p>
       </div>
@@ -154,16 +154,16 @@
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">I presented the new design to all five stakeholders. The room went completely silent. No questions. No arguments about who should be where. Just silence. That was the moment I knew the design had done its job.</p>
       </div>
       <div style="grid-column: 1 / -1;">
-        <div style="background: #ECEBE8; height: 560px; display: flex; align-items: center; justify-content: center;">
-          <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — Old_menu.png</span>
+        <div style="background: #ECEBE8; overflow: hidden; border: 1px solid #E3E1DC;">
+          <img src="Old_menu.png" alt="Before: original navigation with three rows of tabs" style="width: 100%; display: block; height: auto;">
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 48px; max-width: 640px;">Before: the original navigation — three rows of tabs, no search, limited top-level slots that every product owner was fighting over.</p>
-        <div style="background: #ECEBE8; height: 560px; display: flex; align-items: center; justify-content: center;">
-          <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — Megamenu_closed.png</span>
+        <div style="background: #ECEBE8; overflow: hidden; border: 1px solid #E3E1DC;">
+          <img src="Megamenu_closed.png" alt="After — closed state: new single-row top navigation" style="width: 100%; display: block; height: auto;">
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 48px; max-width: 640px;">After — closed state: the new top-level navigation. One clear row, no competing tabs, consistent structure across all products.</p>
-        <div style="background: #ECEBE8; height: 560px; display: flex; align-items: center; justify-content: center;">
-          <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — Megamenu_open.png</span>
+        <div style="background: #ECEBE8; overflow: hidden; border: 1px solid #E3E1DC;">
+          <img src="Megamenu_open.png" alt="After — open state: megamenu expanded with all levels visible" style="width: 100%; display: block; height: auto;">
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">After — open state: the megamenu expanded. All levels visible at once, every product equally accessible regardless of hierarchy. The design solved the political problem by making scarcity disappear.</p>
       </div>
@@ -179,11 +179,11 @@
       </div>
       <div style="grid-column: 1 / -1;">
         <div id="cs-imgpair-1" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-          <div style="background: #ECEBE8; height: 420px; display: flex; align-items: center; justify-content: center;">
-            <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — guidelines.png</span>
+          <div style="background: #ECEBE8; overflow: hidden; border: 1px solid #E3E1DC; align-self: start;">
+            <img src="guidelines.png" alt="IA guidelines — decision rules for level 2 navigation categories" style="width: 100%; display: block; height: auto;">
           </div>
-          <div style="background: #ECEBE8; height: 420px; display: flex; align-items: center; justify-content: center;">
-            <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — questionarie.png</span>
+          <div style="background: #ECEBE8; overflow: hidden; border: 1px solid #E3E1DC; align-self: start;">
+            <img src="questionarie.png" alt="Decision questionnaire for placing new products in the navigation" style="width: 100%; display: block; height: auto;">
           </div>
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">A guidelines document for product owners — including decision rules, worked examples, and a questionnaire to help them determine where new products belong in the architecture. Left: the rules for level 2 navigation categories. Right: the decision questionnaire.</p>
