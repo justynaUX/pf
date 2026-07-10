@@ -110,11 +110,11 @@
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 24px;">My client leases aircraft engines to airline operators. Operators don&#8217;t pay a flat fee &#8212; they pay based on how the engine is actually used: flight distances, environmental conditions, load cycles. At the end of each billing period, the client&#8217;s team collected flight data and calculated the final amount owed by each operator.</p>
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">This process was called reconciliation. It lived entirely in a shared Excel spreadsheet. Completing it for all operators took approximately six months every billing cycle.</p>
       </div>
-      <div style="grid-column: 1 / -1;">
+      <div style="grid-column: 2; max-width: 640px;">
         <div style="background: #ECEBE8; overflow: hidden;">
           <img src="images/1.Old_Excel.png" alt="The original Excel reconciliation spreadsheet" style="width: 100%; display: block; height: auto;">
         </div>
-        <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">Reconciliation for all operators took approximately six months every billing cycle &#8212; six sheets, dozens of columns, maintained manually by a team of 20&#8211;30 specialists. By the time a problem was visible, it was usually too late to fix it cheaply.</p>
+        <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0;">Reconciliation for all operators took approximately six months every billing cycle &#8212; six sheets, dozens of columns, maintained manually by a team of 20&#8211;30 specialists. By the time a problem was visible, it was usually too late to fix it cheaply.</p>
       </div>
       <div style="grid-column: 2; max-width: 640px;">
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">The financial stakes were significant. If the gap between what an operator had contracted to pay and what they actually owed went undetected until the end of the period, the client could find itself owing operators millions of dollars &#8212; or operators could face unexpected debt they couldn&#8217;t repay.</p>
@@ -173,11 +173,11 @@
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 24px;">This wasn&#8217;t a UX preference. Reconciliation calculations are sequential &#8212; each step depends on the one before it. In a continuous scrollable view, a specialist could modify a value three steps back without understanding what it would break downstream. In a step-by-step structure, the dependencies are visible. Errors stay local. The consequence of each input is clear before the next step begins.</p>
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">The PO pushed back. Users were sceptical &#8212; it was unfamiliar. I held the position, explained the reasoning, and showed them how the structure worked in practice through the wireframes. Once they could see it rather than just hear about it, the resistance faded.</p>
       </div>
-      <div style="grid-column: 2; max-width: 640px;">
+      <div style="grid-column: 1 / -1;">
         <div style="background: #ECEBE8; overflow: hidden;">
           <img src="images/read_only.png" alt="Read-only state of the reconciliation portal showing the ten-step navigation" style="width: 100%; display: block; height: auto;">
         </div>
-        <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0;">Ten sequential steps, visible in the left-hand navigation. The architecture makes calculation dependencies explicit &#8212; specialists can see where they are in the process and what each step&#8217;s output feeds into. This is what it looks like to design for consequence rather than familiarity.</p>
+        <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">Ten sequential steps, visible in the left-hand navigation. The architecture makes calculation dependencies explicit &#8212; specialists can see where they are in the process and what each step&#8217;s output feeds into. This is what it looks like to design for consequence rather than familiarity.</p>
       </div>
       <div style="grid-column: 2; max-width: 640px;">
         <h3 style="font-family: 'EB Garamond', serif; font-weight: 500; font-size: 30px; line-height: 1.2; color: #111111; margin: 0 0 18px;">The other decisions</h3>
