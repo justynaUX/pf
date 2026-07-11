@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<script src="../support.js"></script>
 </head>
 <body>
 <x-dc>
@@ -72,7 +72,7 @@
 
     <!-- Hero image -->
     <div id="dac-hero" style="background: #ECEBE8; height: 420px; overflow: hidden;">
-      <img src="images/dac.png" alt="Expert knowledge illustration" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+      <img src="Hero_dac.png" alt="Expert knowledge illustration" style="width: 100%; height: 100%; object-fit: cover; display: block;">
     </div>
 
     <!-- Intro -->
@@ -141,8 +141,8 @@
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">The reason that question is hard in specialist domains is that experts often can't answer it directly. They know what they do. They don't always know what would still be true if they had a proper tool. So I mapped the entire current workflow first — step by step, capturing what data was needed, what was being done manually, what was going wrong — and then I worked backwards from each step to ask: is this the task, or is this the workaround?</p>
       </div>
       <div style="grid-column: 1 / -1;">
-        <div style="background: #ECEBE8; height: 560px; display: flex; align-items: center; justify-content: center;">
-          <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — user_journey1.png</span>
+        <div style="background: #ECEBE8; overflow: hidden; border: 1px solid #E3E1DC;">
+          <img src="user_journey1.png" alt="User journey for the tech clearance process" style="width: 100%; display: block; height: auto;">
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">User journey for the tech clearance process — mapping the intended workflow before any screen was designed. Each stage defined what the user needed to accomplish and what information the interface had to surface. The journey came first; the design questions came from it.</p>
       </div>
@@ -156,13 +156,9 @@
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">One engineer wanted the new interface to replicate his existing Notepad-to-Python workflow exactly. That workflow was a coping mechanism, not a need. Replicating it would have locked one person's workaround into a system everyone had to use. I didn't replicate it.</p>
       </div>
       <div style="grid-column: 1 / -1;">
-        <div id="cs-imgpair-1" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-          <div style="background: #ECEBE8; height: 420px; display: flex; align-items: center; justify-content: center;">
-            <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — old_version1.png</span>
-          </div>
-          <div style="background: #ECEBE8; height: 420px; display: flex; align-items: center; justify-content: center;">
-            <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — old_version2.png</span>
-          </div>
+        <div id="cs-imgpair-1" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;">
+          <img src="old_version1.png" alt="Early interface version — chart idea" style="width: 100%; display: block; height: auto; border: 1px solid #E3E1DC;">
+          <img src="old_version2.png" alt="Early interface version — Notepad workflow replication" style="width: 100%; display: block; height: auto; border: 1px solid #E3E1DC;">
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">Early interface versions that didn't make the cut. The chart idea came from me — the pushback came from research. The Notepad-workflow replication came from one engineer — the decision not to build it came from understanding whose need it actually served. Both decisions came from the same process: show something, learn something real.</p>
       </div>
@@ -178,32 +174,28 @@
       </div>
       <div style="grid-column: 1 / -1;">
         <h3 style="font-family: 'EB Garamond', serif; font-weight: 500; font-size: 30px; line-height: 1.2; color: #111111; margin: 0 0 18px; max-width: 640px;">Monitoring</h3>
-        <div style="background: #ECEBE8; height: 560px; display: flex; align-items: center; justify-content: center;">
-          <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — monitoring_darfilescoverage_operator1.png</span>
+        <div style="background: #ECEBE8; overflow: hidden; border: 1px solid #E3E1DC;">
+          <img src="monitoring_darfilescoverage_operator1.png" alt="Monitoring dashboard showing data pipeline coverage" style="width: 100%; display: block; height: auto;">
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 48px; max-width: 640px;">The Monitoring dashboard gives engineers visibility into the data pipeline — whether files are arriving as expected and whether anything is being lost. Before this existed, problems only became visible after calculations had already gone wrong.</p>
 
         <h3 style="font-family: 'EB Garamond', serif; font-weight: 500; font-size: 30px; line-height: 1.2; color: #111111; margin: 0 0 18px; max-width: 640px;">Flight Tapes</h3>
-        <div style="background: #ECEBE8; height: 560px; display: flex; align-items: center; justify-content: center;">
-          <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — Flight_tapes.png</span>
+        <div style="background: #ECEBE8; overflow: hidden; border: 1px solid #E3E1DC;">
+          <img src="Flight_tapes.png" alt="Flight Tapes dashboard — filter and download flight data" style="width: 100%; display: block; height: auto;">
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 48px; max-width: 640px;">Flight Tapes replaced the hard-drive download process entirely. Engineers filter by date and operator and download only what they need. The workaround disappears; the need — access to the right data at the right time — is met directly.</p>
 
         <h3 style="font-family: 'EB Garamond', serif; font-weight: 500; font-size: 30px; line-height: 1.2; color: #111111; margin: 0 0 18px; max-width: 640px;">SA66</h3>
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 24px; max-width: 640px;">Engineers use SA66 to work on the engine control file used to process raw data. They test the file against Flight Tapes and, when satisfied, the file becomes the new active version.</p>
-        <div id="cs-imgpair-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-          <div style="background: #ECEBE8; height: 420px; display: flex; align-items: center; justify-content: center;">
-            <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — SA66Home.png</span>
-          </div>
-          <div style="background: #ECEBE8; height: 420px; display: flex; align-items: center; justify-content: center;">
-            <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — SA66Details.png</span>
-          </div>
+        <div id="cs-imgpair-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;">
+          <img src="SA66Home.png" alt="SA66 — creating a new task" style="width: 100%; display: block; height: auto; border: 1px solid #E3E1DC;">
+          <img src="SA66Details.png" alt="SA66 — task details and results" style="width: 100%; display: block; height: auto; border: 1px solid #E3E1DC;">
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 48px; max-width: 640px;">Left: creating a new SA66 task — selecting flight tapes, uploading the engine control file, choosing result types. Right: task details showing calculation results, succeeded and failed flight tapes, and downloadable result files.</p>
 
         <h3 style="font-family: 'EB Garamond', serif; font-weight: 500; font-size: 30px; line-height: 1.2; color: #111111; margin: 0 0 18px; max-width: 640px;">Tech Clearance</h3>
-        <div style="background: #ECEBE8; height: 560px; display: flex; align-items: center; justify-content: center;">
-          <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — Tech_clearance_report.png</span>
+        <div style="background: #ECEBE8; overflow: hidden; border: 1px solid #E3E1DC;">
+          <img src="Tech_clearance_report.png" alt="Tech Clearance report dashboard" style="width: 100%; display: block; height: auto;">
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">Tech clearance reports now generate automatically on a schedule. The dashboard shows which operators passed or failed and why. A process that only one person understood is now accessible to the whole team — and will still be accessible after that person leaves.</p>
       </div>
@@ -220,8 +212,8 @@
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">It was also a reminder: shared expertise doesn't mean shared terminology. The words designers choose matter even when everyone in the room is an expert.</p>
       </div>
       <div style="grid-column: 1 / -1;">
-        <div style="background: #ECEBE8; height: 560px; display: flex; align-items: center; justify-content: center;">
-          <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — Improv.png</span>
+        <div style="background: #ECEBE8; overflow: hidden; border: 1px solid #E3E1DC;">
+          <img src="Improv.png" alt="Post-testing improvement recommendations in Figma" style="width: 100%; display: block; height: auto;">
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">One of several post-testing recommendations documented in Figma. Labels like "Delay run by", "Flight limit", and "Flight usage limit (SDC)" were misunderstood. Recommendation: icons with clear descriptions explaining what each parameter means and how it affects results.</p>
       </div>
