@@ -1,331 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="description" content="Contact Justyna Koc — Senior Product Designer available for remote B2B contracts. Based in Warsaw, Poland. Specialising in complex internal tools and data-intensive UX.">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — Justyna Koc</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500;1,8..60,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --ink:    #0D0D0D;
-    --paper:  #FFFFFF;
-    --border: #0D0D0D;
-    --rule:   #C8C5BD;
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: #F6F6F6;
-    color: var(--ink);
-    font-family: 'Source Serif 4', Georgia, serif;
-  }
-
-  .page-wrapper {
-    max-width: 1000px;
-    margin: 0 auto;
-    border-left: 1px solid var(--ink);
-    border-right: 1px solid var(--ink);
-    min-height: 100vh;
-    background: var(--paper);
-  }
-
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 48px;
-    border-bottom: 1px solid var(--ink);
-    position: sticky;
-    top: 0;
-    background: var(--paper);
-    z-index: 10;
-  }
-  .nav-logo {
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-size: 18px;
-    font-style: italic;
-    font-weight: 400;
-    color: var(--ink);
-    text-decoration: none;
-  }
-  .nav-links { display: flex; gap: 24px; }
-  .nav-links a {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink);
-    text-decoration: none;
-    opacity: 0.65;
-    border-bottom: 1px solid transparent;
-    padding-bottom: 1px;
-    transition: opacity 0.15s, border-color 0.15s;
-    font-weight: 700;
-  }
-  .nav-links a.active { opacity: 1; border-bottom: 1px solid var(--ink); }
-  .nav-links a:not(.active):hover { opacity: 1; border-bottom-color: var(--ink); }
-  .nav-links a:active { opacity: 0.6; }
-
-  .content { display: grid; grid-template-columns: 1fr 220px; }
-  .main { padding: 56px 48px 80px; border-right: 1px solid var(--ink); }
-  .sidebar { padding: 40px 28px; position: sticky; top: 61px; height: fit-content; }
-
-  .about-eyebrow {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink);
-    margin-bottom: 14px;
-    font-weight: 700;
-  }
-  .about-h1 {
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-size: 82px;
-    font-weight: 400;
-    line-height: 0.95;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    margin-bottom: 40px;
-  }
-  .about-h1 em { font-style: italic; font-weight: 400; }
-  .about-rule { display: none; }
-
-  /* CONTACT LIST */
-  .contact-list { list-style: none; max-width: 560px; }
-  .contact-item {
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-    padding: 20px 0;
-    border-bottom: 1px solid var(--ink);
-  }
-  .contact-item:first-child { border-top: none; }
-  .contact-item:last-child { border-bottom: none; }
-  .contact-label {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink);
-    min-width: 100px;
-    flex-shrink: 0;
-    font-weight: 700;
-  }
-  .contact-value {
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-size: 24px;
-    font-weight: 400;
-    color: var(--ink);
-    line-height: 1.3;
-  }
-  .contact-value a {
-    color: var(--ink);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    padding-bottom: 2px;
-    transition: border-color 0.15s;
-  }
-  .contact-value a:hover { border-bottom-color: var(--ink); }
-
-  /* AVAILABILITY */
-  .availability { margin-top: 48px; margin-bottom: 56px; max-width: 480px; }
-  .availability-label {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink);
-    margin-bottom: 10px;
-    font-weight: 700;
-  }
-  .availability-text {
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-size: 21px;
-    line-height: 1.65;
-    color: var(--ink);
-  }
-
-  /* SIDEBAR */
-  .sb-group { margin-bottom: 22px; }
-  .sb-lbl {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink);
-    margin-bottom: 4px;
-    font-weight: 700;
-  }
-  .sb-val { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--ink); line-height: 1.7;; font-weight: 500; }
-
-  #local-time {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    color: var(--ink);
-    margin-top: 4px;
-    font-weight: 500;
-  }
-
-  .case-nav {
-    display: flex;
-    justify-content: flex-start;
-    padding: 24px 48px;
-    border-top: 1px solid var(--ink);
-  }
-  .case-nav a {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    color: var(--ink);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    padding-bottom: 1px;
-    font-weight: 700;
-    opacity: 0.65;
-    transition: opacity 0.15s, border-color 0.15s;
-  }
-  .case-nav a:hover { opacity: 1; border-bottom-color: var(--ink); }
-  .case-nav a:active { opacity: 0.6; }
-
-  /* ── MOBILE ── */
-  @media (max-width: 700px) {
-    .page-wrapper { border-left: none; border-right: none; }
-
-    nav { padding: 16px 20px; }
-    .nav-logo { font-size: 16px; }
-
-    .content {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .main {
-      padding: 36px 20px 0;
-      border-right: none;
-      order: 1;
-    }
-
-    /* Sidebar appears right after first section of main content */
-    .sidebar {
-      position: static;
-      padding: 28px 20px;
-      border-top: 1px solid var(--rule);
-      border-bottom: 1px solid var(--ink);
-      order: 2;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0 24px;
-    }
-    .sb-group { margin-bottom: 16px; }
-
-    /* Push remaining main content below sidebar using a wrapper trick:
-       We use padding-bottom on main and let sidebar sit between */
-    .main-bottom {
-      order: 3;
-      padding: 0 20px 48px;
-    }
-
-    .hero { padding: 36px 20px 20px; }
-    .about-h1 { font-size: 44px; line-height: 1.05; }
-    .hero-h1 { font-size: 44px; line-height: 1.0; margin-bottom: 18px; }
-    .hero-body { max-width: 100%; }
-
-    .about-rule { margin: 16px 0 22px; }
-    .body-text { max-width: 100%; }
-    .expertise-list { max-width: 100%; }
-    .proj-title { font-size: 32px; }
-    .proj-body { max-width: 100%; }
-
-    .contact-list { max-width: 100%; }
-    .contact-item { flex-direction: column; gap: 4px; }
-    .contact-label { min-width: unset;
-    font-weight: 700;
-  }
-    .availability { max-width: 100%; }
-
-    .case-nav { padding: 20px; }
-
-    img { max-width: 100%; height: auto; }
-  }
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
 <body>
-
-<div class="page-wrapper">
-
-<nav>
-  <a class="nav-logo" href="index.html">Justyna Koc</a>
-  <div class="nav-links">
-    <a href="index.html">Work</a>
-    <a href="about.html">About</a>
-    <a href="contact.html" class="active">Contact</a>
-  </div>
-</nav>
-
-<div class="content">
-<div class="main">
-
-  <div class="about-eyebrow">Get in touch</div>
-  <h1 class="about-h1">Let's talk about<br><em>your project.</em></h1>
-  <div class="about-rule"></div>
-
-  <ul class="contact-list">
-    <li class="contact-item">
-      <span class="contact-label">Email</span>
-      <span class="contact-value"><a href="mailto:Justyna.koc@gmail.com">Justyna.koc@gmail.com</a></span>
-    </li>
-    <li class="contact-item">
-      <span class="contact-label">Phone</span>
-      <span class="contact-value"><a href="tel:+48572261166">+48 572 261 166</a></span>
-    </li>
-    <li class="contact-item">
-      <span class="contact-label">LinkedIn</span>
-      <span class="contact-value"><a href="https://www.linkedin.com/in/justyna-koc/" target="_blank">justyna-koc</a></span>
-    </li>
-    <li class="contact-item">
-      <span class="contact-label">Location</span>
-      <span class="contact-value">
-        Warsaw, Poland
-        <div id="local-time"></div>
-      </span>
-    </li>
-  </ul>
-
-  <div class="availability">
-    <div class="availability-label">Availability</div>
-    <p class="availability-text">Available immediately.</p>
-  </div>
-
-</div>
-
-<div class="sidebar">
-  <div class="sb-group"><div class="sb-lbl">Based in</div><div class="sb-val">Warsaw, Poland<br>CET / CEST</div></div>
-  <div class="sb-group"><div class="sb-lbl">Languages</div><div class="sb-val">Polish — native<br>English — C1</div></div>
-  <div class="sb-group"><div class="sb-lbl">Remote</div><div class="sb-val">Yes — international clients welcome</div></div>
-</div>
-</div>
-
-<div class="case-nav">
-  <a href="index.html">← Back to work</a>
-</div>
-
-</div>
-
-<script>
-  function updateTime() {
-    const now = new Date();
-    const time = now.toLocaleTimeString('en-GB', { timeZone: 'Europe/Warsaw', hour: '2-digit', minute: '2-digit', hour12: false });
-    const el = document.getElementById('local-time');
-    if (el) el.textContent = 'Local time: ' + time;
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,500&family=Libre+Franklin:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #FFFFFF; --sans: 'Libre Franklin', sans-serif; }
+  @media (max-width: 700px) {
+    #site-nav { padding: 16px 20px !important; }
+    #site-nav-links { gap: 14px !important; }
+    #site-nav-links a { font-size: 9px !important; }
+    #contact-list { grid-template-columns: 1fr !important; padding: 40px 20px !important; gap: 20px !important; }
+    #contact-list h2 { font-size: 32px !important; }
+    #contact-rows > div { flex-wrap: wrap !important; row-gap: 4px !important; padding: 18px 0 !important; }
+    #phone-wrap, #location-wrap { display: flex !important; flex-direction: column !important; gap: 2px !important; }
+    #phone-time, #location-remote { margin-left: 0 !important; }
+    #contact-rows a, #contact-rows span[style*="font-size: 24px"] { font-size: 19px !important; }
+    #contact-footer { padding: 28px 20px 40px !important; flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
   }
-  updateTime();
-  setInterval(updateTime, 60000);
+</style>
+</helmet>
+
+<div style="background: #FFFFFF; color: #111111; min-height: 100vh; display: flex; flex-direction: column;">
+
+  <!-- Top bar -->
+  <nav id="site-nav" style="display: flex; justify-content: space-between; align-items: baseline; padding: 22px 56px; border-bottom: 1px solid #E3E1DC;">
+    <a href="Home.dc.html" style="font-family: 'EB Garamond', serif; font-size: 20px; color: #111111; text-decoration: none;">Justyna Koc</a>
+    <div id="site-nav-links" style="display: flex; gap: 28px;">
+      <a href="Home.dc.html" style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #767470; text-decoration: none; padding-bottom: 2px;" style-hover="color: #111111 !important;">Work</a>
+      <a href="About.dc.html" style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #767470; text-decoration: none; padding-bottom: 2px;" style-hover="color: #111111 !important;">About</a>
+      <a href="Contact.dc.html" style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #111111; text-decoration: none; border-bottom: 1px solid #111111; padding-bottom: 2px;">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Contact list -->
+  <section id="contact-list" data-screen-label="Contact list" style="display: grid; grid-template-columns: minmax(160px, 1fr) minmax(0, 2.2fr); gap: 48px; padding: 72px 56px; border-top: 1px solid #E3E1DC; flex: 1;">
+    <div>
+      <h2 style="font-family: 'EB Garamond', serif; font-weight: 400; font-size: 44px; line-height: 1.1; color: #111111; margin: 0;">Reach me</h2>
+    </div>
+    <div id="contact-rows" style="max-width: 640px;">
+      <div style="display: flex; align-items: baseline; gap: 24px; padding: 22px 0; border-bottom: 1px solid #E3E1DC;">
+        <span style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #767470; min-width: 110px; flex-shrink: 0;">Email</span>
+        <a href="mailto:Justyna.koc@gmail.com" style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 24px; color: #111111; text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px;" style-hover="border-bottom-color: #111111 !important;">Justyna.koc@gmail.com</a>
+      </div>
+      <div style="display: flex; align-items: baseline; gap: 24px; padding: 22px 0; border-bottom: 1px solid #E3E1DC;">
+        <span style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #767470; min-width: 110px; flex-shrink: 0;">Phone</span>
+        <span id="phone-wrap">
+        <a href="tel:+48572261166" style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 24px; color: #111111; text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px;" style-hover="border-bottom-color: #111111 !important;">+48 572 261 166</a>
+        <span id="phone-time" style="font-family: var(--sans); font-size: 13px; font-weight: 500; color: #767470; margin-left: 16px;">{{ localTime }}</span>
+        </span>
+      </div>
+      <div style="display: flex; align-items: baseline; gap: 24px; padding: 22px 0; border-bottom: 1px solid #E3E1DC;">
+        <span style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #767470; min-width: 110px; flex-shrink: 0;">LinkedIn</span>
+        <a href="https://www.linkedin.com/in/justyna-koc/" target="_blank" style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 24px; color: #111111; text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px;" style-hover="border-bottom-color: #111111 !important;">justyna-koc</a>
+      </div>
+      <div style="display: flex; align-items: baseline; gap: 24px; padding: 22px 0;">
+        <span style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #767470; min-width: 110px; flex-shrink: 0;">Location</span>
+        <span id="location-wrap">
+        <span style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 24px; color: #111111;">EU, Warsaw, Poland</span>
+        <span id="location-remote" style="font-family: var(--sans); font-size: 13px; font-weight: 500; color: #767470; margin-left: 16px;">Remote welcome</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact-footer" style="display: flex; justify-content: space-between; align-items: baseline; padding: 40px 56px 56px; border-top: 1px solid #E3E1DC;">
+    <span style="font-family: 'EB Garamond', serif; font-size: 18px; color: #111111;">Justyna Koc</span>
+    <span style="font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #767470;">Warsaw, Poland · 2026</span>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { time: '' };
+  updateTime() {
+    const t = new Date().toLocaleTimeString('en-GB', { timeZone: 'Europe/Warsaw', hour: '2-digit', minute: '2-digit', hour12: false });
+    this.setState({ time: t });
+  }
+  componentDidMount() {
+    this.updateTime();
+    this._timer = setInterval(() => this.updateTime(), 60000);
+  }
+  componentWillUnmount() { clearInterval(this._timer); }
+  renderVals() {
+    return { localTime: this.state.time ? 'Local time: ' + this.state.time : '' };
+  }
+}
 </script>
 </body>
 </html>
