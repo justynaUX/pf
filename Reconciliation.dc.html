@@ -34,21 +34,12 @@
 
 <div style="background: #FFFFFF; color: #111111; min-height: 100vh;">
 
-  <!-- Top bar -->
-  <nav id="site-nav" style="display: flex; justify-content: space-between; align-items: baseline; padding: 22px 56px; border-bottom: 1px solid #E3E1DC;">
-    <a href="index.html" style="font-family: 'EB Garamond', serif; font-size: 20px; color: #111111; text-decoration: none;">Justyna Koc</a>
-    <div id="site-nav-links" style="display: flex; gap: 28px;">
-      <a href="index.html" style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #111111; text-decoration: none; border-bottom: 1px solid #111111; padding-bottom: 2px;">Work</a>
-      <a href="about.html" style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #767470; text-decoration: none; padding-bottom: 2px;" style-hover="color: #111111 !important;">About</a>
-      <a href="contact.html" style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #767470; text-decoration: none; padding-bottom: 2px;" style-hover="color: #111111 !important;">Contact</a>
-    </div>
-  </nav>
-
   <div id="cs-shell" style="display: grid; grid-template-columns: 280px 1fr;">
 
   <!-- Left rail -->
   <aside id="cs-rail" style="border-right: 1px solid #E3E1DC;">
     <div style="position: sticky; top: 0; display: flex; flex-direction: column; gap: 48px; padding: 32px 32px 32px 56px; min-height: 100vh; box-sizing: border-box;">
+      <a href="index.html" style="font-family: 'EB Garamond', serif; font-size: 20px; color: #111111; text-decoration: none; display: block;">Justyna Koc</a>
       <nav style="display: flex; flex-direction: column; gap: 16px;">
         <a href="#situation" style="font-family: var(--sans); font-size: 13px; font-weight: 500; color: #111111; text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px; width: fit-content;" style-hover="border-bottom-color: #111111 !important;">The situation</a>
         <a href="#role" style="font-family: var(--sans); font-size: 13px; font-weight: 500; color: #111111; text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px; width: fit-content;" style-hover="border-bottom-color: #111111 !important;">My role</a>
@@ -276,16 +267,40 @@ class Component extends DCLogic {
     this._observer.observe(el);
   }
 
+  setupScrollSpy() {
+    if (this._scrollObserver) return;
+    const ids = ['situation', 'role', 'process', 'solution', 'outcome'];
+    const links = {};
+    ids.forEach(id => {
+      const el = document.querySelector(`a[href="#${id}"]`);
+      if (el) links[id] = el;
+    });
+    this._scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const link = links[entry.target.id];
+        if (!link) return;
+        link.style.borderBottomColor = entry.isIntersecting ? '#111111' : 'transparent';
+      });
+    }, { rootMargin: '-100px 0px -60% 0px', threshold: 0 });
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) this._scrollObserver.observe(el);
+    });
+  }
+
   componentDidMount() {
     this.applyFont();
     this.observeFooterCta();
+    this.setupScrollSpy();
   }
   componentDidUpdate() {
     this.applyFont();
     this.observeFooterCta();
+    this.setupScrollSpy();
   }
   componentWillUnmount() {
     if (this._observer) this._observer.disconnect();
+    if (this._scrollObserver) this._scrollObserver.disconnect();
   }
 
   renderVals() {
