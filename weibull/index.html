@@ -127,12 +127,12 @@
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">I called him as many times as it took. When I had wireframes, I showed him those too — not as presentations but as the same kind of research instrument I use in every complex domain project. Show something concrete, get a reaction you couldn't get from a question alone.</p>
       </div>
       <div style="grid-column: 1 / -1;">
-        <div style="background: #ECEBE8; height: 560px; display: flex; align-items: center; justify-content: center;">
-          <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — User_journey_as_is.png</span>
+        <div style="background: #ECEBE8; overflow: hidden; border: 1px solid #E3E1DC;">
+          <img src="User_journey_as_is.png" alt="Existing workflow map — as-is user journey" style="width: 100%; display: block; height: auto;">
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 48px; max-width: 640px;">Mapping the existing workflow step by step — what the engineer needed to do, what data he consulted at each stage, and what he was doing manually because no tool existed. The mapping came first. The design questions came from the mapping.</p>
-        <div style="background: #ECEBE8; height: 560px; display: flex; align-items: center; justify-content: center;">
-          <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — User_journey_to_be.png</span>
+        <div style="background: #ECEBE8; overflow: hidden; border: 1px solid #E3E1DC;">
+          <img src="User_journey_to_be.png" alt="Target workflow map — to-be user journey" style="width: 100%; display: block; height: auto;">
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">The target workflow — built around what engineers actually needed, not the manual workarounds they'd been using. Each phase was defined before a single screen was designed.</p>
       </div>
@@ -144,13 +144,9 @@
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">That observation changed the entire solution. The chart went into the application as the primary mechanism for model assessment — not as a visual embellishment, but as the core tool engineers would use to evaluate model health. They got something built around a mental model they already had, instead of having to learn something new from scratch.</p>
       </div>
       <div style="grid-column: 1 / -1;">
-        <div id="cs-imgpair-1" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-          <div style="background: #ECEBE8; height: 420px; display: flex; align-items: center; justify-content: center;">
-            <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — Main_chart_excel.png</span>
-          </div>
-          <div style="background: #ECEBE8; height: 420px; display: flex; align-items: center; justify-content: center;">
-            <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — chart.png</span>
-          </div>
+        <div id="cs-imgpair-1" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;">
+          <img src="Main_chart_excel.png" alt="Engineer's self-built Weibull chart in Excel" style="width: 100%; display: block; height: auto; border: 1px solid #E3E1DC;">
+          <img src="chart.png" alt="Weibull distribution chart" style="width: 100%; display: block; height: auto; border: 1px solid #E3E1DC;">
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">The charts the engineer had built himself — Weibull distributions used to visually assess whether models were behaving correctly. He never mentioned them in conversation. They only appeared because I was watching him work. These charts became the foundation of the application's assessment view.</p>
       </div>
@@ -169,12 +165,12 @@
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">The application shipped as two connected views. The main page gives engineers an overview of all Weibull models — their status, accuracy, and recommended action. The detail view shows the full picture for a single model: the Weibull accuracy chart, event history, and root causes.</p>
       </div>
       <div style="grid-column: 1 / -1;">
-        <div style="background: #ECEBE8; height: 560px; display: flex; align-items: center; justify-content: center;">
-          <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — Weilbulls_maine_page.png</span>
+        <div style="background: #ECEBE8; overflow: hidden; border: 1px solid #E3E1DC;">
+          <img src="Weilbulls_maine_page.png" alt="Weibull main page — all models overview" style="width: 100%; display: block; height: auto;">
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 48px; max-width: 640px;">The main view — all Weibull models for a given engine type, with status (over-predicted, under-predicted, on target), recommended action (reject, review, accept), and the accuracy tracking chart showing each model's position relative to predicted and actual events. A process that previously happened twice a year in Excel now updates continuously.</p>
-        <div style="background: #ECEBE8; height: 560px; display: flex; align-items: center; justify-content: center;">
-          <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — Weilbulls_details.png</span>
+        <div style="background: #ECEBE8; overflow: hidden; border: 1px solid #E3E1DC;">
+          <img src="Weilbulls_details.png" alt="Weibull detail view — single model with accuracy chart and event history" style="width: 100%; display: block; height: auto;">
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">The detail view for a single Weibull model — showing the accuracy chart built around the engineer's own Excel chart, the full event history with root causes, and export options for further analysis. The chart the engineer had built for himself became the primary mechanism for assessment across the whole team.</p>
       </div>
@@ -192,8 +188,8 @@
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">The model name — a clickable link to the detail view — sat directly next to the accordion arrow. Both were blue. Users assumed they did the same thing — expanding the row — and couldn't find their way into the detail view at all. The fix: remove the accordion, replace it with an (i) icon at the end of the row. Model name leads to details. Icon leads to summary. Two distinct actions, two visually distinct elements.</p>
       </div>
       <div style="grid-column: 1 / -1;">
-        <div style="background: #ECEBE8; height: 420px; display: flex; align-items: center; justify-content: center;">
-          <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — i_icon_improvement.png</span>
+        <div style="background: #ECEBE8; overflow: hidden; border: 1px solid #E3E1DC;">
+          <img src="i_icon_improvement.png" alt="Before and after: accordion replaced with (i) icon" style="width: 100%; display: block; height: auto;">
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">Before: model name and accordion arrow sitting side by side, both blue, both looking like they did the same thing. After: accordion removed, summary information moved behind an (i) icon. Two actions, two elements — unambiguous.</p>
       </div>
@@ -202,13 +198,9 @@
         <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0;">The model trend was displayed as a line described in a legend. Users didn't understand what it meant in practice — the legend wasn't enough context. I prepared two alternative approaches and documented them as recommendations for the next development phase.</p>
       </div>
       <div style="grid-column: 1 / -1;">
-        <div id="cs-imgpair-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-          <div style="background: #ECEBE8; height: 420px; display: flex; align-items: center; justify-content: center;">
-            <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — trend_v1.png</span>
-          </div>
-          <div style="background: #ECEBE8; height: 420px; display: flex; align-items: center; justify-content: center;">
-            <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — trend_v2.png</span>
-          </div>
+        <div id="cs-imgpair-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;">
+          <img src="trend_v1.png" alt="Trend version 1 — connected data points showing previous positions" style="width: 100%; display: block; height: auto; border: 1px solid #E3E1DC;">
+          <img src="trend_v2.png" alt="Trend version 2 — dashed outlines showing model position three months prior" style="width: 100%; display: block; height: auto; border: 1px solid #E3E1DC;">
         </div>
         <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">Two alternative approaches to showing model trend — prepared as post-testing recommendations. Version 1 uses connected data points with visible previous positions. Version 2 uses dashed outlines to show where each model was three months prior. Both make the trend legible without requiring the user to decode a legend.</p>
       </div>
