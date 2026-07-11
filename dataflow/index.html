@@ -1,849 +1,401 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="description" content="DataFlow AI Insight Panel — UX case study by Justyna Koc. Designing an AI-assisted decision tool for B2B sales managers. Built from scratch with no design system.">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI was fast. The hard part was still mine. — Justyna Koc</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500;1,8..60,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --ink:    #0D0D0D;
-    --paper:  #FFFFFF;
-    --border: #0D0D0D;
-    --rule:   #C8C5BD;
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: #F6F6F6;
-    color: var(--ink);
-    font-family: 'Source Serif 4', Georgia, serif;
-  }
-
-  .page-wrapper {
-    max-width: 1000px;
-    margin: 0 auto;
-    border-left: 1px solid var(--ink);
-    border-right: 1px solid var(--ink);
-    min-height: 100vh;
-    background: var(--paper);
-  }
-
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 48px;
-    border-bottom: 1px solid var(--ink);
-    position: sticky;
-    top: 0;
-    background: var(--paper);
-    z-index: 10;
-  }
-  .nav-logo {
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-size: 18px;
-    font-style: italic;
-    font-weight: 400;
-    color: var(--ink);
-    text-decoration: none;
-  }
-  .nav-links { display: flex; gap: 24px; }
-  .nav-links a {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink);
-    text-decoration: none;
-    opacity: 0.65;
-    border-bottom: 1px solid transparent;
-    padding-bottom: 1px;
-    transition: opacity 0.15s, border-color 0.15s;
-    font-weight: 700;
-  }
-  .nav-links a.active { opacity: 1; border-bottom: 1px solid var(--ink); }
-  .nav-links a:not(.active):hover { opacity: 1; border-bottom-color: var(--ink); }
-  .nav-links a:active { opacity: 0.6; }
-
-  .hero { padding: 52px 48px 20px; }
-  .cs-sup {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink);
-    margin-bottom: 14px;
-    font-weight: 700;
-  }
-  .cs-h1 {
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-size: 82px;
-    font-weight: 400;
-    line-height: 0.95;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    margin-bottom: 0;
-  }
-  .cs-h1 em { font-style: italic; font-weight: 400; }
-  .hero-rule { height: 1px; background: var(--ink); margin: 20px 0 22px; }
-  .cs-intro {
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-size: 26px;
-    line-height: 1.5;
-    color: var(--ink);
-    font-weight: 400;
-  }
-
-  .tags {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    padding: 16px 48px 56px;
-    border-bottom: 1px solid var(--ink);
-  }
-  .tag {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 3px 10px;
-    border: 1px solid var(--ink);
-    color: var(--ink);
-    display: inline-block;
-    font-weight: 700;
-  }
-
-  .three-cols {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    border-bottom: 1px solid var(--ink);
-  }
-  .summary-cell { padding: 28px 48px; }
-  .col-lbl {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink);
-    margin-bottom: 8px;
-    font-weight: 700;
-  }
-  .col-body {
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-size: 19px;
-    line-height: 1.65;
-    color: var(--ink);
-  }
-
-  .content { display: grid; grid-template-columns: 1fr 220px; }
-  .main { padding: 56px 48px 80px; border-right: 1px solid var(--ink); }
-
-  .sec-block { margin-top: 64px; margin-bottom: 28px; }
-  .sec-block:first-child { margin-top: 0; }
-  .sec-label {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink);
-    margin-bottom: 6px;
-    font-weight: 700;
-  }
-  .sec-title {
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-size: 52px;
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.0;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-    margin-bottom: 0;
-  }
-  .sec-rule { height: 1px; background: var(--ink); margin-top: 14px; }
-
-  .body-text {
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-size: 21px;
-    line-height: 1.65;
-    color: var(--ink);
-    max-width: 560px;
-    margin-bottom: 20px;
-  }
-  .body-text strong { font-weight: 600; }
-
-  .sub-heading {
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-size: 24px;
-    font-weight: 500;
-    font-style: italic;
-    color: var(--ink);
-    margin-top: 40px;
-    margin-bottom: 0;
-    max-width: 560px;
-  }
-  .sub-heading::after {
-    content: '';
-    display: block;
-    width: 28px;
-    height: 1px;
-    background: var(--ink);
-    margin-top: 8px;
-    margin-bottom: 14px;
-  }
-
-  .img-block { margin: 36px 0; }
-  .img-block img {
-    width: 100%;
-    max-width: 100%;
-    display: block;
-    border: 1px solid #E0E0E0;
-    cursor: zoom-in;
-    height: auto;
-  }
-  .img-two-up { margin: 36px 0; display: flex; gap: 12px; flex-wrap: wrap; }
-  .img-two-up img {
-    flex: 1 1 calc(50% - 6px);
-    min-width: 200px;
-    width: 100%;
-    max-width: 100%;
-    display: block;
-    border: 1px solid #E0E0E0;
-    cursor: zoom-in;
-    align-self: start;
-    height: auto;
-  }
-  .img-two-up .img-caption { flex: 0 0 100%; font-weight: 500; }
-  .img-caption {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    line-height: 1.6;
-    color: var(--ink);
-    margin-top: 10px;
-    font-weight: 500;
-    max-width: 560px;
-    letter-spacing: 0.01em;
-  }
-
-  /* Iteration block — a visual device for before/after stories */
-  .iteration-block {
-    margin: 40px 0;
-    max-width: 560px;
-    border-left: 2px solid var(--ink);
-    padding-left: 24px;
-  }
-  .iteration-label {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: var(--ink);
-    opacity: 0.45;
-    margin-bottom: 6px;
-  }
-  .iteration-verdict {
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1.5;
-    color: var(--ink);
-    margin-bottom: 10px;
-  }
-  .iteration-body {
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-size: 18px;
-    line-height: 1.65;
-    color: var(--ink);
-    opacity: 0.75;
-  }
-
-  /* AI log entry styling */
-  .ai-entry {
-    max-width: 560px;
-    margin: 28px 0;
-    border: 1px solid var(--rule);
-    padding: 20px 24px;
-  }
-  .ai-entry-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 12px;
-  }
-  .ai-step-label {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: var(--ink);
-  }
-  .ai-status {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--ink);
-    opacity: 0.55;
-  }
-  .ai-row-label {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: var(--ink);
-    opacity: 0.5;
-    margin-bottom: 3px;
-    margin-top: 10px;
-  }
-  .ai-row-body {
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-size: 17px;
-    line-height: 1.6;
-    color: var(--ink);
-  }
-
-  .sidebar { padding: 40px 28px; position: sticky; top: 61px; height: fit-content; }
-  .sb-group { margin-bottom: 22px; }
-  .sb-lbl {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink);
-    margin-bottom: 4px;
-    font-weight: 700;
-  }
-  .sb-val { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--ink); line-height: 1.7; font-weight: 500; }
-
-  .case-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 24px 48px;
-    border-top: 1px solid var(--ink);
-  }
-  .case-nav a {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    color: #174E99;
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    padding-bottom: 1px;
-    font-weight: 700;
-    opacity: 1;
-    transition: opacity 0.15s, border-color 0.15s;
-  }
-  .case-nav a:hover { opacity: 1; border-bottom-color: #174E99; }
-  .case-nav a:active { opacity: 0.6; }
-
-  /* ── MOBILE ── */
-  @media (max-width: 700px) {
-    .page-wrapper { border-left: none; border-right: none; }
-    nav { padding: 16px 20px; }
-    .nav-logo { font-size: 16px; }
-    .hero { padding: 36px 20px 20px; }
-    .cs-h1 { font-size: 48px; line-height: 1.0; }
-    .cs-intro { font-size: 19px; }
-    .tags { padding: 14px 20px 32px; }
-    .three-cols { grid-template-columns: 1fr; }
-    .summary-cell { padding: 18px 20px; border-bottom: 1px solid var(--rule); }
-    .summary-cell:last-child { border-bottom: none; }
-    .content { display: flex; flex-direction: column; }
-    .main { padding: 36px 20px 48px; border-right: none; order: 1; }
-    .sidebar {
-      position: static;
-      padding: 28px 20px 40px;
-      border-top: 1px solid var(--ink);
-      order: 2;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0 24px;
-    }
-    .sb-group { margin-bottom: 16px; }
-    .sec-title { font-size: 32px; }
-    .body-text { max-width: 100%; }
-    .sub-heading { max-width: 100%; }
-    .img-block { margin: 24px 0; }
-    .img-two-up { flex-direction: column; }
-    .img-two-up img { min-width: 0; }
-    .iteration-block { max-width: 100%; }
-    .ai-entry { max-width: 100%; }
-    .case-nav { padding: 20px; }
-  }
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
 <body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,500&family=Libre+Franklin:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #FFFFFF; --sans: 'Libre Franklin', sans-serif; }
+  @media (max-width: 700px) {
+    #site-nav { padding: 16px 20px !important; }
+    #site-nav-links { gap: 14px !important; }
+    #site-nav-links a { font-size: 9px !important; }
+    #cs-shell { grid-template-columns: 1fr !important; }
+    #cs-rail { display: none !important; }
+    #cs-main section { grid-template-columns: 1fr !important; padding: 48px 20px !important; gap: 20px !important; }
+    #cs-main section > div[style*="grid-column"] { grid-column: 1 !important; }
+    #ai-hero { height: 200px !important; }
+    #cs-main h1 { font-size: 32px !important; }
+    #cs-main h2 { font-size: 28px !important; }
+    #cs-main h3 { font-size: 20px !important; }
+    #cs-imgpair-1, #cs-imgpair-2, #cs-imgpair-3, #cs-imgpair-4 { grid-template-columns: 1fr !important; }
+    #cs-footer-nav { padding: 24px 20px !important; }
+  }
+</style>
+</helmet>
 
-<div class="page-wrapper">
+<div style="background: #FFFFFF; color: #111111; min-height: 100vh;">
 
-<nav>
-  <a class="nav-logo" href="../index.html">Justyna Koc</a>
-  <div class="nav-links">
-    <a href="../index.html" class="active">Work</a>
-    <a href="../about.html">About</a>
-    <a href="../contact.html">Contact</a>
-  </div>
-</nav>
+  <!-- Top bar -->
+  <nav id="site-nav" style="display: flex; justify-content: space-between; align-items: baseline; padding: 22px 56px; border-bottom: 1px solid #E3E1DC;">
+    <a href="Home.dc.html" style="font-family: 'EB Garamond', serif; font-size: 20px; color: #111111; text-decoration: none;">Justyna Koc</a>
+    <div id="site-nav-links" style="display: flex; gap: 28px;">
+      <a href="Home.dc.html" style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #111111; text-decoration: none; border-bottom: 1px solid #111111; padding-bottom: 2px;">Work</a>
+      <a href="About.dc.html" style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #767470; text-decoration: none; padding-bottom: 2px;" style-hover="color: #111111 !important;">About</a>
+      <a href="Contact.dc.html" style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #767470; text-decoration: none; padding-bottom: 2px;" style-hover="color: #111111 !important;">Contact</a>
+    </div>
+  </nav>
 
-<div class="hero">
-  <div class="cs-sup">Case study · 03 · B2B SaaS</div>
-  <h1 class="cs-h1">AI was fast.<br><em>The hard part</em><br>was still mine.</h1>
-  <div class="hero-rule"></div>
-  <p class="cs-intro">A concept project where AI was part of the process from the start as a working tool. AI accelerated the research and generated the first version of almost everything. The real design time went to the decisions it got wrong.</p>
-</div>
+  <div id="cs-shell" style="display: grid; grid-template-columns: 280px 1fr;">
 
-<div class="tags">
-  <span class="tag">B2B SaaS</span>
-  <span class="tag">CRM</span>
-  <span class="tag">Desktop</span>
-  <span class="tag">Sole Product Designer</span>
-  <span class="tag">AI-assisted process</span>
-  <span class="tag">Design system from scratch</span>
-  <span class="tag">HTML prototype</span>
-</div>
+  <!-- Left rail -->
+  <aside id="cs-rail" style="border-right: 1px solid #E3E1DC;">
+    <div style="position: sticky; top: 0; display: flex; flex-direction: column; gap: 48px; padding: 32px 32px 32px 56px; min-height: 100vh; box-sizing: border-box;">
+      <nav style="display: flex; flex-direction: column; gap: 16px;">
+        <a href="#challenge" style="font-family: var(--sans); font-size: 13px; font-weight: 500; color: #111111; text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px; width: fit-content;" style-hover="border-bottom-color: #111111 !important;">The challenge</a>
+        <a href="#process" style="font-family: var(--sans); font-size: 13px; font-weight: 500; color: #111111; text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px; width: fit-content;" style-hover="border-bottom-color: #111111 !important;">Process</a>
+        <a href="#system" style="font-family: var(--sans); font-size: 13px; font-weight: 500; color: #111111; text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px; width: fit-content;" style-hover="border-bottom-color: #111111 !important;">Design system</a>
+        <a href="#design" style="font-family: var(--sans); font-size: 13px; font-weight: 500; color: #111111; text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px; width: fit-content;" style-hover="border-bottom-color: #111111 !important;">The design</a>
+        <a href="#metrics" style="font-family: var(--sans); font-size: 13px; font-weight: 500; color: #111111; text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px; width: fit-content;" style-hover="border-bottom-color: #111111 !important;">Success metrics</a>
+        <a href="#outcome" style="font-family: var(--sans); font-size: 13px; font-weight: 500; color: #111111; text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px; width: fit-content;" style-hover="border-bottom-color: #111111 !important;">Outcome</a>
+      </nav>
+      <div style="margin-top: auto; opacity: {{ railNextOpacity }}; pointer-events: {{ railNextPointerEvents }}; transition: opacity 0.15s;">
+        <a href="#" style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #111111; text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px;" style-hover="border-bottom-color: #111111 !important;">Next case study &#8250;</a>
+      </div>
+    </div>
+  </aside>
 
-<div class="three-cols">
-  <div class="summary-cell">
-    <div class="col-lbl">01 · Challenge</div>
-    <p class="col-body">Design an AI Insight Panel for a B2B CRM — from scratch, no design system, no existing component library — that helps sales managers understand exactly what to do next, rather than adding another layer of data to interpret.</p>
-  </div>
-  <div class="summary-cell" style="border-left: 1px solid var(--ink); border-right: 1px solid var(--ink);">
-    <div class="col-lbl">02 · Process</div>
-    <p class="col-body">AI-accelerated desk research · Persona & JTBD · Competitive analysis · User flows · IA · High-fidelity HTML prototype · Iterated design system</p>
-  </div>
-  <div class="summary-cell">
-    <div class="col-lbl">03 · Outcome</div>
-    <p class="col-body">Two high-fidelity screens covering three Jobs to Be Done, built on a coherent design system established from zero — with every major decision documented and tested in a working prototype.</p>
-  </div>
-</div>
+  <!-- Content column -->
+  <main id="cs-main" style="min-width: 0;">
 
-<div class="content">
-<div class="main">
+    <!-- Hero image -->
+    <div id="ai-hero" style="background: #ECEBE8; height: 420px; overflow: hidden;">
+      <img src="images/ai.png" alt="AI Insight Panel — dashboard with AI-generated insights and AI Briefing screen" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    </div>
 
-  <!-- ── 01 THE DESIGN CHALLENGE ── -->
-  <div class="sec-block">
-    <div class="sec-label">01</div>
-    <h2 class="sec-title">The design challenge</h2>
-    <div class="sec-rule"></div>
-  </div>
-
-  <p class="body-text">The brief asked for an AI Smart Assistant and Insight Panel for DataFlow, a B2B CRM platform. Sales Managers were drowning in data — hundreds of charts and tables — but the platform gave them no help interpreting any of it. The stated problem was data overload.</p>
-
-  <p class="body-text">The real problem was different. Data overload is a symptom. The underlying need was decision support: <strong>tell me what to do next, and why.</strong> That reframe drove every decision that followed. I wasn't designing a smarter dashboard. I was designing an action system.</p>
-
-  <p class="body-text">There was no design system to inherit. No component library, no established tokens, no precedent. Everything — spacing scale, colour decisions, component patterns, AI interaction conventions — had to be built and justified from first principles.</p>
-
-  
-
-  <!-- ── 02 HOW AI CHANGED THE PROCESS ── -->
-  <div class="sec-block">
-    <div class="sec-label">02</div>
-    <h2 class="sec-title">How AI changed the process</h2>
-    <div class="sec-rule"></div>
-  </div>
-
-  <p class="body-text">AI compressed research that would normally take days into hours — desk research, competitive analysis, persona. That acceleration mattered: I arrived at ideation with real research behind me, not assumptions.</p>
-
-  <p class="body-text">AI also generated the first version of almost everything else: layouts, component structures, interaction patterns. And that's where the real work began. The first version was almost always <strong>technically reasonable and wrong in the same way — failing on judgment.</strong> The sidebar was too much. The grid didn't communicate priority. The chat overlay broke the context it depended on. The purple was inverting the hierarchy.</p>
-
-  <p class="body-text">Every significant design decision in this case study came from looking at what AI generated and knowing it was wrong — and being able to say exactly why.</p>
-
-
-  
-
-  <!-- ── 03 WHAT I REJECTED, AND WHY ── -->
-  <div class="sec-block">
-    <div class="sec-label">03</div>
-    <h2 class="sec-title">What I rejected,<br>and why</h2>
-    <div class="sec-rule"></div>
-  </div>
-
-  <p class="body-text">Four iterations shaped the final design.</p>
-
-  <div class="sub-heading">Colour as an AI signal — rejected</div>
-
-  <p class="body-text">The first version came from AI: violet for everything AI-related — navigation labels, icons, insight pills, text labels. When I saw it prototyped, three problems were immediately visible.</p>
-
-  <p class="body-text">The "AI Briefing" nav item was violet — it drew more attention than the actually selected item, creating visual competition where there should be clear hierarchy. Purple is typically reserved for CTAs, but the primary CTA here was black — so the AI accent was pulling more visual weight than the action it was meant to support. And the AI Insights sections on the dashboard looked pasted on, not native — the colour made them feel like an add-on rather than a feature that belonged to the product.</p>
-
-  <p class="body-text">The decision: remove colour as an AI signal entirely. The replacement wasn't another colour — it was a muted background that uses the same surface language as the rest of the interface. AI Insights look like they belong to the card, not like they've been added on top of it. AI-generated content is identified through the sparkle icon and an explicit text label only.</p>
-
-  <div class="img-two-up">
-    <img src="violet_AI.png" alt="Early version with violet applied across all AI elements">
-    <img src="Dashboard.png" alt="Final version — no AI colour, sparkle icon and text label only">
-    <p class="img-caption">Left: violet applied to every AI-related element. The "AI Briefing" nav item draws more attention than the selected item; the AI Insights pill competes with the data it's meant to support. Right: colour removed entirely. The sparkle icon and "AI Insights" label do the identification work; the AI layer belongs to the product rather than sitting on top of it.</p>
-  </div>
-
-  <div class="sub-heading">Persistent sidebar and card grid — both rejected, same reason</div>
-
-  <p class="body-text">Two separate iterations, one underlying problem. First: AI tasks and assistant in a persistent right sidebar, always visible. The sidebar competed with every screen — always present, never in focus, adding visual weight to an interface that was already information-dense.</p>
-
-  <p class="body-text">Second: AI suggested placing the alert cards in a grid, because the Dashboard was already grid-based. The logic was locally coherent — but a grid communicates equivalence. Three things of equal importance. That's the wrong mental model for triage; the whole point is that one deal is more critical than the others. A grid throws away the only thing that matters: which problem needs attention first.</p>
-
-  <p class="body-text">Both iterations led to the same conclusion: the AI layer needed its own dedicated screen. Not a panel bolted to the side, not cards embedded in the dashboard — a surface the user opens intentionally, where the whole screen exists for one job.</p>
-
-  <div class="img-two-up">
-    <img src="AIinsights_as_sidepannel.png" alt="Persistent sidebar — always visible, competing with main content">
-    <img src="AIBrefing.png" alt="AI Briefing as a dedicated focused screen">
-    <p class="img-caption">Left: the persistent sidebar — always there, always competing. Right: AI Briefing as a dedicated screen. Nothing competes. The grid iteration (three equal cards) had the same problem as the sidebar: it hid the hierarchy the triage flow depended on.</p>
-  </div>
-
-  <div class="sub-heading">AI chat — two wrong positions before the right pattern</div>
-
-  <div class="iteration-block">
-    <div class="iteration-label">Rejected — version 1</div>
-    <div class="iteration-verdict">Chat button in the top navigation bar.</div>
-    <div class="iteration-body">The conventional starting point. The problem was prominence: a top-nav position implies a primary, constant action. Chat is contextual — it should be available when needed, not competing with navigation at all times.</div>
-  </div>
-
-  <div class="iteration-block">
-    <div class="iteration-label">Rejected — version 2</div>
-    <div class="iteration-verdict">Floating bottom-right button, overlay panel on click.</div>
-    <div class="iteration-body">The standard chat pattern. It looked right until I saw it prototyped: opening the panel covered the data the user was trying to ask questions about. The entire value of AI chat is asking questions about what's on screen — an overlay that hides that screen breaks the feature at its core.</div>
-  </div>
-
-  <div class="iteration-block">
-    <div class="iteration-label">Kept</div>
-    <div class="iteration-verdict">Push layout — content shifts left, panel appears on the right.</div>
-    <div class="iteration-body">The right solution wasn't finding a better position for a conventional pattern. It was recognising that the conventional pattern was wrong for this use case. Push layout keeps the data visible while the conversation happens alongside it.</div>
-  </div>
-
-  <div class="img-two-up">
-    <img src="chat_over_data.png" alt="Overlay chat covering the dashboard data">
-    <img src="Chatbox_open.png" alt="Push layout — content shifts left, data stays visible">
-    <p class="img-caption">Left: the overlay version — the chat panel covers the data the user opened it to ask about. Right: push layout. The data stays visible; the conversation happens alongside it.</p>
-  </div>
-
-  <!-- ── 03b DESIGN SYSTEM ── -->
-  <div class="sec-block">
-    <div class="sec-label">03b</div>
-    <h2 class="sec-title">Design system</h2>
-    <div class="sec-rule"></div>
-  </div>
-
-  <p class="body-text">The system was built in code from zero — no inherited library, no existing precedent. The tokens and decisions behind it are documented here.</p>
-
-  <div class="sub-heading">Colour</div>
-
-  <p class="body-text">An achromatic base with three semantic colours for data values and one AI accent that was defined in the token system but ultimately removed from visible UI elements — replaced by icon and label as AI identifiers.</p>
-
-  <!-- Colour swatches -->
-  <div style="margin: 28px 0; max-width: 560px; display: flex; flex-direction: column; gap: 8px;">
-
-    <div style="font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #0D0D0D; opacity: 0.45; margin-bottom: 2px;">Base</div>
-
-    <div style="display: flex; align-items: center; gap: 16px;">
-      <div style="width: 40px; height: 40px; background: #0f172a; flex-shrink: 0;"></div>
+    <!-- Intro -->
+    <section data-screen-label="Intro" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; padding: 72px 64px 64px;">
       <div>
-        <div style="font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700;">Foreground</div>
-        <div style="font-family: 'DM Sans', sans-serif; font-size: 12px; color: #64748b;">--foreground: #0f172a · Primary text, CTA background</div>
+        <p style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #767470; margin: 0 0 20px;">Case study · 03 · B2B SaaS</p>
+        <h1 style="font-family: 'EB Garamond', serif; font-weight: 400; font-size: 60px; line-height: 1.06; letter-spacing: -0.01em; color: #111111; margin: 0;">AI was fast. The hard part was still mine.</h1>
       </div>
-    </div>
-
-    <div style="display: flex; align-items: center; gap: 16px;">
-      <div style="width: 40px; height: 40px; background: #f8fafc; flex-shrink: 0; outline: 1px solid #e2e8f0;"></div>
       <div>
-        <div style="font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700;">Background</div>
-        <div style="font-family: 'DM Sans', sans-serif; font-size: 12px; color: #64748b;">--background: #f8fafc · Page background</div>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 20px; line-height: 1.7; color: #111111; margin: 0;">A concept project where AI was part of the process from the start as a working tool. AI accelerated the research and generated the first version of almost everything. The real design time went to the decisions it got wrong.</p>
       </div>
-    </div>
+    </section>
 
-    <div style="display: flex; align-items: center; gap: 16px;">
-      <div style="width: 40px; height: 40px; background: #ffffff; flex-shrink: 0; outline: 1px solid #e2e8f0;"></div>
+    <!-- Meta row -->
+    <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; padding: 36px 64px 56px; border-top: 1px solid #E3E1DC;">
       <div>
-        <div style="font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700;">Card</div>
-        <div style="font-family: 'DM Sans', sans-serif; font-size: 12px; color: #64748b;">--card: #ffffff · Component surfaces</div>
+        <p style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #111111; margin: 0 0 10px;">Role</p>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 16px; line-height: 1.6; color: #111111; margin: 0;">Sole Product Designer</p>
       </div>
-    </div>
-
-    <div style="display: flex; align-items: center; gap: 16px;">
-      <div style="width: 40px; height: 40px; background: #64748b; flex-shrink: 0;"></div>
       <div>
-        <div style="font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700;">Muted</div>
-        <div style="font-family: 'DM Sans', sans-serif; font-size: 12px; color: #64748b;">--muted-foreground: #64748b · Secondary text, labels</div>
+        <p style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #111111; margin: 0 0 10px;">Context</p>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 16px; line-height: 1.6; color: #111111; margin: 0;">Concept project (B2B SaaS · CRM) · Desktop</p>
       </div>
-    </div>
-
-    <div style="display: flex; align-items: center; gap: 16px;">
-      <div style="width: 40px; height: 40px; background: #e2e8f0; flex-shrink: 0;"></div>
       <div>
-        <div style="font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700;">Border</div>
-        <div style="font-family: 'DM Sans', sans-serif; font-size: 12px; color: #64748b;">--border: #e2e8f0 · Dividers, card borders</div>
+        <p style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #111111; margin: 0 0 10px;">Tools</p>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 16px; line-height: 1.6; color: #111111; margin: 0;">Claude · Gemini · v0 · HTML/CSS · VS Code</p>
       </div>
-    </div>
-
-    <div style="font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #0D0D0D; opacity: 0.45; margin-top: 12px; margin-bottom: 2px;">Semantic — data values only</div>
-
-    <div style="display: flex; align-items: center; gap: 16px;">
-      <div style="width: 40px; height: 40px; background: #ef4444; flex-shrink: 0;"></div>
       <div>
-        <div style="font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700;">Critical</div>
-        <div style="font-family: 'DM Sans', sans-serif; font-size: 12px; color: #64748b;">Destructive red · alert borders, negative values</div>
+        <p style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #111111; margin: 0 0 10px;">Methods</p>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 16px; line-height: 1.6; color: #111111; margin: 0;">AI-assisted desk research · Competitive analysis · Persona & JTBD · User flows · IA · Rapid prototyping</p>
       </div>
-    </div>
+    </section>
 
-    <div style="display: flex; align-items: center; gap: 16px;">
-      <div style="width: 40px; height: 40px; background: #f59e0b; flex-shrink: 0;"></div>
+    <!-- 01 The challenge -->
+    <section id="challenge" data-screen-label="The challenge" style="display: grid; grid-template-columns: minmax(160px, 1fr) minmax(0, 2.2fr); gap: 48px; padding: 72px 64px; border-top: 1px solid #E3E1DC;">
       <div>
-        <div style="font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700;">Anomaly</div>
-        <div style="font-family: 'DM Sans', sans-serif; font-size: 12px; color: #64748b;">Amber · pipeline anomaly signal</div>
+        <h2 style="font-family: 'EB Garamond', serif; font-weight: 400; font-size: 52px; line-height: 1.08; color: #111111; margin: 0;">The design challenge</h2>
       </div>
-    </div>
+      <div style="max-width: 640px;">
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 24px;">The brief asked for an AI Smart Assistant and Insight Panel for DataFlow, a B2B CRM platform. Sales Managers were drowning in data — hundreds of charts and tables — but the platform gave them no help interpreting any of it. The stated problem was data overload.</p>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 24px;">The real problem was different. Data overload is a symptom. The underlying need was decision support: <strong>tell me what to do next, and why.</strong> That reframe drove every decision that followed. I wasn't designing a smarter dashboard. I was designing an action system.</p>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0;">There was no design system to inherit. No component library, no established tokens, no precedent. Everything — spacing scale, colour decisions, component patterns, AI interaction conventions — had to be built and justified from first principles.</p>
+      </div>
+    </section>
 
-    <div style="display: flex; align-items: center; gap: 16px;">
-      <div style="width: 40px; height: 40px; background: #10b981; flex-shrink: 0;"></div>
+    <!-- 02 Process -->
+    <section id="process" data-screen-label="Process" style="display: grid; grid-template-columns: minmax(160px, 1fr) minmax(0, 2.2fr); gap: 48px; padding: 72px 64px; border-top: 1px solid #E3E1DC;">
       <div>
-        <div style="font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700;">Upsell</div>
-        <div style="font-family: 'DM Sans', sans-serif; font-size: 12px; color: #64748b;">Emerald · positive signals, growth indicators</div>
+        <h2 style="font-family: 'EB Garamond', serif; font-weight: 400; font-size: 52px; line-height: 1.08; color: #111111; margin: 0;">Process</h2>
       </div>
-    </div>
+      <div style="max-width: 640px;">
+        <h3 style="font-family: 'EB Garamond', serif; font-weight: 500; font-size: 30px; line-height: 1.2; color: #111111; margin: 0 0 18px;">How AI changed the process</h3>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 24px;">AI compressed research that would normally take days into hours — desk research, competitive analysis, persona. That acceleration mattered: I arrived at ideation with real research behind me, not assumptions.</p>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 24px;">AI also generated the first version of almost everything else: layouts, component structures, interaction patterns. And that's where the real work began. The first version was almost always <strong>technically reasonable and wrong in the same way — failing on judgment.</strong> The sidebar was too much. The grid didn't communicate priority. The chat overlay broke the context it depended on. The purple was inverting the hierarchy.</p>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">Every significant design decision in this case study came from looking at what AI generated and knowing it was wrong — and being able to say exactly why.</p>
 
-    <div style="font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #0D0D0D; opacity: 0.45; margin-top: 12px; margin-bottom: 2px;">AI accent</div>
+        <h3 style="font-family: 'EB Garamond', serif; font-weight: 500; font-size: 30px; line-height: 1.2; color: #111111; margin: 0 0 18px;">What I rejected, and why</h3>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 24px;">Four iterations shaped the final design.</p>
 
-    <div style="display: flex; align-items: center; gap: 16px; opacity: 0.45;">
-      <div style="width: 40px; height: 40px; background: #7c3aed; flex-shrink: 0;"></div>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 19px; line-height: 1.4; color: #111111; margin: 0 0 12px; font-style: italic;">Colour as an AI signal — rejected</p>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 24px;">The first version came from AI: violet for everything AI-related — navigation labels, icons, insight pills, text labels. When I saw it prototyped, three problems were immediately visible.</p>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 24px;">The "AI Briefing" nav item was violet — it drew more attention than the actually selected item, creating visual competition where there should be clear hierarchy. Purple is typically reserved for CTAs, but the primary CTA here was black — so the AI accent was pulling more visual weight than the action it was meant to support. And the AI Insights sections on the dashboard looked pasted on, not native — the colour made them feel like an add-on rather than a feature that belonged to the product.</p>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">The decision: remove colour as an AI signal entirely. The replacement wasn't another colour — it was a muted background that uses the same surface language as the rest of the interface. AI Insights look like they belong to the card, not like they've been added on top of it. AI-generated content is identified through the sparkle icon and an explicit text label only.</p>
+      </div>
+      <div style="grid-column: 1 / -1;">
+        <div id="cs-imgpair-1" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div style="background: #ECEBE8; height: 420px; display: flex; align-items: center; justify-content: center;">
+            <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — violet_AI.png</span>
+          </div>
+          <div style="background: #ECEBE8; height: 420px; display: flex; align-items: center; justify-content: center;">
+            <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — Dashboard.png</span>
+          </div>
+        </div>
+        <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">Left: violet applied to every AI-related element. The "AI Briefing" nav item draws more attention than the selected item; the AI Insights pill competes with the data it's meant to support. Right: colour removed entirely. The sparkle icon and "AI Insights" label do the identification work; the AI layer belongs to the product rather than sitting on top of it.</p>
+      </div>
+      <div style="grid-column: 2; max-width: 640px;">
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 19px; line-height: 1.4; color: #111111; margin: 36px 0 12px; font-style: italic;">Persistent sidebar and card grid — both rejected, same reason</p>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 24px;">Two separate iterations, one underlying problem. First: AI tasks and assistant in a persistent right sidebar, always visible. The sidebar competed with every screen — always present, never in focus, adding visual weight to an interface that was already information-dense.</p>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 24px;">Second: AI suggested placing the alert cards in a grid, because the Dashboard was already grid-based. The logic was locally coherent — but a grid communicates equivalence. Three things of equal importance. That's the wrong mental model for triage; the whole point is that one deal is more critical than the others. A grid throws away the only thing that matters: which problem needs attention first.</p>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">Both iterations led to the same conclusion: the AI layer needed its own dedicated screen. Not a panel bolted to the side, not cards embedded in the dashboard — a surface the user opens intentionally, where the whole screen exists for one job.</p>
+      </div>
+      <div style="grid-column: 1 / -1;">
+        <div id="cs-imgpair-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div style="background: #ECEBE8; height: 420px; display: flex; align-items: center; justify-content: center;">
+            <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — AIinsights_as_sidepannel.png</span>
+          </div>
+          <div style="background: #ECEBE8; height: 420px; display: flex; align-items: center; justify-content: center;">
+            <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — AIBrefing.png</span>
+          </div>
+        </div>
+        <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">Left: the persistent sidebar — always there, always competing. Right: AI Briefing as a dedicated screen. Nothing competes. The grid iteration (three equal cards) had the same problem as the sidebar: it hid the hierarchy the triage flow depended on.</p>
+      </div>
+      <div style="grid-column: 2; max-width: 640px;">
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 19px; line-height: 1.4; color: #111111; margin: 36px 0 20px; font-style: italic;">AI chat — two wrong positions before the right pattern</p>
+
+        <div style="border-top: 1px solid #E3E1DC; padding: 20px 0;">
+          <p style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #767470; margin: 0 0 8px;">Rejected — version 1</p>
+          <p style="font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 18px; line-height: 1.5; color: #111111; margin: 0 0 8px;">Chat button in the top navigation bar.</p>
+          <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 16px; line-height: 1.65; color: #4A4845; margin: 0;">The conventional starting point. The problem was prominence: a top-nav position implies a primary, constant action. Chat is contextual — it should be available when needed, not competing with navigation at all times.</p>
+        </div>
+        <div style="border-top: 1px solid #E3E1DC; padding: 20px 0;">
+          <p style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #767470; margin: 0 0 8px;">Rejected — version 2</p>
+          <p style="font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 18px; line-height: 1.5; color: #111111; margin: 0 0 8px;">Floating bottom-right button, overlay panel on click.</p>
+          <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 16px; line-height: 1.65; color: #4A4845; margin: 0;">The standard chat pattern. It looked right until I saw it prototyped: opening the panel covered the data the user was trying to ask questions about. The entire value of AI chat is asking questions about what's on screen — an overlay that hides that screen breaks the feature at its core.</p>
+        </div>
+        <div style="border-top: 1px solid #E3E1DC; border-bottom: 1px solid #E3E1DC; padding: 20px 0; margin-bottom: 28px;">
+          <p style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #767470; margin: 0 0 8px;">Kept</p>
+          <p style="font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 18px; line-height: 1.5; color: #111111; margin: 0 0 8px;">Push layout — content shifts left, panel appears on the right.</p>
+          <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 16px; line-height: 1.65; color: #4A4845; margin: 0;">The right solution wasn't finding a better position for a conventional pattern. It was recognising that the conventional pattern was wrong for this use case. Push layout keeps the data visible while the conversation happens alongside it.</p>
+        </div>
+      </div>
+      <div style="grid-column: 1 / -1;">
+        <div id="cs-imgpair-3" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div style="background: #ECEBE8; height: 420px; display: flex; align-items: center; justify-content: center;">
+            <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — chat_over_data.png</span>
+          </div>
+          <div style="background: #ECEBE8; height: 420px; display: flex; align-items: center; justify-content: center;">
+            <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — Chatbox_open.png</span>
+          </div>
+        </div>
+        <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">Left: the overlay version — the chat panel covers the data the user opened it to ask about. Right: push layout. The data stays visible; the conversation happens alongside it.</p>
+      </div>
+    </section>
+
+    <!-- 03 Design system -->
+    <section id="system" data-screen-label="Design system" style="display: grid; grid-template-columns: minmax(160px, 1fr) minmax(0, 2.2fr); gap: 48px; padding: 72px 64px; border-top: 1px solid #E3E1DC;">
       <div>
-        <div style="font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700;">AI <span style="font-weight: 400; text-decoration: line-through;">used in UI</span></div>
-        <div style="font-family: 'DM Sans', sans-serif; font-size: 12px; color: #64748b;">--ai: #7c3aed · Defined in tokens, removed from UI — replaced by sparkle icon + text label</div>
+        <h2 style="font-family: 'EB Garamond', serif; font-weight: 400; font-size: 52px; line-height: 1.08; color: #111111; margin: 0;">Design system</h2>
       </div>
-    </div>
+      <div style="max-width: 640px;">
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">The system was built in code from zero — no inherited library, no existing precedent. The tokens and decisions behind it are documented here.</p>
 
-  </div>
+        <h3 style="font-family: 'EB Garamond', serif; font-weight: 500; font-size: 24px; line-height: 1.2; color: #111111; margin: 0 0 14px;">Colour</h3>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 17px; line-height: 1.7; color: #111111; margin: 0 0 20px;">An achromatic base with three semantic colours for data values, and one AI accent defined in the token system but ultimately removed from visible UI elements — replaced by icon and label as AI identifiers.</p>
 
-  <div class="sub-heading">Typography</div>
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px;">
+          <p style="font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #767470; margin: 0;">Base</p>
+          <div style="display: flex; align-items: center; gap: 16px;"><div style="width: 36px; height: 36px; background: #0f172a; flex-shrink: 0;"></div><div><p style="font-family: var(--sans); font-size: 13px; font-weight: 600; color: #111111; margin: 0;">Foreground · #0f172a</p><p style="font-family: var(--sans); font-size: 12px; color: #767470; margin: 2px 0 0;">Primary text, CTA background</p></div></div>
+          <div style="display: flex; align-items: center; gap: 16px;"><div style="width: 36px; height: 36px; background: #f8fafc; outline: 1px solid #E3E1DC; flex-shrink: 0;"></div><div><p style="font-family: var(--sans); font-size: 13px; font-weight: 600; color: #111111; margin: 0;">Background · #f8fafc</p><p style="font-family: var(--sans); font-size: 12px; color: #767470; margin: 2px 0 0;">Page background</p></div></div>
+          <div style="display: flex; align-items: center; gap: 16px;"><div style="width: 36px; height: 36px; background: #64748b; flex-shrink: 0;"></div><div><p style="font-family: var(--sans); font-size: 13px; font-weight: 600; color: #111111; margin: 0;">Muted · #64748b</p><p style="font-family: var(--sans); font-size: 12px; color: #767470; margin: 2px 0 0;">Secondary text, labels</p></div></div>
+          <p style="font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #767470; margin: 12px 0 0;">Semantic — data values only</p>
+          <div style="display: flex; align-items: center; gap: 16px;"><div style="width: 36px; height: 36px; background: #ef4444; flex-shrink: 0;"></div><div><p style="font-family: var(--sans); font-size: 13px; font-weight: 600; color: #111111; margin: 0;">Critical · #ef4444</p><p style="font-family: var(--sans); font-size: 12px; color: #767470; margin: 2px 0 0;">Alert borders, negative values</p></div></div>
+          <div style="display: flex; align-items: center; gap: 16px;"><div style="width: 36px; height: 36px; background: #f59e0b; flex-shrink: 0;"></div><div><p style="font-family: var(--sans); font-size: 13px; font-weight: 600; color: #111111; margin: 0;">Anomaly · #f59e0b</p><p style="font-family: var(--sans); font-size: 12px; color: #767470; margin: 2px 0 0;">Pipeline anomaly signal</p></div></div>
+          <div style="display: flex; align-items: center; gap: 16px;"><div style="width: 36px; height: 36px; background: #10b981; flex-shrink: 0;"></div><div><p style="font-family: var(--sans); font-size: 13px; font-weight: 600; color: #111111; margin: 0;">Upsell · #10b981</p><p style="font-family: var(--sans); font-size: 12px; color: #767470; margin: 2px 0 0;">Positive signals, growth indicators</p></div></div>
+          <p style="font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #767470; margin: 12px 0 0;">AI accent</p>
+          <div style="display: flex; align-items: center; gap: 16px; opacity: 0.5;"><div style="width: 36px; height: 36px; background: #7c3aed; flex-shrink: 0;"></div><div><p style="font-family: var(--sans); font-size: 13px; font-weight: 600; color: #111111; margin: 0; text-decoration: line-through;">AI · #7c3aed</p><p style="font-family: var(--sans); font-size: 12px; color: #767470; margin: 2px 0 0;">Defined in tokens, removed from UI — replaced by sparkle icon + text label</p></div></div>
+        </div>
 
-  <p class="body-text">Inter throughout — a single typeface with a strict scale. Size and weight carry all the hierarchy; no decorative variation.</p>
+        <h3 style="font-family: 'EB Garamond', serif; font-weight: 500; font-size: 24px; line-height: 1.2; color: #111111; margin: 0 0 14px;">Typography</h3>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 17px; line-height: 1.7; color: #111111; margin: 0 0 20px;">Inter throughout — a single typeface with a strict scale. Size and weight carry all the hierarchy; no decorative variation.</p>
+        <div style="display: flex; flex-direction: column; margin-bottom: 32px;">
+          <div style="display: flex; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid #E3E1DC;"><span style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; min-width: 200px;">CATEGORY · 11px · 700</span><span style="font-family: var(--sans); font-size: 12px; color: #767470;">Category labels, AI Insights header</span></div>
+          <div style="display: flex; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid #E3E1DC;"><span style="font-family: Inter, sans-serif; font-size: 13px; color: #4A4845; min-width: 200px;">Narrative text · 13px · 400</span><span style="font-family: var(--sans); font-size: 12px; color: #767470;">Secondary text, card descriptions</span></div>
+          <div style="display: flex; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid #E3E1DC;"><span style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 600; min-width: 200px;">Card title · 14px · 600</span><span style="font-family: var(--sans); font-size: 12px; color: #767470;">Alert titles, widget headings</span></div>
+          <div style="display: flex; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid #E3E1DC;"><span style="font-family: Inter, sans-serif; font-size: 16px; font-weight: 500; min-width: 200px;">Section heading · 16px · 500</span><span style="font-family: var(--sans); font-size: 12px; color: #767470;">Page and section titles</span></div>
+          <div style="display: flex; align-items: baseline; gap: 16px; padding: 12px 0;"><span style="font-family: Inter, sans-serif; font-size: 26px; font-weight: 700; letter-spacing: -0.02em; min-width: 200px;">&euro;4.2M</span><span style="font-family: var(--sans); font-size: 12px; color: #767470;">KPI values · 28px · 700 · tabular nums</span></div>
+        </div>
 
-  <div style="margin: 28px 0; max-width: 560px; display: flex; flex-direction: column; gap: 0;">
+        <h3 style="font-family: 'EB Garamond', serif; font-weight: 500; font-size: 24px; line-height: 1.2; color: #111111; margin: 0 0 14px;">Components</h3>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 17px; line-height: 1.7; color: #111111; margin: 0 0 20px;">Three card themes share one component structure — only the semantic colour changes. This was a deliberate decision: the user learns the card pattern once and applies it to all three alert types without relearning.</p>
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px;">
+          <div style="border: 1px solid #E3E1DC; border-left: 3px solid #ef4444; padding: 14px 16px; background: #fff;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><span style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #ef4444;">Critical Risk</span><span style="font-family: Inter, sans-serif; font-size: 11px; color: #767470; border: 1px solid #E3E1DC; border-radius: 999px; padding: 2px 8px;">94% confidence</span></div>
+            <div style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 600; color: #111111;">Card title</div>
+            <div style="font-family: Inter, sans-serif; font-size: 13px; color: #767470; margin-top: 2px;">Narrative text — one to two sentences</div>
+            <div style="display: flex; gap: 8px; margin-top: 10px; align-items: center;"><span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 500; background: #111111; color: #fff; padding: 5px 10px;">Draft with AI</span><span style="font-family: Inter, sans-serif; font-size: 12px; color: #767470;">Dismiss</span></div>
+          </div>
+          <div style="border: 1px solid #E3E1DC; border-left: 3px solid #f59e0b; padding: 14px 16px; background: #fff;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><span style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #b45309;">Pipeline Anomaly</span><span style="font-family: Inter, sans-serif; font-size: 11px; color: #767470; border: 1px solid #E3E1DC; border-radius: 999px; padding: 2px 8px;">89% confidence</span></div>
+            <div style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 600; color: #111111;">Card title</div>
+            <div style="font-family: Inter, sans-serif; font-size: 13px; color: #767470; margin-top: 2px;">Narrative text — one to two sentences</div>
+            <div style="display: flex; gap: 8px; margin-top: 10px; align-items: center;"><span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 500; background: #111111; color: #fff; padding: 5px 10px;">Open Playbook</span><span style="font-family: Inter, sans-serif; font-size: 12px; color: #767470;">Dismiss</span></div>
+          </div>
+          <div style="border: 1px solid #E3E1DC; border-left: 3px solid #10b981; padding: 14px 16px; background: #fff;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><span style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #059669;">Upsell Opportunity</span><span style="font-family: Inter, sans-serif; font-size: 11px; color: #767470; border: 1px solid #E3E1DC; border-radius: 999px; padding: 2px 8px;">91% confidence</span></div>
+            <div style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 600; color: #111111;">Card title</div>
+            <div style="font-family: Inter, sans-serif; font-size: 13px; color: #767470; margin-top: 2px;">Narrative text — one to two sentences</div>
+            <div style="display: flex; gap: 8px; margin-top: 10px; align-items: center;"><span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 500; background: #111111; color: #fff; padding: 5px 10px;">Draft Offer</span><span style="font-family: Inter, sans-serif; font-size: 12px; color: #767470;">Dismiss</span></div>
+          </div>
+        </div>
+        <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 0 0 32px;">One component structure, three semantic themes. The left border colour and category label change; everything else — spacing, typography, CTA position, accordion trigger — stays identical. The user learns the pattern once.</p>
 
-    <div style="display: flex; align-items: center; gap: 16px; padding: 12px 0; border-bottom: 1px solid #e2e8f0;">
-      <div style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; width: 220px; flex-shrink: 0;">CATEGORY · 11px · 700</div>
-      <div style="font-family: 'DM Sans', sans-serif; font-size: 12px; color: #64748b;">Category labels, AI Insights header</div>
-    </div>
+        <h3 style="font-family: 'EB Garamond', serif; font-weight: 500; font-size: 24px; line-height: 1.2; color: #111111; margin: 0 0 14px;">Spacing &amp; radius</h3>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 17px; line-height: 1.7; color: #111111; margin: 0 0 32px;">4px base unit throughout. Border radius defined as a single token (<code style="font-family: ui-monospace, monospace; font-size: 15px; background: #ECEBE8; padding: 2px 6px;">--radius: 0.5rem</code>) with a derived scale — sm, md, lg, xl — so all components share the same rounding logic and can be updated globally from one value.</p>
 
-    <div style="display: flex; align-items: center; gap: 16px; padding: 12px 0; border-bottom: 1px solid #e2e8f0;">
-      <div style="font-family: Inter, sans-serif; font-size: 13px; color: #64748b; width: 220px; flex-shrink: 0;">Narrative text · 13px · 400</div>
-      <div style="font-family: 'DM Sans', sans-serif; font-size: 12px; color: #64748b;">Secondary text, card descriptions</div>
-    </div>
+        <h3 style="font-family: 'EB Garamond', serif; font-weight: 500; font-size: 24px; line-height: 1.2; color: #111111; margin: 0 0 14px;">One rule that governed everything</h3>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 17px; line-height: 1.7; color: #111111; margin: 0 0 32px;">Every component decision had to pass one test: does this require the user to learn something new, or does it extend something they already know? The accordion uses the same chevron pattern as every other disclosure widget. The confidence pill uses the same border-radius as badges elsewhere. The push layout uses the same card surface as the dashboard widgets. Consistency was the constraint; the token system was how that constraint was enforced.</p>
 
-    <div style="display: flex; align-items: center; gap: 16px; padding: 12px 0; border-bottom: 1px solid #e2e8f0;">
-      <div style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 600; width: 220px; flex-shrink: 0;">Card title · 14px · 600</div>
-      <div style="font-family: 'DM Sans', sans-serif; font-size: 12px; color: #64748b;">Alert titles, widget headings</div>
-    </div>
-
-    <div style="display: flex; align-items: center; gap: 16px; padding: 12px 0; border-bottom: 1px solid #e2e8f0;">
-      <div style="font-family: Inter, sans-serif; font-size: 16px; font-weight: 500; width: 220px; flex-shrink: 0;">Section heading · 16px · 500</div>
-      <div style="font-family: 'DM Sans', sans-serif; font-size: 12px; color: #64748b;">Page and section titles</div>
-    </div>
-
-    <div style="display: flex; align-items: center; gap: 16px; padding: 12px 0;">
-      <div style="font-family: Inter, sans-serif; font-size: 28px; font-weight: 700; letter-spacing: -0.02em; width: 220px; flex-shrink: 0;">€4.2M</div>
-      <div style="font-family: 'DM Sans', sans-serif; font-size: 12px; color: #64748b;">KPI values · 28px · 700 · tabular nums</div>
-    </div>
-
-  </div>
-
-  <div class="sub-heading">Components</div>
-
-  <p class="body-text">Three card themes share one component structure — only the semantic colour changes. This was a deliberate decision: the user learns the card pattern once and applies it to all three alert types without relearning.</p>
-
-  <!-- Component: Alert card themes -->
-  <div style="margin: 28px 0; max-width: 560px; display: flex; flex-direction: column; gap: 8px;">
-
-    <div style="border: 1px solid #e2e8f0; border-left: 3px solid #ef4444; border-radius: 8px; padding: 14px 16px; background: #fff;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-        <span style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #ef4444;">⚠ Critical Risk</span>
-        <span style="font-family: Inter, sans-serif; font-size: 11px; color: #64748b; border: 1px solid #e2e8f0; border-radius: 999px; padding: 2px 8px;">94% confidence</span>
+        <h3 style="font-family: 'EB Garamond', serif; font-weight: 500; font-size: 24px; line-height: 1.2; color: #111111; margin: 0 0 14px;">Confidence score — always with data basis</h3>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 17px; line-height: 1.7; color: #111111; margin: 0 0 24px;">Every confidence score exposes its reasoning on hover — a tooltip showing exactly which data signals produced the number: call frequency, deal age, historical close rates. The pattern is identical across both screens. Learn it once, apply it everywhere. A score without a basis is an assertion; a score with a basis is evidence the user can verify or challenge.</p>
       </div>
-      <div style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 600; color: #0f172a;">Card title</div>
-      <div style="font-family: Inter, sans-serif; font-size: 13px; color: #64748b; margin-top: 2px;">Narrative text — one to two sentences</div>
-      <div style="display: flex; gap: 8px; margin-top: 10px; align-items: center;">
-        <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 500; background: #0f172a; color: #fff; padding: 5px 10px; border-radius: 6px;">Draft with AI</span>
-        <span style="font-family: Inter, sans-serif; font-size: 12px; color: #64748b; padding: 5px 8px;">Dismiss</span>
-        <span style="font-family: Inter, sans-serif; font-size: 12px; color: #64748b; padding: 5px 8px; margin-left: auto;">Why flagged? ↓</span>
+      <div style="grid-column: 1 / -1;">
+        <div style="background: #ECEBE8; height: 420px; display: flex; align-items: center; justify-content: center;">
+          <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — confidence_score.png</span>
+        </div>
+        <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">Hovering a confidence score reveals the data signals behind it — not just the number, but the reasoning. The user can agree with the AI's evidence or decide it doesn't apply to their context.</p>
       </div>
-    </div>
-
-    <div style="border: 1px solid #e2e8f0; border-left: 3px solid #f59e0b; border-radius: 8px; padding: 14px 16px; background: #fff;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-        <span style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #b45309;">↗ Pipeline Anomaly</span>
-        <span style="font-family: Inter, sans-serif; font-size: 11px; color: #64748b; border: 1px solid #e2e8f0; border-radius: 999px; padding: 2px 8px;">89% confidence</span>
+      <div style="grid-column: 2; max-width: 640px;">
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 36px 0 0;">The "AI flagged" badge uses neutral styling: white fill, grey border, grey text. Not a warning colour — a quiet label that says "the system noticed this" without implying danger. Red is reserved for numeric values only: a deal at 12% close probability, a region down 22%. The badge is not a value; it doesn't get red.</p>
       </div>
-      <div style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 600; color: #0f172a;">Card title</div>
-      <div style="font-family: Inter, sans-serif; font-size: 13px; color: #64748b; margin-top: 2px;">Narrative text — one to two sentences</div>
-      <div style="display: flex; gap: 8px; margin-top: 10px; align-items: center;">
-        <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 500; background: #0f172a; color: #fff; padding: 5px 10px; border-radius: 6px;">Open Playbook</span>
-        <span style="font-family: Inter, sans-serif; font-size: 12px; color: #64748b; padding: 5px 8px;">Dismiss</span>
-        <span style="font-family: Inter, sans-serif; font-size: 12px; color: #64748b; padding: 5px 8px; margin-left: auto;">Why flagged? ↓</span>
+    </section>
+
+    <!-- 04 The design -->
+    <section id="design" data-screen-label="The design" style="display: grid; grid-template-columns: minmax(160px, 1fr) minmax(0, 2.2fr); gap: 48px; padding: 72px 64px; border-top: 1px solid #E3E1DC;">
+      <div>
+        <h2 style="font-family: 'EB Garamond', serif; font-weight: 400; font-size: 52px; line-height: 1.08; color: #111111; margin: 0;">The design</h2>
       </div>
-    </div>
+      <div style="max-width: 640px;">
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">Two high-fidelity screens built in HTML, fully interactive. AI Briefing (J1 — Morning Triage) and Dashboard with AI Insights (J4 — Decision Support). J3 (Explainability on demand) is implemented as the AI chat panel — available on both screens, the user asks, the AI explains.</p>
 
-    <div style="border: 1px solid #e2e8f0; border-left: 3px solid #10b981; border-radius: 8px; padding: 14px 16px; background: #fff;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-        <span style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #059669;">🚀 Upsell Opportunity</span>
-        <span style="font-family: Inter, sans-serif; font-size: 11px; color: #64748b; border: 1px solid #e2e8f0; border-radius: 999px; padding: 2px 8px;">91% confidence</span>
+        <h3 style="font-family: 'EB Garamond', serif; font-weight: 500; font-size: 30px; line-height: 1.2; color: #111111; margin: 0 0 18px;">Screen 1 — AI Briefing</h3>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 24px;">Three vertically stacked alert cards, ranked by financial urgency. The accordion on each card is closed by default — progressive disclosure. The user sees only what they need to make a decision: category, title, description, CTA. If the alert warrants attention, they expand to see the supporting evidence. If it doesn't, they move on. Nothing is hidden that the user needs upfront; nothing is shown that gets in the way of the decision.</p>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">CTAs use the word "Draft" deliberately across all cards — Draft with AI, Draft Offer, Open Playbook. AI proposes; the user decides. In a B2B context where a mistaken action has real relationship consequences, "Draft" removes click anxiety without removing the feature. "Send" would imply finality. "Draft" doesn't.</p>
       </div>
-      <div style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 600; color: #0f172a;">Card title</div>
-      <div style="font-family: Inter, sans-serif; font-size: 13px; color: #64748b; margin-top: 2px;">Narrative text — one to two sentences</div>
-      <div style="display: flex; gap: 8px; margin-top: 10px; align-items: center;">
-        <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 500; background: #0f172a; color: #fff; padding: 5px 10px; border-radius: 6px;">Draft Offer</span>
-        <span style="font-family: Inter, sans-serif; font-size: 12px; color: #64748b; padding: 5px 8px;">Dismiss</span>
-        <span style="font-family: Inter, sans-serif; font-size: 12px; color: #64748b; padding: 5px 8px; margin-left: auto;">Why flagged? ↓</span>
+      <div style="grid-column: 1 / -1;">
+        <div style="background: #ECEBE8; height: 560px; display: flex; align-items: center; justify-content: center;">
+          <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — AIBrefing_accordionopen.png</span>
+        </div>
+        <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">Accordion expanded on the first card. The supporting evidence — deal activity log, stage vs. benchmark — appears inline without navigating away. Closed by default because the decision (act or dismiss) comes before the evidence. The user drills down only when they need to verify.</p>
       </div>
-    </div>
+      <div style="grid-column: 2; max-width: 640px;">
+        <h3 style="font-family: 'EB Garamond', serif; font-weight: 500; font-size: 30px; line-height: 1.2; color: #111111; margin: 36px 0 18px;">Screen 2 — Dashboard with AI Insights</h3>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 24px;">AI Insights are positioned above the chart data on every widget — deliberately. The user reads the interpretation first, then sees the data it's based on. The alternative would let the user form their own reading of the chart before seeing the AI's — creating a situation where two interpretations compete rather than one informing the other.</p>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 36px;">A global toggle lets the user show or hide all AI-generated content simultaneously. When off, the dashboard shows raw data only. This isn't just a preference setting — it's a trust mechanism. The user can verify the AI's interpretation against the underlying data, or choose to work without it entirely. Control stays with the user.</p>
+      </div>
+      <div style="grid-column: 1 / -1;">
+        <div style="background: #ECEBE8; height: 560px; display: flex; align-items: center; justify-content: center;">
+          <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — Dashboard.png</span>
+        </div>
+        <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 48px; max-width: 640px;">AI Insights above the data on every widget — one to two sentences, always visible, no interaction required to see them. The insight sets the frame; the chart provides the evidence. The toggle in the top right removes the entire AI layer without affecting the underlying data.</p>
+        <div id="cs-imgpair-4" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div style="background: #ECEBE8; height: 420px; display: flex; align-items: center; justify-content: center;">
+            <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — AIinsights_hidden.png</span>
+          </div>
+          <div style="background: #ECEBE8; height: 420px; display: flex; align-items: center; justify-content: center;">
+            <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #8F8D88; letter-spacing: 0.06em;">screenshot — AIinterpretation_aspill.png</span>
+          </div>
+        </div>
+        <p style="font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 1.65; color: #767470; margin: 12px 0 0; max-width: 640px;">Left: AI layer toggled off — raw data only, no AI content anywhere on the page. Right: an earlier approach where the insight lived behind a hover pill. The user had to move the mouse, wait, and point precisely to see information that should have been immediately readable. The always-visible placement isn't a layout preference; it removes an interaction cost that had no reason to exist.</p>
+      </div>
+    </section>
 
-    <p class="img-caption" style="margin-top: 8px;">One component structure, three semantic themes. The left border colour and category label change; everything else — spacing, typography, CTA position, accordion trigger — stays identical. The user learns the pattern once.</p>
+    <!-- 05 Success metrics -->
+    <section id="metrics" data-screen-label="Success metrics" style="display: grid; grid-template-columns: minmax(160px, 1fr) minmax(0, 2.2fr); gap: 48px; padding: 72px 64px; border-top: 1px solid #E3E1DC;">
+      <div>
+        <h2 style="font-family: 'EB Garamond', serif; font-weight: 400; font-size: 52px; line-height: 1.08; color: #111111; margin: 0;">Success metrics</h2>
+      </div>
+      <div style="max-width: 640px;">
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 24px;">Success criteria were defined upfront — not as engagement targets, but as outcome measures tied to the Jobs to Be Done the design covers. Behavioural metrics serve as diagnostic signals; outcome metrics are the north star.</p>
+
+        <h3 style="font-family: 'EB Garamond', serif; font-weight: 500; font-size: 24px; line-height: 1.2; color: #111111; margin: 0 0 14px;">J1 — Morning Triage</h3>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 17px; line-height: 1.7; color: #111111; margin: 0 0 24px;">The north star metric is <strong>time-to-first-action</strong>: time from login to the first call, email, or deal update logged in CRM. Target: 40% reduction against baseline. Supporting signals: briefing open rate above 80% within the first 30 days, and alert click-through rate above 60% — a lower rate signals the alerts aren't relevant enough to act on.</p>
+
+        <h3 style="font-family: 'EB Garamond', serif; font-weight: 500; font-size: 24px; line-height: 1.2; color: #111111; margin: 0 0 14px;">J4 — Decision Support</h3>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 17px; line-height: 1.7; color: #111111; margin: 0 0 24px;">Outcome metrics here are harder to isolate directly, proxied through reduction in ad-hoc data requests to analysts and self-reported decision confidence in quarterly reviews. The behavioural signal is whether users engage with AI Insights before making pipeline decisions — or skip them entirely.</p>
+
+        <h3 style="font-family: 'EB Garamond', serif; font-weight: 500; font-size: 24px; line-height: 1.2; color: #111111; margin: 0 0 14px;">Measurement schedule</h3>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 17px; line-height: 1.7; color: #111111; margin: 0 0 24px;">Behavioural metrics are available from day one. Outcome metrics require at least one full sales quarter — quota attainment and deal loss rates are influenced by too many variables to evaluate earlier without drawing false conclusions. Recommended: behavioural signals in weeks 1–4, first outcome review after Q1, full evaluation after Q2.</p>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0;">These metrics were chosen because they measure what the design was actually built to change — decision speed and decision confidence — not just whether users clicked on the feature.</p>
+      </div>
+    </section>
+
+    <!-- 06 Outcome -->
+    <section id="outcome" data-screen-label="Outcome" style="display: grid; grid-template-columns: minmax(160px, 1fr) minmax(0, 2.2fr); gap: 48px; padding: 72px 64px 96px; border-top: 1px solid #E3E1DC;">
+      <div>
+        <h2 style="font-family: 'EB Garamond', serif; font-weight: 400; font-size: 52px; line-height: 1.08; color: #111111; margin: 0;">Outcome</h2>
+      </div>
+      <div style="max-width: 640px;">
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 24px;">The brief started with a reframe: the problem wasn't data overload, it was the absence of decision support. Sales managers didn't need more charts — they needed the answer to "what do I do next, and why."</p>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 24px;">The AI Briefing screen answers that question without requiring the user to interpret anything. Three ranked cards, a recommended action on each, supporting evidence one click away. No charts, no tables, nothing that requires the user to form their own reading before acting.</p>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 24px;">The Dashboard AI Insights layer answers the "why" — an interpretation above every data widget, always visible, always scannable. The toggle means users can verify or ignore the AI's reading entirely. Trust is built in, not assumed.</p>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 24px;">The most useful thing this project produced isn't the screens — it's the record of what was tried and rejected. The sidebar, the grid, the overlay, the universal purple: each one was reasonable in the abstract and wrong in practice. AI generated the first versions; judgment decided which ones to throw away.</p>
+        <p style="font-family: 'EB Garamond', serif; font-weight: 400; font-size: 30px; line-height: 1.4; color: #111111; margin: 0 0 32px; border-top: 1px solid #111111; padding-top: 28px;">That's the process I want to show. Not that I used AI — everyone will — but that I know what to do with what it produces.</p>
+        <p style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 19px; line-height: 1.75; color: #111111; margin: 0 0 24px;">Both screens are built in HTML and fully interactive — linked, clickable, and explorable in the browser.</p>
+        <a href="https://dataflow-dashboard-design.vercel.app/" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 100%; box-sizing: border-box; background: #111111; color: #FFFFFF; font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; padding: 20px 26px;" style-hover="background: #333331 !important;">Open live prototype &#8599;</a>
+      </div>
+    </section>
+
+    <!-- Bottom nav -->
+    <footer id="cs-footer-nav" style="display: flex; justify-content: space-between; align-items: center; padding: 32px 64px; border-top: 1px solid #E3E1DC;">
+      <a href="Home.dc.html" style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #111111; text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px;" style-hover="border-bottom-color: #111111 !important;">&#8249; Back to work</a>
+      <span id="footer-next-cta" style="display: inline-block; font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #111111; border: 1px solid #111111; padding: 13px 26px; cursor: pointer;" style-hover="background: #111111 !important; color: #FFFFFF !important;">Next case study &#8250;</span>
+    </footer>
+
+  </main>
   </div>
-
-  <div class="sub-heading">Spacing & radius</div>
-
-  <p class="body-text">4px base unit throughout. Border radius defined as a single token (<code style="font-family: 'DM Sans', sans-serif; font-size: 17px; background: #F6F6F6; padding: 2px 6px; border: 1px solid var(--rule);">--radius: 0.5rem</code>) with derived scale — sm, md, lg, xl — so all components share the same rounding logic and can be updated globally from one value.</p>
-
-  <div class="sub-heading">One rule that governed everything</div>
-
-  <p class="body-text">Every component decision had to pass one test: does this require the user to learn something new, or does it extend something they already know? The accordion uses the same chevron pattern as every other disclosure widget. The confidence pill uses the same border-radius as badges elsewhere. The push layout uses the same card surface as the dashboard widgets. Consistency was the constraint; the token system was how that constraint was enforced.</p>
-
-  <div class="sub-heading">Confidence score — always with data basis</div>
-
-  <p class="body-text">Every confidence score exposes its reasoning on hover — a tooltip showing exactly which data signals produced the number: call frequency, deal age, historical close rates. The pattern is identical across both screens. Learn it once, apply it everywhere. A score without a basis is an assertion; a score with a basis is evidence the user can verify or challenge.</p>
-
-  <div class="img-block">
-    <img src="confidence_score.png" alt="Confidence score tooltip showing data basis">
-    <p class="img-caption">Hovering a confidence score reveals the data signals behind it — not just the number, but the reasoning. The user can agree with the AI's evidence or decide it doesn't apply to their context.</p>
-  </div>
-
-  <div class="sub-heading">AI flagged badge — never alarming</div>
-
-  <p class="body-text">The "AI flagged" badge uses neutral styling: white fill, grey border, grey text. Not a warning colour — a quiet label that says "the system noticed this" without implying danger. Red is reserved for numeric values only: a deal at 12% close probability, a region down 22%. The badge is not a value; it doesn't get red.</p>
-
-
-
-  <!-- ── 05 THE DESIGN ── -->
-  <div class="sec-block">
-    <div class="sec-label">05</div>
-    <h2 class="sec-title">The design</h2>
-    <div class="sec-rule"></div>
-  </div>
-
-  <p class="body-text">Two high-fidelity screens built in HTML, fully interactive. AI Briefing (J1 — Morning Triage) and Dashboard with AI Insights (J4 — Decision Support). J3 (Explainability on demand) is implemented as the AI chat panel — available on both screens, the user asks, the AI explains.</p>
-
-  <div class="sub-heading">Screen 1 — AI Briefing</div>
-
-  <p class="body-text">Three vertically stacked alert cards, ranked by financial urgency. The accordion on each card is closed by default — progressive disclosure. The user sees only what they need to make a decision: category, title, description, CTA. If the alert warrants attention, they expand to see the supporting evidence. If it doesn't, they move on. Nothing is hidden that the user needs upfront; nothing is shown that gets in the way of the decision.</p>
-
-  <p class="body-text">CTAs use the word "Draft" deliberately across all cards — Draft with AI, Draft Offer, Open Playbook. AI proposes; the user decides. In a B2B context where a mistaken action has real relationship consequences, "Draft" removes click anxiety without removing the feature. "Send" would imply finality. "Draft" doesn't.</p>
-
-  <div class="img-block">
-    <img src="AIBrefing_accordionopen.png" alt="AI Briefing — accordion open showing supporting data">
-    <p class="img-caption">Accordion expanded on the first card. The supporting evidence — deal activity log, stage vs. benchmark — appears inline without navigating away. Closed by default because the decision (act or dismiss) comes before the evidence. The user drills down only when they need to verify.</p>
-  </div>
-
-  <div class="sub-heading">Screen 2 — Dashboard with AI Insights</div>
-
-  <p class="body-text">AI Insights are positioned above the chart data on every widget — deliberately. The user reads the interpretation first, then sees the data it's based on. The alternative would let the user form their own reading of the chart before seeing the AI's — creating a situation where two interpretations compete rather than one informing the other.</p>
-
-  <p class="body-text">A global toggle lets the user show or hide all AI-generated content simultaneously. When off, the dashboard shows raw data only. This isn't just a preference setting — it's a trust mechanism. The user can verify the AI's interpretation against the underlying data, or choose to work without it entirely. Control stays with the user.</p>
-
-  <div class="img-block">
-    <img src="Dashboard.png" alt="Dashboard with AI Insights active">
-    <p class="img-caption">AI Insights above the data on every widget — one to two sentences, always visible, no interaction required to see them. The insight sets the frame; the chart provides the evidence. The toggle in the top right removes the entire AI layer without affecting the underlying data.</p>
-  </div>
-
-  <div class="img-two-up">
-    <img src="AIinsights_hidden.png" alt="Dashboard with AI Insights toggled off">
-    <img src="AIinterpretation_aspill.png" alt="Earlier version — AI Interpretation as a hover pill">
-    <p class="img-caption">Left: AI layer toggled off — raw data only, no AI content anywhere on the page. Right: an earlier approach where the insight lived behind a hover pill. The user had to move the mouse, wait, and point precisely to see information that should have been immediately readable. The always-visible placement isn't a layout preference; it removes an interaction cost that had no reason to exist.</p>
-  </div>
-
-  <!-- ── 07 NEXT STEPS & SUCCESS METRICS ── -->
-  <div class="sec-block">
-    <div class="sec-label">07</div>
-    <h2 class="sec-title">Success metrics</h2>
-    <div class="sec-rule"></div>
-  </div>
-
-  <p class="body-text">Success criteria were defined upfront — not as engagement targets, but as outcome measures tied to the Jobs to Be Done the design covers. Behavioural metrics serve as diagnostic signals; outcome metrics are the north star.</p>
-
-  <div class="sub-heading">J1 — Morning Triage</div>
-
-  <p class="body-text">The north star metric is <strong>time-to-first-action</strong>: time from login to the first call, email, or deal update logged in CRM. Target: 40% reduction against baseline. Supporting signals: briefing open rate above 80% within the first 30 days, and alert click-through rate above 60% — a lower rate signals the alerts aren't relevant enough to act on.</p>
-
-  <div class="sub-heading">J4 — Decision Support</div>
-
-  <p class="body-text">Outcome metrics here are harder to isolate directly, proxied through reduction in ad-hoc data requests to analysts and self-reported decision confidence in quarterly reviews. The behavioural signal is whether users engage with AI Insights before making pipeline decisions — or skip them entirely.</p>
-
-  <div class="sub-heading">Measurement schedule</div>
-
-  <p class="body-text">Behavioural metrics are available from day one. Outcome metrics require at least one full sales quarter — quota attainment and deal loss rates are influenced by too many variables to evaluate earlier without drawing false conclusions. Recommended: behavioural signals in weeks 1–4, first outcome review after Q1, full evaluation after Q2.</p>
-
-  <p class="body-text">These metrics were chosen because they measure what the design was actually built to change — decision speed and decision confidence — not just whether users clicked on the feature.</p>
-
-    <!-- ── 06 OUTCOME ── -->
-  <div class="sec-block">
-    <div class="sec-label">06</div>
-    <h2 class="sec-title">Outcome</h2>
-    <div class="sec-rule"></div>
-  </div>
-
-  <p class="body-text">The brief started with a reframe: the problem wasn't data overload, it was the absence of decision support. Sales managers didn't need more charts — they needed the answer to "what do I do next, and why."</p>
-
-  <p class="body-text">The AI Briefing screen answers that question without requiring the user to interpret anything. Three ranked cards, a recommended action on each, supporting evidence one click away. No charts, no tables, nothing that requires the user to form their own reading before acting. The triage flow doesn't require navigating anywhere else.</p>
-
-  <p class="body-text">The Dashboard AI Insights layer answers the "why" — an interpretation above every data widget, always visible, always scannable. The user reads the conclusion first, then the data that supports it. The toggle means they can verify or ignore the AI's reading entirely. Trust is built in, not assumed.</p>
-
-  <p class="body-text">The most useful thing this project produced isn't the screens — it's the record of what was tried and rejected. The sidebar, the grid, the overlay, the universal purple: each one was reasonable in the abstract and wrong in practice. The working prototype made that visible. AI generated the first versions; judgment decided which ones to throw away.</p>
-
-  <p class="body-text"><strong>That's the process I want to show.</strong> Not that I used AI — everyone will — but that I know what to do with what it produces.</p>
-
-  <div class="sub-heading">Live prototype</div>
-
-  <p class="body-text">Both screens are built in HTML and fully interactive — linked, clickable, and explorable in the browser.</p>
-
-  <p class="body-text" style="margin-top: 8px;">
-    <a href="https://dataflow-dashboard-design.vercel.app/" target="_blank" rel="noopener" style="color: var(--ink); font-weight: 600; border-bottom: 1px solid var(--ink); padding-bottom: 1px; text-decoration: none;">Open prototype ↗</a>
-  </p>
-
 </div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { footerCtaVisible: false };
 
-<div class="sidebar">
-  <div class="sb-group"><div class="sb-lbl">Role</div><div class="sb-val">Sole Product Designer</div></div>
-  <div class="sb-group"><div class="sb-lbl">Context</div><div class="sb-val">Concept project<br>(B2B SaaS · CRM)</div></div>
-  <div class="sb-group"><div class="sb-lbl">Platform</div><div class="sb-val">Desktop</div></div>
-  <div class="sb-group"><div class="sb-lbl">Deliverable</div><div class="sb-val">High-fidelity HTML prototype · Design system · Process documentation</div></div>
-  <div class="sb-group"><div class="sb-lbl">Tools</div><div class="sb-val">Claude · Gemini · v0<br>HTML / CSS · VS Code</div></div>
-  <div class="sb-group"><div class="sb-lbl">Methods</div><div class="sb-val">AI-assisted desk research · Competitive analysis · Persona & JTBD · User flows · IA · Rapid prototyping</div></div>
-</div>
-</div>
+  applyFont() {
+    const f = this.props.metaFont ?? 'Libre Franklin';
+    document.body.style.setProperty('--sans', "'" + f + "', sans-serif");
+  }
 
-<div class="case-nav">
-  <a href="../index.html">← Back to work</a>
-  <a href="../weibull/">Next case study →</a>
-</div>
+  observeFooterCta() {
+    if (this._observer) return;
+    const el = document.getElementById('footer-next-cta');
+    if (!el) return;
+    this._observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        this.setState({ footerCtaVisible: entry.isIntersecting });
+      });
+    }, { threshold: 0.1 });
+    this._observer.observe(el);
+  }
 
-</div>
+  componentDidMount() {
+    this.applyFont();
+    this.observeFooterCta();
+  }
+  componentDidUpdate() {
+    this.applyFont();
+    this.observeFooterCta();
+  }
+  componentWillUnmount() {
+    if (this._observer) this._observer.disconnect();
+  }
 
-
-<div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(13,13,13,0.92);z-index:1000;cursor:zoom-out;align-items:center;justify-content:center;">
-  <button id="lightbox-close" style="position:fixed;top:24px;right:32px;background:none;border:none;color:#fff;font-family:'DM Sans',sans-serif;font-size:28px;font-weight:300;cursor:pointer;line-height:1;padding:8px;z-index:1001;opacity:0.8;" aria-label="Close">&#x2715;</button>
-  <img id="lightbox-img" src="" alt="" style="max-width:92vw;max-height:92vh;object-fit:contain;display:block;cursor:default;">
-</div>
-<script>
-  const lightbox=document.getElementById('lightbox');
-  const lightboxImg=document.getElementById('lightbox-img');
-  document.querySelectorAll('.img-block img,.img-two-up img').forEach(img=>{
-    img.addEventListener('click',()=>{lightboxImg.src=img.src;lightboxImg.alt=img.alt;lightbox.style.display='flex';document.body.style.overflow='hidden';});
-  });
-  function closeLightbox(){lightbox.style.display='none';document.body.style.overflow='';}
-  document.getElementById('lightbox-close').addEventListener('click',closeLightbox);
-  lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox();});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+  renderVals() {
+    return {
+      railNextOpacity: this.state.footerCtaVisible ? 0 : 1,
+      railNextPointerEvents: this.state.footerCtaVisible ? 'none' : 'auto',
+    };
+  }
+}
 </script>
 </body>
 </html>
