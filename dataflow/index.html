@@ -27,6 +27,7 @@
     #cs-main h3 { font-size: 20px !important; }
     #cs-imgpair-1, #cs-imgpair-2, #cs-imgpair-3, #cs-imgpair-4 { grid-template-columns: 1fr !important; }
     #cs-footer-nav { padding: 24px 20px !important; }
+    #cs-footer-nav a { display: flex !important; align-items: center !important; gap: 6px !important; }
   }
 </style>
 </helmet>
@@ -332,8 +333,8 @@
 
     <!-- Bottom nav -->
     <footer id="cs-footer-nav" style="display: flex; justify-content: space-between; align-items: center; padding: 32px 64px; border-top: 1px solid #E3E1DC;">
-      <a href="../index.html" style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #111111; text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px;" style-hover="border-bottom-color: #111111 !important;">&#8249; Back to work</a>
-      <a id="footer-next-cta" href="../weibull/" style="display: inline-block; font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #111111; text-decoration: none; border: 1px solid #111111; padding: 13px 26px;" style-hover="background: #111111 !important; color: #FFFFFF !important;">Next case study &#8250;</a>
+      <a href="../index.html" style="font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #111111; text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px;" style-hover="border-bottom-color: #111111 !important;"><span style="flex-shrink: 0;">&#8249;</span><span>Back to work</span></a>
+      <a id="footer-next-cta" href="../weibull/" style="display: inline-block; font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #111111; text-decoration: none; border: 1px solid #111111; padding: 13px 26px;" style-hover="background: #111111 !important; color: #FFFFFF !important;"><span>Next case study</span><span style="flex-shrink: 0;">&#8250;</span></a>
     </footer>
 
   </main>
