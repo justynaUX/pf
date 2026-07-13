@@ -27,7 +27,9 @@
     #cs-main h3 { font-size: 20px !important; }
     #cs-imgpair-1, #cs-imgpair-2 { grid-template-columns: 1fr !important; }
     #cs-footer-nav { padding: 24px 20px !important; }
-    #cs-footer-nav a { display: flex !important; align-items: center !important; gap: 6px !important; }
+    #cs-footer-nav a { display: flex !important; align-items: center !important; gap: 6px !important; border-bottom: none !important; }
+    #cs-footer-nav a span:last-child { border-bottom: 1px solid transparent; padding-bottom: 2px; display: inline-block; }
+    #cs-footer-nav a:hover span:last-child { border-bottom-color: #111111; }
   }
 </style>
 </helmet>
